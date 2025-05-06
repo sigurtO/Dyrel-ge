@@ -13,6 +13,7 @@ namespace WinFormsApp1
     public partial class Main : Form
     {
         Consultation Consultation = new Consultation();
+        VetForm VetForm = new VetForm();
         public Main()
         {
             InitializeComponent();
@@ -21,6 +22,11 @@ namespace WinFormsApp1
         private void buttonConsultation_Click(object sender, EventArgs e)
         {
             Consultation.Show();
+            this.Hide();
+        }
+        private void buttonVets_Click(object sender, EventArgs e)
+        {
+            VetForm.Show();
             this.Hide();
         }
     }

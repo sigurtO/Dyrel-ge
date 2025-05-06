@@ -29,6 +29,17 @@ namespace WinFormsApp1.DB
                 await command.ExecuteNonQueryAsync();
             }
         }
+        public async Task CreateVetAsync(VetClass vet)
+        {
+            string query = "INSERT INTO PetDoc (FirstName) VALUES (@FirstName)";
+            using (SqlConnection connection = CreateConnection())
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@FirstName", vet.FirstName);
+                await connection.OpenAsync();
+                await command.ExecuteNonQueryAsync();
+            }
+        }
 
     }
 }
