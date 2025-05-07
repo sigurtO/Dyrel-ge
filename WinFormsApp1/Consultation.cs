@@ -51,10 +51,16 @@ namespace WinFormsApp1
 
         private async void buttonAdd_Click(object sender, EventArgs e)
         {
-           await consultationService.HandleAddConsultationAsync(comboBoxOwner, comboBoxPet, comboBoxVet, textBoxDate, textBoxNotes, textBoxPrice);
-           await consultationService.LoadConsultationDataAsync(dataGridView); // Refresh the DataGridView
-             MessageBox.Show("Consultation created successfully!");
+            await consultationService.HandleAddConsultationAsync(comboBoxOwner, comboBoxPet, comboBoxVet, textBoxDate, textBoxNotes, textBoxPrice);
+            await consultationService.LoadConsultationDataAsync(dataGridView); // Refresh the DataGridView
+            MessageBox.Show("Consultation created successfully!");
 
+        }
+
+        private async void buttonDelete_Click(object sender, EventArgs e)
+        {
+            await consultationService.DeleteConsultationAsync(dataGridView);
+            await consultationService.LoadConsultationDataAsync(dataGridView);
         }
     }
 }

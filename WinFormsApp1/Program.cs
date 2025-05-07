@@ -6,6 +6,7 @@ namespace WinFormsApp1
     {
         public static DbRead DbRead { get; private set; }
         public static DbCreate DbCreate { get; private set; }
+        public static DbDelete DbDelete { get; private set; }
 
         /// <summary>
         ///  The main entry point for the application.
@@ -18,6 +19,7 @@ namespace WinFormsApp1
 
             DbRead = new DbRead(connectionString);
             DbCreate = new DbCreate(connectionString);
+            DbDelete = new DbDelete(connectionString);
 
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
