@@ -11,7 +11,7 @@ namespace WinFormsApp1.DB
 {
     public class DbRead : Database
     {
-    
+
         public DbRead(string connectionString) : base(connectionString) { } // constructor passes the connection string to the base class
 
 
@@ -72,6 +72,7 @@ namespace WinFormsApp1.DB
 
 
 
+
         //Gets Veterinarians by Pet
         public async Task<DataTable> GetVeterinariansByPetAsync(int? petID) // Nullable int to allow for no petID
         {
@@ -85,8 +86,8 @@ namespace WinFormsApp1.DB
                 if (petID.HasValue)
                 {
                     // If petDocID is null in Pet (get all) else Only get the assigned DOC
-                     query =
-                        @" DECLARE @PetHasDocID INT = (SELECT PetDocID FROM Pet WHERE PetID = @PetID);
+                    query =
+                       @" DECLARE @PetHasDocID INT = (SELECT PetDocID FROM Pet WHERE PetID = @PetID);
                             
                             IF @PetHasDocID IS NULL
                              SELECT FirstName, PetDocID FROM PetDoc;
@@ -114,7 +115,21 @@ namespace WinFormsApp1.DB
             return dataTable;
         }
 
+        public async Task<DataTable> GetAllVetsAsync()
+        {
+            string query = "SELECT PetDocID, FirstName FROM PetDoc";
+            DataTable dataTable = new DataTable();
 
+            using (SqlConnection connection = CreateConnection())
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                await connection.OpenAsync();
+                SqlDataReader reader = await command.ExecuteReaderAsync();
+                dataTable.Load(reader);
+            }
 
+            return dataTable;
+
+        }
     }
 }
