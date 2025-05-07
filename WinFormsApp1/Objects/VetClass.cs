@@ -8,13 +8,22 @@ namespace WinFormsApp1.Objects
 {
     public class VetClass
     {
-        public int VetID { get; set; }
+        public int PetDocID { get; set; }
         public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Username { get; set; }
+        public string PasswordHash { get; set; }
+        public string Speciale { get; set; }
 
-        public VetClass(int vetID, string firstName)
+
+        public VetClass(int petDocID, string firstName,string lastname, string username, string passwordHash, string speciale)
         {
-            VetID = vetID;
+            PetDocID = petDocID;
             FirstName = firstName;
+            LastName = lastname;
+            Username = username;
+            PasswordHash = passwordHash;
+            Speciale = speciale;
         }
     }
 }
