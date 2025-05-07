@@ -30,6 +30,8 @@
         {
             buttonConsultation = new Button();
             buttonVets = new Button();
+            buttonOwner = new Button();
+            buttonTreatment = new Button();
             SuspendLayout();
             // 
             // buttonConsultation
@@ -53,11 +55,31 @@
             buttonVets.UseVisualStyleBackColor = true;
             buttonVets.Click += buttonVets_Click;
             // 
+            // buttonOwner
+            // 
+            buttonOwner.Location = new Point(146, 432);
+            buttonOwner.Name = "buttonOwner";
+            buttonOwner.Size = new Size(112, 34);
+            buttonOwner.TabIndex = 2;
+            buttonOwner.Text = "Owner";
+            buttonOwner.UseVisualStyleBackColor = true;
+            // 
+            // buttonTreatment
+            // 
+            buttonTreatment.Location = new Point(773, 432);
+            buttonTreatment.Name = "buttonTreatment";
+            buttonTreatment.Size = new Size(112, 34);
+            buttonTreatment.TabIndex = 3;
+            buttonTreatment.Text = "Treatment";
+            buttonTreatment.UseVisualStyleBackColor = true;
+            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1143, 750);
+            Controls.Add(buttonTreatment);
+            Controls.Add(buttonOwner);
             Controls.Add(buttonVets);
             Controls.Add(buttonConsultation);
             Margin = new Padding(4, 5, 4, 5);
@@ -70,5 +92,7 @@
 
         private Button buttonConsultation;
         private Button buttonVets;
+        private Button buttonOwner;
+        private Button buttonTreatment;
     }
 }
