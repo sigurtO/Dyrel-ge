@@ -6,11 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using WinFormsApp1.Interfaces;
 using WinFormsApp1.Objects;
 
 namespace WinFormsApp1.Service
 {
-    public class ConsultationService
+    public class ConsultationService : IConsultationService
     {
   
         public async Task LoadConsultationDataAsync(DataGridView gridView)       //Load the data into the DataGridView
@@ -111,6 +112,15 @@ namespace WinFormsApp1.Service
 
             ConsultationClass NewConsultation = new ConsultationClass(Owner, Pet, Vet, date, price, notes);
             await Program.DbCreate.CreateConsultationAsync(NewConsultation);
+        }
+
+        public async Task DeleteConsultationAsync(DataGridView dataGrid)
+        {
+            if (dataGrid.SelectedRows.Count > 0)
+            {
+                int consultationId = Convert.ToInt32(dataGrid.SelectedRows[0].Cells["ConsultationID"].Value);
+                await Program.DbDelete.DeleteConsultationByIdAsync(consultationId);
+            }
         }
 
 

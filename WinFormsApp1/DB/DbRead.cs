@@ -59,7 +59,7 @@ namespace WinFormsApp1.DB
 
             using (SqlConnection connection = CreateConnection())
             {
-                SqlCommand command = new SqlCommand(query, connection);
+                SqlCommand command = new SqlCommand(query, connection); 
                 command.Parameters.AddWithValue("@OwnerID", ownerID);
                 await connection.OpenAsync();
                 SqlDataReader reader = await command.ExecuteReaderAsync();
