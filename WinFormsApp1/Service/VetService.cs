@@ -10,30 +10,50 @@ namespace WinFormsApp1.Service
 {
     public class VetService
     {
-        public async Task LoadVetsAsync(DataGridView gridView)
-        {
-            try
+            public async Task LoadVetsAsync(DataGridView gridView)
             {
-                DataTable vets = await Program.DbRead.GetAllVetsAsync();
-                gridView.DataSource = vets;
+                try
+                {
+                    DataTable vets = await Program.DbRead.GetAllVetsAsync();
+                    gridView.DataSource = vets;
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Error: Failed to load veterinarians");
+                    gridView.DataSource = null;
+                }
             }
-            catch (Exception)
+            public async Task HandleAddVetAsync(TextBox txtFirstName, TextBox txtLastName,
+                                          TextBox txtUsername, TextBox txtPassword,
+                                          TextBox txtThesis)
             {
-                MessageBox.Show("Error: Failed to load veterinarians");
-                gridView.DataSource = null;
-            }
-        }
-        public async Task HandleAddVetAsync(TextBox textBoxName)
-        {
-            if (string.IsNullOrWhiteSpace(textBoxName.Text))
-            {
-                MessageBox.Show("Please enter a name");
-                return;
+                if (string.IsNullOrWhiteSpace(txtFirstName.Text) ||
+                    string.IsNullOrWhiteSpace(txtUsername.Text) ||
+                    string.IsNullOrWhiteSpace(txtPassword.Text))
+                {
+                    MessageBox.Show("First name, username and password are required");
+                    return;
+                }
+
+                string passwordHash = PasswordHelper.HashPassword(txtPassword.Text);
+
+                VetClass newVet = new VetClass(
+                     0,
+                txtFirstName.Text,
+                txtLastName.Text,
+                txtUsername.Text,
+                passwordHash,
+                txtThesis.Text
+            );
+
+                await Program.DbCreate.CreateVetAsync(newVet);
+                MessageBox.Show("Veterinarian added successfully!");
             }
 
-            VetClass newVet = new VetClass(0, textBoxName.Text);
-            await Program.DbCreate.CreateVetAsync(newVet);
-            MessageBox.Show("Veterinarian added successfully!");
+            public async Task<VetClass> AuthenticateAsync(string username, string password)
+            {
+                return await Program.DbRead.AuthenticateVetAsync(username, password);
+            }
         }
     }
-}
+

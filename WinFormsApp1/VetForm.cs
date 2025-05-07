@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinFormsApp1.Service;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WinFormsApp1
 {
@@ -27,9 +28,23 @@ namespace WinFormsApp1
 
         private async void buttonAdd_Click(object sender, EventArgs e)
         {
-            await vetService.HandleAddVetAsync(textBoxName);
+            await vetService.HandleAddVetAsync(
+                textBoxFirstName,
+                textBoxLastName,
+                textBoxUsername,
+                textBoxPassword,
+                textBoxSpeciale
+            );
             await vetService.LoadVetsAsync(dataGridViewVets);
-            textBoxName.Clear();
+            ClearForm();
+        }
+        private void ClearForm()
+        {
+            textBoxFirstName.Clear();
+            textBoxLastName.Clear();
+            textBoxUsername.Clear();
+            textBoxPassword.Clear();
+            textBoxSpeciale.Clear();
         }
     }
 }
