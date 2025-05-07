@@ -29,5 +29,11 @@ namespace WinFormsApp1
             VetForm.Show();
             this.Hide();
         }
+        private void buttonOwners_Click(object sender, EventArgs e)
+        {
+            OwnerForm ownerForm = new OwnerForm();
+            ownerForm.Show();
+            this.Hide();
+        }
     }
 }

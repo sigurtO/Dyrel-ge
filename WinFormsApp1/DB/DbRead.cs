@@ -131,5 +131,19 @@ namespace WinFormsApp1.DB
             return dataTable;
 
         }
+
+        public async Task<DataTable> ShowAllOwnersAsync()
+        {
+            string query = "SELECT * FROM PetOwner";
+            DataTable dataTable = new DataTable();
+            using (SqlConnection connection = CreateConnection())
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                await connection.OpenAsync();
+                SqlDataReader reader = await command.ExecuteReaderAsync();
+                dataTable.Load(reader);
+            }
+            return dataTable;
+        }
     }
 }
