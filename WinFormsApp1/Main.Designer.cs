@@ -36,10 +36,9 @@
             // 
             // buttonConsultation
             // 
-            buttonConsultation.Location = new Point(337, 428);
-            buttonConsultation.Margin = new Padding(4, 5, 4, 5);
+            buttonConsultation.Location = new Point(236, 257);
             buttonConsultation.Name = "buttonConsultation";
-            buttonConsultation.Size = new Size(160, 38);
+            buttonConsultation.Size = new Size(112, 23);
             buttonConsultation.TabIndex = 0;
             buttonConsultation.Text = "Consultation";
             buttonConsultation.UseVisualStyleBackColor = true;
@@ -47,9 +46,10 @@
             // 
             // buttonVets
             // 
-            buttonVets.Location = new Point(575, 428);
+            buttonVets.Location = new Point(402, 257);
+            buttonVets.Margin = new Padding(2, 2, 2, 2);
             buttonVets.Name = "buttonVets";
-            buttonVets.Size = new Size(112, 34);
+            buttonVets.Size = new Size(78, 20);
             buttonVets.TabIndex = 1;
             buttonVets.Text = "Vets";
             buttonVets.UseVisualStyleBackColor = true;
@@ -57,32 +57,34 @@
             // 
             // buttonOwner
             // 
-            buttonOwner.Location = new Point(146, 432);
+            buttonOwner.Location = new Point(102, 259);
+            buttonOwner.Margin = new Padding(2, 2, 2, 2);
             buttonOwner.Name = "buttonOwner";
-            buttonOwner.Size = new Size(112, 34);
+            buttonOwner.Size = new Size(78, 20);
             buttonOwner.TabIndex = 2;
             buttonOwner.Text = "Owner";
             buttonOwner.UseVisualStyleBackColor = true;
+            buttonOwner.Click += buttonOwners_Click;
             // 
             // buttonTreatment
             // 
-            buttonTreatment.Location = new Point(773, 432);
+            buttonTreatment.Location = new Point(541, 259);
+            buttonTreatment.Margin = new Padding(2, 2, 2, 2);
             buttonTreatment.Name = "buttonTreatment";
-            buttonTreatment.Size = new Size(112, 34);
+            buttonTreatment.Size = new Size(78, 20);
             buttonTreatment.TabIndex = 3;
             buttonTreatment.Text = "Treatment";
             buttonTreatment.UseVisualStyleBackColor = true;
             // 
             // Main
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1143, 750);
+            ClientSize = new Size(800, 450);
             Controls.Add(buttonTreatment);
             Controls.Add(buttonOwner);
             Controls.Add(buttonVets);
             Controls.Add(buttonConsultation);
-            Margin = new Padding(4, 5, 4, 5);
             Name = "Main";
             Text = "Main";
             ResumeLayout(false);

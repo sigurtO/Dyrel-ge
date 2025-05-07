@@ -49,5 +49,20 @@ namespace WinFormsApp1.DB
             }
 
         }
+        public async Task AddOwnerAsync(OwnerClass owner)
+        {
+            string query = "INSERT INTO PetOwner (FirstName, LastName, Phone, Email, Adress) VALUES (@FirstName, @LastName, @Phone, @Email, @Adress)";
+            using (SqlConnection connection = CreateConnection())
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@FirstName", owner.FirstName);
+                command.Parameters.AddWithValue("@LastName", owner.LastName);
+                command.Parameters.AddWithValue("@Phone", owner.PhoneNumber);
+                command.Parameters.AddWithValue("@Email", owner.Email);
+                command.Parameters.AddWithValue("@Adress", owner.Adress);
+                await connection.OpenAsync();
+                await command.ExecuteNonQueryAsync();
+            }
+        }
     }
 }
