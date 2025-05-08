@@ -44,6 +44,7 @@
             comboBoxOwner = new ComboBox();
             comboBoxPet = new ComboBox();
             buttonDelete = new Button();
+            buttonBackConsultation = new Button();
             ((System.ComponentModel.ISupportInitialize)textBoxPrice).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             SuspendLayout();
@@ -51,107 +52,101 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(54, 144);
+            label1.Location = new Point(47, 108);
             label1.Name = "label1";
-            label1.Size = new Size(88, 20);
+            label1.Size = new Size(69, 15);
             label1.TabIndex = 1;
             label1.Text = "Veterinarian";
             // 
             // textBoxDate
             // 
-            textBoxDate.Location = new Point(51, 297);
-            textBoxDate.Margin = new Padding(3, 4, 3, 4);
+            textBoxDate.Location = new Point(45, 223);
             textBoxDate.Name = "textBoxDate";
-            textBoxDate.Size = new Size(228, 27);
+            textBoxDate.Size = new Size(200, 23);
             textBoxDate.TabIndex = 4;
             // 
             // textBoxNotes
             // 
-            textBoxNotes.Location = new Point(51, 389);
-            textBoxNotes.Margin = new Padding(3, 4, 3, 4);
+            textBoxNotes.Location = new Point(45, 292);
             textBoxNotes.Name = "textBoxNotes";
-            textBoxNotes.Size = new Size(225, 141);
+            textBoxNotes.Size = new Size(197, 107);
             textBoxNotes.TabIndex = 6;
             textBoxNotes.Text = "";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(55, 203);
+            label3.Location = new Point(48, 152);
             label3.Name = "label3";
-            label3.Size = new Size(41, 20);
+            label3.Size = new Size(33, 15);
             label3.TabIndex = 8;
             label3.Text = "Price";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(51, 273);
+            label4.Location = new Point(45, 205);
             label4.Name = "label4";
-            label4.Size = new Size(41, 20);
+            label4.Size = new Size(31, 15);
             label4.TabIndex = 9;
             label4.Text = "Date";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(55, 345);
+            label5.Location = new Point(48, 259);
             label5.Name = "label5";
-            label5.Size = new Size(48, 20);
+            label5.Size = new Size(38, 15);
             label5.TabIndex = 10;
             label5.Text = "Notes";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(51, 85);
+            label2.Location = new Point(45, 64);
             label2.Name = "label2";
-            label2.Size = new Size(29, 20);
+            label2.Size = new Size(24, 15);
             label2.TabIndex = 11;
             label2.Text = "Pet";
             // 
             // comboBoxVet
             // 
             comboBoxVet.FormattingEnabled = true;
-            comboBoxVet.Location = new Point(43, 168);
-            comboBoxVet.Margin = new Padding(3, 4, 3, 4);
+            comboBoxVet.Location = new Point(38, 126);
             comboBoxVet.Name = "comboBoxVet";
-            comboBoxVet.Size = new Size(138, 28);
+            comboBoxVet.Size = new Size(121, 23);
             comboBoxVet.TabIndex = 12;
             // 
             // textBoxPrice
             // 
-            textBoxPrice.Location = new Point(43, 227);
-            textBoxPrice.Margin = new Padding(3, 4, 3, 4);
+            textBoxPrice.Location = new Point(38, 170);
             textBoxPrice.Name = "textBoxPrice";
-            textBoxPrice.Size = new Size(137, 27);
+            textBoxPrice.Size = new Size(120, 23);
             textBoxPrice.TabIndex = 13;
             // 
             // dataGridView
             // 
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView.Location = new Point(536, 52);
-            dataGridView.Margin = new Padding(3, 4, 3, 4);
+            dataGridView.Location = new Point(469, 39);
             dataGridView.Name = "dataGridView";
             dataGridView.RowHeadersWidth = 51;
-            dataGridView.Size = new Size(337, 424);
+            dataGridView.Size = new Size(295, 318);
             dataGridView.TabIndex = 14;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(525, 28);
+            label6.Location = new Point(459, 21);
             label6.Name = "label6";
-            label6.Size = new Size(103, 20);
+            label6.Size = new Size(83, 15);
             label6.TabIndex = 15;
             label6.Text = "Appointments";
             // 
             // buttonAdd
             // 
-            buttonAdd.Location = new Point(107, 540);
-            buttonAdd.Margin = new Padding(3, 4, 3, 4);
+            buttonAdd.Location = new Point(262, 376);
             buttonAdd.Name = "buttonAdd";
-            buttonAdd.Size = new Size(86, 31);
+            buttonAdd.Size = new Size(75, 23);
             buttonAdd.TabIndex = 16;
             buttonAdd.Text = "Create";
             buttonAdd.UseVisualStyleBackColor = true;
@@ -160,48 +155,56 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(43, 27);
+            label7.Location = new Point(38, 20);
             label7.Name = "label7";
-            label7.Size = new Size(52, 20);
+            label7.Size = new Size(42, 15);
             label7.TabIndex = 18;
             label7.Text = "Owner";
             // 
             // comboBoxOwner
             // 
             comboBoxOwner.FormattingEnabled = true;
-            comboBoxOwner.Location = new Point(43, 51);
-            comboBoxOwner.Margin = new Padding(3, 4, 3, 4);
+            comboBoxOwner.Location = new Point(38, 38);
             comboBoxOwner.Name = "comboBoxOwner";
-            comboBoxOwner.Size = new Size(138, 28);
+            comboBoxOwner.Size = new Size(121, 23);
             comboBoxOwner.TabIndex = 19;
             comboBoxOwner.SelectedIndexChanged += comboBoxOwner_SelectedIndexChanged;
             // 
             // comboBoxPet
             // 
             comboBoxPet.FormattingEnabled = true;
-            comboBoxPet.Location = new Point(43, 109);
-            comboBoxPet.Margin = new Padding(3, 4, 3, 4);
+            comboBoxPet.Location = new Point(38, 82);
             comboBoxPet.Name = "comboBoxPet";
-            comboBoxPet.Size = new Size(138, 28);
+            comboBoxPet.Size = new Size(121, 23);
             comboBoxPet.TabIndex = 20;
             comboBoxPet.SelectedIndexChanged += comboBoxPet_SelectedIndexChanged;
             // 
             // buttonDelete
             // 
-            buttonDelete.Location = new Point(787, 524);
-            buttonDelete.Margin = new Padding(3, 4, 3, 4);
+            buttonDelete.Location = new Point(689, 393);
             buttonDelete.Name = "buttonDelete";
-            buttonDelete.Size = new Size(86, 31);
+            buttonDelete.Size = new Size(75, 23);
             buttonDelete.TabIndex = 21;
             buttonDelete.Text = "Delete";
             buttonDelete.UseVisualStyleBackColor = true;
             buttonDelete.Click += buttonDelete_Click;
             // 
+            // buttonBackConsultation
+            // 
+            buttonBackConsultation.Location = new Point(45, 405);
+            buttonBackConsultation.Name = "buttonBackConsultation";
+            buttonBackConsultation.Size = new Size(75, 23);
+            buttonBackConsultation.TabIndex = 22;
+            buttonBackConsultation.Text = "Back";
+            buttonBackConsultation.UseVisualStyleBackColor = true;
+            buttonBackConsultation.Click += buttonBackConsultation_Click;
+            // 
             // Consultation
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(914, 600);
+            ClientSize = new Size(800, 450);
+            Controls.Add(buttonBackConsultation);
             Controls.Add(buttonDelete);
             Controls.Add(comboBoxPet);
             Controls.Add(comboBoxOwner);
@@ -218,7 +221,6 @@
             Controls.Add(textBoxNotes);
             Controls.Add(textBoxDate);
             Controls.Add(label1);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "Consultation";
             Text = "Consultation";
             ((System.ComponentModel.ISupportInitialize)textBoxPrice).EndInit();
@@ -246,5 +248,6 @@
         private ComboBox comboBoxOwner;
         private ComboBox comboBoxPet;
         private Button buttonDelete;
+        private Button buttonBackConsultation;
     }
 }

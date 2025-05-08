@@ -37,7 +37,7 @@ namespace WinFormsApp1
         {
             await ownerService.HandleAddOwnerAsync(textBoxFirstName, textBoxLastName, textBoxEmail, textBoxPhoneNumber, textBoxAdress);
             await ownerService.LoadOwnerDataAsync(dataGridViewOwner); // Refresh the DataGridView
-            
+
 
         }
         public async void OwnerForm_Load(object sender, EventArgs e)
@@ -52,6 +52,13 @@ namespace WinFormsApp1
                 dataGridViewOwner.DataSource = null; // Clear the DataGridView
             }
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Main main = new Main();
+            main.Show();
         }
     }
 }

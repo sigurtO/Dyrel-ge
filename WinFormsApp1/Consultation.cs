@@ -62,5 +62,12 @@ namespace WinFormsApp1
             await consultationService.DeleteConsultationAsync(dataGridView);
             await consultationService.LoadConsultationDataAsync(dataGridView);
         }
+
+        private void buttonBackConsultation_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Main main = new Main();
+            main.Show();
+        }
     }
 }

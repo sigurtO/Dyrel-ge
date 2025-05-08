@@ -36,7 +36,7 @@ namespace WinFormsApp1.Service
                 OwnerClass newOwner = new OwnerClass(firstName, lastName, email, phoneNumber, adress);
                 await Program.DbCreate.AddOwnerAsync(newOwner);
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("Error:: Failed to add owner: ");
             }
