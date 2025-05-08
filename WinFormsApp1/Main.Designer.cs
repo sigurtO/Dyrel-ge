@@ -32,6 +32,7 @@
             buttonVets = new Button();
             buttonOwner = new Button();
             buttonTreatment = new Button();
+            buttonBackMain = new Button();
             SuspendLayout();
             // 
             // buttonConsultation
@@ -47,7 +48,7 @@
             // buttonVets
             // 
             buttonVets.Location = new Point(402, 257);
-            buttonVets.Margin = new Padding(2, 2, 2, 2);
+            buttonVets.Margin = new Padding(2);
             buttonVets.Name = "buttonVets";
             buttonVets.Size = new Size(78, 20);
             buttonVets.TabIndex = 1;
@@ -58,7 +59,7 @@
             // buttonOwner
             // 
             buttonOwner.Location = new Point(102, 259);
-            buttonOwner.Margin = new Padding(2, 2, 2, 2);
+            buttonOwner.Margin = new Padding(2);
             buttonOwner.Name = "buttonOwner";
             buttonOwner.Size = new Size(78, 20);
             buttonOwner.TabIndex = 2;
@@ -69,18 +70,30 @@
             // buttonTreatment
             // 
             buttonTreatment.Location = new Point(541, 259);
-            buttonTreatment.Margin = new Padding(2, 2, 2, 2);
+            buttonTreatment.Margin = new Padding(2);
             buttonTreatment.Name = "buttonTreatment";
             buttonTreatment.Size = new Size(78, 20);
             buttonTreatment.TabIndex = 3;
             buttonTreatment.Text = "Treatment";
             buttonTreatment.UseVisualStyleBackColor = true;
+            buttonTreatment.Click += buttonTreatment_Click;
+            // 
+            // buttonBackMain
+            // 
+            buttonBackMain.Location = new Point(12, 415);
+            buttonBackMain.Name = "buttonBackMain";
+            buttonBackMain.Size = new Size(75, 23);
+            buttonBackMain.TabIndex = 4;
+            buttonBackMain.Text = "Back";
+            buttonBackMain.UseVisualStyleBackColor = true;
+            buttonBackMain.Click += buttonBackMain_Click;
             // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(buttonBackMain);
             Controls.Add(buttonTreatment);
             Controls.Add(buttonOwner);
             Controls.Add(buttonVets);
@@ -96,5 +109,6 @@
         private Button buttonVets;
         private Button buttonOwner;
         private Button buttonTreatment;
+        private Button buttonBackMain;
     }
 }

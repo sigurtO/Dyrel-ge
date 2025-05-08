@@ -14,6 +14,8 @@ namespace WinFormsApp1
     {
         Consultation Consultation = new Consultation();
         VetForm VetForm = new VetForm();
+        OwnerForm ownerForm = new OwnerForm();
+        TreatmentForm treatmentForm = new TreatmentForm();
         public Main()
         {
             InitializeComponent();
@@ -31,8 +33,21 @@ namespace WinFormsApp1
         }
         private void buttonOwners_Click(object sender, EventArgs e)
         {
-            OwnerForm ownerForm = new OwnerForm();
             ownerForm.Show();
+            this.Hide();
+        }
+
+        private void buttonBackMain_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form1 form1 = new Form1();
+            form1.Show();
+
+        }
+
+        private void buttonTreatment_Click(object sender, EventArgs e)
+        {
+            treatmentForm.Show(); 
             this.Hide();
         }
     }
