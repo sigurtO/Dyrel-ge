@@ -7,21 +7,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormsApp1.Service;
 
 namespace WinFormsApp1
 {
     public partial class Main : Form
     {
-        Consultation Consultation = new Consultation();
+        private readonly Consultation _consultation;
         VetForm VetForm = new VetForm();
         public Main()
         {
             InitializeComponent();
+            var consultationService = new ConsultationService();
+            _consultation = new Consultation(consultationService);
+
         }
 
         private void buttonConsultation_Click(object sender, EventArgs e)
         {
-            Consultation.Show();
+            _consultation.Show();
             this.Hide();
         }
         private void buttonVets_Click(object sender, EventArgs e)
