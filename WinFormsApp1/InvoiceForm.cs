@@ -25,6 +25,7 @@ namespace WinFormsApp1
         private async void InitializeAsync()
         {
             await LoadInvoiceDataAsync();
+            await LoadOwnersAsyns();
         }
 
         private async Task LoadInvoiceDataAsync()
@@ -36,6 +37,43 @@ namespace WinFormsApp1
             catch (Exception ex)
             {
                 MessageBox.Show($"Error loading consultations: {ex.Message}");
+            }
+        }
+
+        private async Task LoadOwnersAsyns()
+        {
+            try
+            {
+                comboBoxOwnerId.DataSource = await _invoiceService.LoadOwnersAsync();
+                comboBoxOwnerId.DisplayMember = "FirsName";
+                comboBoxOwnerId.ValueMember = "OwnerId";
+            }
+            catch (Exception)
+            {
+
+                throw; // do stuff
+            }
+        }
+
+        private async void comboBoxOwnerId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxOwnerId.SelectedValue == null || !(comboBoxOwnerId.SelectedValue is int ownerId) || ownerId <= 0)
+            {
+                comboBoxPetId.DataSource = null;
+                comboBoxConsultationId.DataSource = null;
+                comboBoxConsultationId.DataSource = null;
+                comboBoxTreatmentId.DataSource = null;
+                comboBoxCageId.DataSource = null;
+                return;
+            }
+            try
+            {
+                comboBoxPetId.DataSource = await _invoiceService.GetPetByOwnerAsync(ownerId);
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
     }

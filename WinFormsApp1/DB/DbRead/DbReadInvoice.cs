@@ -28,5 +28,45 @@ namespace WinFormsApp1.DB.DbRead
             return dataTable;
         }
 
+
+        public async Task<DataTable> GetOwnerIdFrom()
+        {
+            string query = @"SELECT OwnerID, FirstName From PetOwner";
+            DataTable dataTable = new DataTable();
+            using (SqlConnection connection = CreateConnection())
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                await connection.OpenAsync();
+                SqlDataReader reader = await command.ExecuteReaderAsync();
+                dataTable.Load(reader);
+            }
+            return dataTable;
+        }
+
+        //Gets Pets by OwnerID //used in consulation
+        public async Task<DataTable> GetPetsByOwnerAsync(int ownerID)
+        {
+
+            string query = "SELECT Name, PetID FROM Pet WHERE OwnerID = @OwnerID";
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection connection = CreateConnection())
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@OwnerID", ownerID);
+                await connection.OpenAsync();
+                SqlDataReader reader = await command.ExecuteReaderAsync();
+                dataTable.Load(reader);
+            }
+
+            return dataTable;
+        }
+
+
+
     }
+
+
+
+
 }

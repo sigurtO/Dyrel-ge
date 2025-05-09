@@ -133,6 +133,7 @@
             comboBoxOwnerId.Name = "comboBoxOwnerId";
             comboBoxOwnerId.Size = new Size(151, 28);
             comboBoxOwnerId.TabIndex = 8;
+            comboBoxOwnerId.SelectedIndexChanged += comboBoxOwnerId_SelectedIndexChanged;
             // 
             // comboBoxPetId
             // 

@@ -27,6 +27,8 @@ namespace WinFormsApp1.Interfaces
     public interface IInvoiceService
     {
         Task<DataTable> LoadInvoiceAsync();
+        Task<DataTable> LoadOwnersAsync();
+        Task<DataTable> GetPetByOwnerAsync(int ownerId);
     }
 
 

@@ -23,5 +23,44 @@ namespace WinFormsApp1.Service
 				throw;
 			}
         }
+
+        public async Task<DataTable> LoadOwnersAsync() //load owner into combobox
+        {
+
+            try
+            {
+                DataTable owners = await Program.dbServices.DbReadInvoice.GetOwnerIdFrom();
+
+                DataRow newRow = owners.NewRow();
+                newRow["OwnerID"] = 0;
+                newRow["FirstName"] = "-- Select Owner --";
+                owners.Rows.InsertAt(newRow, 0);
+
+                return owners;
+            }
+            catch (Exception)
+            {
+
+                throw; // do somethign at some point
+            }
+
+        }
+
+        public async Task<DataTable> GetPetByOwnerAsync(int ownerId)
+        {
+            if (ownerId <= 0) return null;
+            try
+            {
+                return await Program.dbServices.DbReadInvoice.GetPetsByOwnerAsync(ownerId);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+
+
+
     }
 }
