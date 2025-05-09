@@ -19,8 +19,8 @@ namespace WinFormsApp1.Service
         {
             try
             {
-                return await Program.DbRead.ShowAllConsultationsAsync();
-            }
+                return await Program.dbServices.DbReadConsultation.ShowAllConsultationsAsync();
+            } //Program.DbReadConsultation.ShowAllConsultationsAsync();
             catch (Exception ex)
             {
                 throw new ConsultationServiceException("Failed to load consultations", ex);
@@ -35,7 +35,7 @@ namespace WinFormsApp1.Service
         {
             try
             {
-                DataTable owners = await Program.DbRead.GetOwnersAsync();
+                DataTable owners = await Program.dbServices.DbReadConsultation.GetOwnersAsync();
 
                 DataRow newRow = owners.NewRow();
                 newRow["OwnerID"] = 0;
@@ -60,7 +60,7 @@ namespace WinFormsApp1.Service
             if (ownerId <= 0) return null;
             try
             {
-                return await Program.DbRead.GetPetsByOwnerAsync(ownerId);
+                return await Program.dbServices.DbReadConsultation.GetPetsByOwnerAsync(ownerId);
             }
             catch (Exception ex)
             {
@@ -74,7 +74,7 @@ namespace WinFormsApp1.Service
             if ( petId <= 0) return null;
             try
             {
-                return await Program.DbRead.GetVeterinariansByPetAsync(petId);
+                return await Program.dbServices.DbReadConsultation.GetVeterinariansByPetAsync(petId);
             }
             catch (Exception ex)
             {
@@ -88,7 +88,8 @@ namespace WinFormsApp1.Service
             try
             {
                 var consultation = new ConsultationClass(ownerId, petId, vetId, date, price, notes);
-                await Program.DbCreate.CreateConsultationAsync(consultation);
+                await Program.dbServices.DbCreateConsultation.CreateConsultationAsync(consultation);
+
             }
             catch (Exception ex)
             {
@@ -100,7 +101,7 @@ namespace WinFormsApp1.Service
         {
             try
             {
-                await Program.DbDelete.DeleteConsultationByIdAsync(consultationId);
+                await Program.dbServices.DbDeleteConsultation.DeleteConsultationByIdAsync(consultationId);
             }
             catch (Exception ex)
             {
@@ -121,54 +122,3 @@ public class ConsultationServiceException : Exception
     {
     }
 }
-
-
-
-//DataTable owners = await Program.DbRead.GetOwnersAsync();
-//// Create new 'blank' row
-//DataRow newRow = owners.NewRow();
-//newRow["OwnerID"] = 0; // id 0 not used in DB
-//newRow["FirstName"] = "-- Select Owner --";
-
-//// Insert the new row at the top of the table
-//owners.Rows.InsertAt(newRow, 0);
-
-
-
-//// Set the ComboBox's DataSource
-//comboBox.DataSource = owners;
-//comboBox.DisplayMember = "FirstName"; // Column to display
-//comboBox.ValueMember = "OwnerID"; // Column to store as values;
-
-
-
-
-//if (comboBoxOwner.SelectedItem == null) return; //skip if no item selected
-
-//var selectedRow = (DataRowView)comboBoxOwner.SelectedItem; // Get the bound row 
-//int selectedOwnerID = Convert.ToInt32(selectedRow["OwnerID"]); // Extract the ID //Some 'Error' with SelectedValue in winforms
-//                                                               // SelectedItem more consistent
-//if (selectedOwnerID == 0) // blank row 
-//{
-//    comboBoxVet.DataSource = null;
-//    comboBoxPet.DataSource = null;
-//}
-//else
-//{
-//    comboBoxPet.DataSource = await Program.DbRead.GetPetsByOwnerAsync(selectedOwnerID);
-//    comboBoxPet.DisplayMember = "Name";
-//    comboBoxPet.ValueMember = "PetID";
-//    comboBoxVet.DataSource = null;
-//}
-
-
-//if (comboPet.SelectedValue == null || comboPet.DataSource == null)
-//{
-//    comboVet.DataSource = null;
-//    return;
-//}
-
-//int? selectedPetID = comboPet.SelectedValue as int?;
-//comboVet.DataSource = await Program.DbRead.GetVeterinariansByPetAsync(selectedPetID);
-//comboVet.DisplayMember = "FirstName";
-//comboVet.ValueMember = "PetDocID";
