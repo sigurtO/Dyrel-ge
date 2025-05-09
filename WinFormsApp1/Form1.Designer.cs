@@ -29,31 +29,54 @@
         private void InitializeComponent()
         {
             buttonLogin = new Button();
+            UsernameTextBox = new TextBox();
+            PasswordTextBox = new TextBox();
             SuspendLayout();
             // 
             // buttonLogin
             // 
-            buttonLogin.Location = new Point(333, 254);
+            buttonLogin.Location = new Point(381, 339);
+            buttonLogin.Margin = new Padding(3, 4, 3, 4);
             buttonLogin.Name = "buttonLogin";
-            buttonLogin.Size = new Size(75, 23);
+            buttonLogin.Size = new Size(86, 31);
             buttonLogin.TabIndex = 0;
             buttonLogin.Text = "Login";
             buttonLogin.UseVisualStyleBackColor = true;
             buttonLogin.Click += buttonLogin_Click;
             // 
+            // UsernameTextBox
+            // 
+            UsernameTextBox.Location = new Point(249, 287);
+            UsernameTextBox.Name = "UsernameTextBox";
+            UsernameTextBox.Size = new Size(125, 27);
+            UsernameTextBox.TabIndex = 1;
+            // 
+            // PasswordTextBox
+            // 
+            PasswordTextBox.Location = new Point(459, 292);
+            PasswordTextBox.Name = "PasswordTextBox";
+            PasswordTextBox.Size = new Size(125, 27);
+            PasswordTextBox.TabIndex = 2;
+            // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(914, 600);
+            Controls.Add(PasswordTextBox);
+            Controls.Add(UsernameTextBox);
             Controls.Add(buttonLogin);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "Form1";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Button buttonLogin;
+        private TextBox UsernameTextBox;
+        private TextBox PasswordTextBox;
     }
 }
