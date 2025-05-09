@@ -8,13 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using WinFormsApp1.Objects;
 
-namespace WinFormsApp1.DB
+namespace WinFormsApp1.DB.DbRead
 {
-    public class DbRead : Database
+    public class DbReadConsultation : Database
     {
 
-        public DbRead(string connectionString) : base(connectionString) { } // constructor passes the connection string to the base class
+        public DbReadConsultation(string connectionString) : base(connectionString) { } // constructor passes the connection string to the base class
 
+        //God like Sigurt
 
         //This method is used to get all consultations from the database into our datagridview
         public async Task<DataTable> ShowAllConsultationsAsync() // we use Datatable becuase we are getting mutiple rows of information from the DB
@@ -51,7 +52,7 @@ namespace WinFormsApp1.DB
             return dataTable;
         }
 
-        //Gets Pets by OwnerID
+        //Gets Pets by OwnerID //used in consulation
         public async Task<DataTable> GetPetsByOwnerAsync(int ownerID)
         {
 
@@ -115,73 +116,7 @@ namespace WinFormsApp1.DB
 
             return dataTable;
         }
-        public async Task<DataTable> GetAllVetsAsync()
-        {
-            string query = @"SELECT 
-                    PetDocID, 
-                    FirstName, 
-                    LastName, 
-                    Username, 
-                    Speciale,
-                    CASE WHEN Password IS NULL THEN 'No' ELSE 'Yes' END AS HasPassword
-                    FROM PetDoc";
-            DataTable dataTable = new DataTable();
 
-            using (SqlConnection connection = CreateConnection())
-            {
-                SqlCommand command = new SqlCommand(query, connection);
-                await connection.OpenAsync();
-                SqlDataReader reader = await command.ExecuteReaderAsync();
-                dataTable.Load(reader);
-            }
-
-            return dataTable;
-        }
-
-        public async Task<VetClass> AuthenticateVetAsync(string username, string password)
-        {
-            string query = "SELECT PetDocID, FirstName, LastName, Username, Password, Speciale FROM PetDoc WHERE Username = @Username";
-
-            using (SqlConnection connection = CreateConnection())
-            {
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@Username", username);
-
-                await connection.OpenAsync();
-                using (SqlDataReader reader = await command.ExecuteReaderAsync())
-                {
-                    if (await reader.ReadAsync())
-                    {
-                        string storedHash = reader["PasswordHash"].ToString();
-                        if (PasswordHelper.VerifyPassword(password, storedHash))
-                        {
-                            return new VetClass(
-                                (int)reader["PetDocID"],
-                                reader["FirstName"].ToString(),
-                                reader["LastName"].ToString(),
-                                reader["Username"].ToString(),
-                                storedHash,
-                                reader["Thesis"]?.ToString()
-                            );
-                        }
-                    }
-                }
-            }
-            return null;
-        }
-
-        public async Task<DataTable> ShowAllOwnersAsync()
-        {
-            string query = "SELECT * FROM PetOwner";
-            DataTable dataTable = new DataTable();
-            using (SqlConnection connection = CreateConnection())
-            {
-                SqlCommand command = new SqlCommand(query, connection);
-                await connection.OpenAsync();
-                SqlDataReader reader = await command.ExecuteReaderAsync();
-                dataTable.Load(reader);
-            }
-            return dataTable;
-        }
+       
     }
 }

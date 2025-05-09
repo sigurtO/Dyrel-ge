@@ -14,7 +14,7 @@ namespace WinFormsApp1.Service
         {
             try
             {
-                DataTable owners = await Program.DbRead.ShowAllOwnersAsync();
+                DataTable owners = await Program.dbServices.DbReadOwner.ShowAllOwnersAsync();
                 gridView.DataSource = owners;
             }
             catch (Exception)
@@ -34,7 +34,7 @@ namespace WinFormsApp1.Service
                 int phoneNumber = Convert.ToInt32(textBoxPhoneNumber.Text);
                 string adress = textBoxAdress.Text;
                 OwnerClass newOwner = new OwnerClass(firstName, lastName, email, phoneNumber, adress);
-                await Program.DbCreate.AddOwnerAsync(newOwner);
+                await Program.dbServices.DbCreateOwner.AddOwnerAsync(newOwner);
             }
             catch
             {

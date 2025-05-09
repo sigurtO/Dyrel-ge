@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WinFormsApp1.Interfaces
 {
-    public interface IConsultationService
+    public interface IConsultationService // rework interfaces so all interfaces are in one cs file.
     {
         Task<DataTable> LoadConsultationDataAsync();
         Task<DataTable> LoadOwnersAsync();
@@ -16,4 +16,12 @@ namespace WinFormsApp1.Interfaces
         Task AddConsultationAsync(int ownerId, int petId, int vetId, DateTime date, int price, string notes);
         Task DeleteConsultationAsync(int consultationId);
     }
+
+    //public interface IOwnerService
+    //{
+
+    //}
+
+
+
 }
