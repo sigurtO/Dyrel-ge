@@ -15,6 +15,7 @@ namespace WinFormsApp1.Service
         public DbReadConsultation DbReadConsultation { get; }
         public DbReadOwner DbReadOwner { get; }
         public DbReadVet DbReadVet { get; }
+        public DbReadLogin DbReadLogin { get; }
 
         //Create
         public DbCreateConsultation DbCreateConsultation { get; }
@@ -24,7 +25,7 @@ namespace WinFormsApp1.Service
         //Delete
         public DbDeleteConsultation DbDeleteConsultation { get; }
 
-        //Update (delete)
+        //Update
 
         public DbService(string connectionString)
         {
@@ -32,6 +33,7 @@ namespace WinFormsApp1.Service
             DbReadConsultation = new DbReadConsultation(connectionString);
             DbReadOwner = new DbReadOwner(connectionString);
             DbReadVet = new DbReadVet(connectionString);
+            DbReadLogin = new DbReadLogin(connectionString);
             //Create
             DbCreateConsultation = new DbCreateConsultation(connectionString);
             DbCreateOwner = new DbCreateOwner(connectionString);
