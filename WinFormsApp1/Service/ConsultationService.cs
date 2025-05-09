@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using WinFormsApp1.DB;
 using WinFormsApp1.Interfaces;
 using WinFormsApp1.Objects;
 
@@ -14,17 +15,15 @@ namespace WinFormsApp1.Service
     public class ConsultationService : IConsultationService
     {
   
-        public async Task LoadConsultationDataAsync(DataGridView gridView)       //Load the data into the DataGridView
+        public async Task<DataTable> LoadConsultationDataAsync()
         {
             try
             {
-                DataTable consultations = await Program.DbRead.ShowAllConsultationsAsync();
-                gridView.DataSource = consultations;
+                return await Program.DbRead.ShowAllConsultationsAsync();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Error:: Failed to load consultations:");
-                gridView.DataSource = null; // Clear the DataGridView
+                throw new ConsultationServiceException("Failed to load consultations", ex);
             }
 
             
@@ -32,30 +31,22 @@ namespace WinFormsApp1.Service
 
 
    
-        public async Task LoadOwnersAsync(ComboBox comboBox)     // load owners into ComboBOx
+        public async Task<DataTable> LoadOwnersAsync()     // load owners into ComboBOx
         {
             try
             {
                 DataTable owners = await Program.DbRead.GetOwnersAsync();
-                // Create new 'blank' row
-                DataRow newRow = owners.NewRow();
-                newRow["OwnerID"] = 0; // id 0 not used in DB
-                newRow["FirstName"] = "-- Select Owner --";
 
-                // Insert the new row at the top of the table
+                DataRow newRow = owners.NewRow();
+                newRow["OwnerID"] = 0;
+                newRow["FirstName"] = "-- Select Owner --";
                 owners.Rows.InsertAt(newRow, 0);
 
-
-
-                // Set the ComboBox's DataSource
-                comboBox.DataSource = owners;
-                comboBox.DisplayMember = "FirstName"; // Column to display
-                comboBox.ValueMember = "OwnerID"; // Column to store as value
+                return owners;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Error:: Failed to load owners:");
-                comboBox.DataSource = null; // Clear the ComboBox
+                throw new ConsultationServiceException("Failed to load owners", ex);
             }
             
 
@@ -64,65 +55,120 @@ namespace WinFormsApp1.Service
 
 
 
-        public async Task OnOwnerChangedUpdatePetAsync(ComboBox comboBoxOwner, ComboBox comboBoxVet, ComboBox comboBoxPet)
+        public async Task<DataTable> GetPetsByOwnerAsync(int ownerId)
         {
-
-            if (comboBoxOwner.SelectedItem == null) return; //skip if no item selected
-
-            var selectedRow = (DataRowView)comboBoxOwner.SelectedItem; // Get the bound row 
-            int selectedOwnerID = Convert.ToInt32(selectedRow["OwnerID"]); // Extract the ID //Some 'Error' with SelectedValue in winforms
-                                                                                            // SelectedItem more consistent
-            if (selectedOwnerID == 0) // blank row 
+            if (ownerId <= 0) return null;
+            try
             {
-                comboBoxVet.DataSource = null;
-                comboBoxPet.DataSource = null;
+                return await Program.DbRead.GetPetsByOwnerAsync(ownerId);
             }
-            else
+            catch (Exception ex)
             {
-                comboBoxPet.DataSource = await Program.DbRead.GetPetsByOwnerAsync(selectedOwnerID);
-                comboBoxPet.DisplayMember = "Name";
-                comboBoxPet.ValueMember = "PetID";
-                comboBoxVet.DataSource = null;
+                throw new ConsultationServiceException($"Failed to load pets for owner {ownerId}", ex);
+            }
+
+        }
+
+        public async Task<DataTable> GetVeterinariansByPetAsync(int petId)
+        {
+            if ( petId <= 0) return null;
+            try
+            {
+                return await Program.DbRead.GetVeterinariansByPetAsync(petId);
+            }
+            catch (Exception ex)
+            {
+                throw new ConsultationServiceException($"Failed to load vets for pet {petId}", ex);
             }
         }
 
-        public async Task OnPetChangedUpdateVetAsync(ComboBox comboPet, ComboBox comboVet)
+        //HandleAddConsultationAsync
+        public async Task AddConsultationAsync(int ownerId, int petId, int vetId, DateTime date, int price, string notes)
         {
-            if (comboPet.SelectedValue == null || comboPet.DataSource == null)
+            try
             {
-                comboVet.DataSource = null;
-                return;
+                var consultation = new ConsultationClass(ownerId, petId, vetId, date, price, notes);
+                await Program.DbCreate.CreateConsultationAsync(consultation);
             }
-
-            int? selectedPetID = comboPet.SelectedValue as int?;
-            comboVet.DataSource = await Program.DbRead.GetVeterinariansByPetAsync(selectedPetID);
-            comboVet.DisplayMember = "FirstName";
-            comboVet.ValueMember = "PetDocID";
-        }
-
-
-        public async Task HandleAddConsultationAsync(ComboBox comboOwner, ComboBox comboPet, ComboBox comboVet, DateTimePicker dateBox, RichTextBox notesBox, NumericUpDown priceBox)
-        {
-            int Owner = Convert.ToInt32(comboOwner.SelectedValue);
-            int Pet = Convert.ToInt32(comboPet.SelectedValue);
-            int Vet = Convert.ToInt32(comboVet.SelectedValue);
-            DateTime date = dateBox.Value;
-            string notes = notesBox.Text;
-            int price = (int)priceBox.Value;
-
-            ConsultationClass NewConsultation = new ConsultationClass(Owner, Pet, Vet, date, price, notes);
-            await Program.DbCreate.CreateConsultationAsync(NewConsultation);
-        }
-
-        public async Task DeleteConsultationAsync(DataGridView dataGrid)
-        {
-            if (dataGrid.SelectedRows.Count > 0)
+            catch (Exception ex)
             {
-                int consultationId = Convert.ToInt32(dataGrid.SelectedRows[0].Cells["ConsultationID"].Value);
+                throw new ConsultationServiceException("Failed to add consultation", ex);
+            }
+        }
+
+        public async Task DeleteConsultationAsync(int consultationId)
+        {
+            try
+            {
                 await Program.DbDelete.DeleteConsultationByIdAsync(consultationId);
             }
+            catch (Exception ex)
+            {
+                throw new ConsultationServiceException($"Failed to delete consultation {consultationId}", ex);
+            }
         }
+
 
 
     }
 }
+
+// Custom exception class
+public class ConsultationServiceException : Exception
+{
+    public ConsultationServiceException(string message, Exception innerException)
+        : base(message, innerException)
+    {
+    }
+}
+
+
+
+//DataTable owners = await Program.DbRead.GetOwnersAsync();
+//// Create new 'blank' row
+//DataRow newRow = owners.NewRow();
+//newRow["OwnerID"] = 0; // id 0 not used in DB
+//newRow["FirstName"] = "-- Select Owner --";
+
+//// Insert the new row at the top of the table
+//owners.Rows.InsertAt(newRow, 0);
+
+
+
+//// Set the ComboBox's DataSource
+//comboBox.DataSource = owners;
+//comboBox.DisplayMember = "FirstName"; // Column to display
+//comboBox.ValueMember = "OwnerID"; // Column to store as values;
+
+
+
+
+//if (comboBoxOwner.SelectedItem == null) return; //skip if no item selected
+
+//var selectedRow = (DataRowView)comboBoxOwner.SelectedItem; // Get the bound row 
+//int selectedOwnerID = Convert.ToInt32(selectedRow["OwnerID"]); // Extract the ID //Some 'Error' with SelectedValue in winforms
+//                                                               // SelectedItem more consistent
+//if (selectedOwnerID == 0) // blank row 
+//{
+//    comboBoxVet.DataSource = null;
+//    comboBoxPet.DataSource = null;
+//}
+//else
+//{
+//    comboBoxPet.DataSource = await Program.DbRead.GetPetsByOwnerAsync(selectedOwnerID);
+//    comboBoxPet.DisplayMember = "Name";
+//    comboBoxPet.ValueMember = "PetID";
+//    comboBoxVet.DataSource = null;
+//}
+
+
+//if (comboPet.SelectedValue == null || comboPet.DataSource == null)
+//{
+//    comboVet.DataSource = null;
+//    return;
+//}
+
+//int? selectedPetID = comboPet.SelectedValue as int?;
+//comboVet.DataSource = await Program.DbRead.GetVeterinariansByPetAsync(selectedPetID);
+//comboVet.DisplayMember = "FirstName";
+//comboVet.ValueMember = "PetDocID";
