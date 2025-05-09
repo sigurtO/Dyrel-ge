@@ -14,7 +14,7 @@ namespace WinFormsApp1.Service
             {
                 try
                 {
-                    DataTable vets = await Program.DbRead.GetAllVetsAsync();
+                    DataTable vets = await Program.dbServices.DbReadVet.GetAllVetsAsync();
                     gridView.DataSource = vets;
                 }
                 catch (Exception)
@@ -46,13 +46,13 @@ namespace WinFormsApp1.Service
                 txtThesis.Text
             );
 
-                await Program.DbCreate.CreateVetAsync(newVet);
+                await Program.dbServices.DbCreateVet.CreateVetAsync(newVet);
                 MessageBox.Show("Veterinarian added successfully!");
             }
 
             public async Task<VetClass> AuthenticateAsync(string username, string password)
             {
-                return await Program.DbRead.AuthenticateVetAsync(username, password);
+                return await Program.dbServices.DbReadVet.AuthenticateVetAsync(username, password);
             }
         }
     }

@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WinFormsApp1.DB
+namespace WinFormsApp1.DB.DbDelete
 {
-    public class DbDelete : Database
+    public class DbDeleteConsultation : Database
     {
-        public DbDelete(string connectionString) : base(connectionString) { }
+        public DbDeleteConsultation(string connectionString) : base(connectionString) { }
 
 
         public async Task DeleteConsultationByIdAsync(int ConsultationId)
