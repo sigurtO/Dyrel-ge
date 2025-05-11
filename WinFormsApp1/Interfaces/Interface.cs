@@ -30,8 +30,9 @@ namespace WinFormsApp1.Interfaces
         Task<DataTable> GetConsultationFromPetDataAsync(int ownerId);
         Task<DataTable> GetTreatmentFromConsultationDataAsync(int consultationId);
         Task<DataTable> CheckCageFromTreatmentDataAsync(int treatmentId);
+
         Task<DataTable> GetAllItemsDataAsync();
-        //Task<DataTable> GetItemAndPriceDataAsync(int itemId);
+        Task<int> CalculateTotalAmount(int ownerId, int consultationId, int treatmentId, int cageId, int itemId, int currentTotal);
 
     }
 

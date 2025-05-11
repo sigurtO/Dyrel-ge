@@ -16,7 +16,7 @@ namespace WinFormsApp1
     {
         private readonly IInvoiceService _invoiceService;
         private readonly IOwnerRelated _ownerRelatedService;
-        int _currentTotal = 0;
+        private int _currentTotal = 0;
         public InvoiceForm(IInvoiceService invoiceService, IOwnerRelated ownerRelated)
         {
             _invoiceService = invoiceService;
@@ -61,70 +61,70 @@ namespace WinFormsApp1
                 throw; // add later
             }
         }
-
+        //starting from here
         private async void comboBoxOwnerId_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBoxOwnerId.SelectedValue == null || !(comboBoxOwnerId.SelectedValue is int ownerId) || ownerId <= 0)
             {
                 comboBoxPetId.DataSource = null;
                 comboBoxConsultationId.DataSource = null;
-                comboBoxConsultationId.DataSource = null;
                 comboBoxTreatmentId.DataSource = null;
                 comboBoxCageId.DataSource = null;
                 return;
             }
+
             try
             {
                 comboBoxPetId.DataSource = await _ownerRelatedService.GetPetsByOwnerAsync(ownerId);
                 comboBoxPetId.DisplayMember = "Name";
                 comboBoxPetId.ValueMember = "PetID";
 
-
                 DataTable consultations = await _invoiceService.GetConsultationFromPetDataAsync(ownerId);
-
                 comboBoxConsultationId.DataSource = consultations;
                 comboBoxConsultationId.ValueMember = "ConsultationID";
-                comboBoxConsultationId.DisplayMember = "Notes"; // could we display date??
-                int price = Convert.ToInt32(consultations.Rows[0]["Price"]);
-                int.TryParse(textBoxTotalAmount.Text, out _currentTotal);
-                int newTotal = _currentTotal + price;
-                textBoxTotalAmount.Text = newTotal.ToString();
-            }
-            catch (Exception)
-            {
+                comboBoxConsultationId.DisplayMember = "Notes";
 
-                throw;
+                _currentTotal = await _invoiceService.CalculateTotalAmount(
+                    ownerId,
+                    consultations.Rows.Count > 0 ? Convert.ToInt32(consultations.Rows[0]["ConsultationID"]) : 0,
+                    0, 0, 0, _currentTotal);
+
+                textBoxTotalAmount.Text = _currentTotal.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading data: {ex.Message}");
             }
         }
 
         private async void comboBoxConsultationId_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBoxConsultationId.SelectedValue == null || !(comboBoxConsultationId.SelectedValue is int consultationId) || consultationId <= 0) //blank if we
+            if (comboBoxConsultationId.SelectedValue == null || !(comboBoxConsultationId.SelectedValue is int consultationId) || consultationId <= 0)
             {
                 comboBoxTreatmentId.DataSource = null;
                 comboBoxCageId.DataSource = null;
                 return;
             }
+
             try
             {
-
                 DataTable treatment = await _invoiceService.GetTreatmentFromConsultationDataAsync(consultationId);
-                //GetTreatmentFromConsultationDataAsync
                 comboBoxTreatmentId.DataSource = treatment;
                 comboBoxTreatmentId.DisplayMember = "Notes";
                 comboBoxTreatmentId.ValueMember = "TreatmentID";
-                int price = Convert.ToInt32(treatment.Rows[0]["Price"]);
-                int.TryParse(textBoxTotalAmount.Text, out _currentTotal); //WinForms is so #$%&*#@!@# outdated and fixing this is waste of time
-                int newTotal = _currentTotal + price;
-                textBoxTotalAmount.Text = newTotal.ToString();
 
+                _currentTotal = await _invoiceService.CalculateTotalAmount(
+                    Convert.ToInt32(comboBoxOwnerId.SelectedValue),
+                    consultationId,
+                    treatment.Rows.Count > 0 ? Convert.ToInt32(treatment.Rows[0]["TreatmentID"]) : 0,
+                    0, 0, _currentTotal);
+
+                textBoxTotalAmount.Text = _currentTotal.ToString();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                MessageBox.Show($"Error loading treatment data: {ex.Message}");
             }
-
         }
 
         private async void comboBoxTreatmentId_SelectedIndexChanged(object sender, EventArgs e)
@@ -139,23 +139,46 @@ namespace WinFormsApp1
             {
                 DataTable cage = await _invoiceService.CheckCageFromTreatmentDataAsync(treatmentId);
                 comboBoxCageId.DataSource = cage;
-                comboBoxCageId.DisplayMember = "DisplayText"; // Cleaner column name
+                comboBoxCageId.DisplayMember = "DisplayText";
                 comboBoxCageId.ValueMember = "CageID";
-                if (cage.Rows.Count > 0)
-                {
-                    object rawPrice = cage.Rows[0]["cagePrice"];
-                    int price = (rawPrice == DBNull.Value) ? 0 : Convert.ToInt32(rawPrice);
-                    int.TryParse(textBoxTotalAmount.Text, out _currentTotal);
-                    int newTotal = _currentTotal + price;
-                    textBoxTotalAmount.Text = newTotal.ToString();
-                }
 
+                _currentTotal = await _invoiceService.CalculateTotalAmount(
+                    Convert.ToInt32(comboBoxOwnerId.SelectedValue),
+                    Convert.ToInt32(comboBoxConsultationId.SelectedValue),
+                    treatmentId,
+                    cage.Rows.Count > 0 ? Convert.ToInt32(cage.Rows[0]["CageID"]) : 0,
+                    0, _currentTotal);
+
+                textBoxTotalAmount.Text = _currentTotal.ToString();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error loading cage information: {ex.Message}");
             }
         }
+        private async void comboBoxItemId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxItemId.SelectedValue == null || !(comboBoxItemId.SelectedValue is int itemId) || itemId <= 0)
+            {
+                return;
+            }
 
+            try
+            {
+                _currentTotal = await _invoiceService.CalculateTotalAmount(
+                    comboBoxOwnerId.SelectedValue != null ? Convert.ToInt32(comboBoxOwnerId.SelectedValue) : 0,
+                    comboBoxConsultationId.SelectedValue != null ? Convert.ToInt32(comboBoxConsultationId.SelectedValue) : 0,
+                    comboBoxTreatmentId.SelectedValue != null ? Convert.ToInt32(comboBoxTreatmentId.SelectedValue) : 0,
+                    comboBoxCageId.SelectedValue != null ? Convert.ToInt32(comboBoxCageId.SelectedValue) : 0,
+                    itemId, _currentTotal);
+
+                textBoxTotalAmount.Text = _currentTotal.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error calculating total: {ex.Message}");
+            }
+        }
     }
+
 }

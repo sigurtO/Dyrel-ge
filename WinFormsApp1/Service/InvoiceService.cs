@@ -115,7 +115,7 @@ namespace WinFormsApp1.Service
 
                 return resultTable;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -127,25 +127,56 @@ namespace WinFormsApp1.Service
             {
                 return await Program.dbServices.DbReadInvoice.GetAllItemsAsync();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
         }
-        //public async Task<DataTable> GetItemAndPriceDataAsync(int itemId)
-        //{
-        //    try
-        //    {
-        //        return await Program.dbServices.DbReadInvoice.GetItemAndPriceAsync(itemId);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
-        //}
 
+        public async Task<int> CalculateTotalAmount(int ownerId, int consultationId, int treatmentId, int cageId, int itemId, int currentTotal)
+        {
+            int total = currentTotal;
 
+            if (consultationId > 0)
+            {
+                DataTable consultation = await Program.dbServices.DbReadInvoice.GetConsultationFromPetAsync(ownerId);
+                if (consultation.Rows.Count > 0)
+                {
+                    total += Convert.ToInt32(consultation.Rows[0]["Price"]);
+                }
+            }
 
+            if (treatmentId > 0)
+            {
+                DataTable treatment = await Program.dbServices.DbReadInvoice.GetTreatmentFromConsultationAsync(consultationId);
+                if (treatment.Rows.Count > 0)
+                {
+                    total += Convert.ToInt32(treatment.Rows[0]["Price"]);
+                }
+            }
 
+            if (cageId > 0)
+            {
+                DataTable cage = await Program.dbServices.DbReadInvoice.CheckCageFromTreatment(treatmentId);
+                if (cage.Rows.Count > 0 && cage.Rows[0]["cagePrice"] != DBNull.Value)
+                {
+                    total += Convert.ToInt32(cage.Rows[0]["cagePrice"]);
+                }
+            }
+
+            // Add item price if needed
+            if (itemId > 0)
+            {
+                // You'll need to implement this method in your DbReadInvoice
+                DataTable item = await Program.dbServices.DbReadInvoice.GetAllItemsAsync();
+                if (item.Rows.Count > 0)
+                {
+                    total += Convert.ToInt32(item.Rows[0]["Amount"]); // amount is price got lazy no name change
+                }
+            }
+
+            return total;
+        }
     }
+
 }
