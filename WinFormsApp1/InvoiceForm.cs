@@ -15,9 +15,12 @@ namespace WinFormsApp1
     public partial class InvoiceForm : Form
     {
         private readonly IInvoiceService _invoiceService;
-        public InvoiceForm(IInvoiceService invoiceService)
+        private readonly IOwnerRelated _ownerRelatedService;
+        int _currentTotal = 0;
+        public InvoiceForm(IInvoiceService invoiceService, IOwnerRelated ownerRelated)
         {
             _invoiceService = invoiceService;
+            _ownerRelatedService = ownerRelated;
             InitializeComponent();
             InitializeAsync();
         }
@@ -25,7 +28,7 @@ namespace WinFormsApp1
         private async void InitializeAsync()
         {
             await LoadInvoiceDataAsync();
-            await LoadOwnersAsyns();
+            await LoadOwnerDataAsync();
         }
 
         private async Task LoadInvoiceDataAsync()
@@ -40,18 +43,22 @@ namespace WinFormsApp1
             }
         }
 
-        private async Task LoadOwnersAsyns()
+        private async Task LoadOwnerDataAsync()
         {
             try
             {
-                comboBoxOwnerId.DataSource = await _invoiceService.LoadOwnersAsync();
-                comboBoxOwnerId.DisplayMember = "FirsName";
+                comboBoxOwnerId.DataSource = await _ownerRelatedService.LoadOwnerDataAsync();
+                comboBoxOwnerId.DisplayMember = "FirstName";
                 comboBoxOwnerId.ValueMember = "OwnerId";
+
+                comboBoxItemId.DataSource = await _invoiceService.GetAllItemsDataAsync();
+                comboBoxItemId.DisplayMember = "Name";
+                comboBoxItemId.ValueMember = "ItemID";
             }
             catch (Exception)
             {
 
-                throw; // do stuff
+                throw; // add later
             }
         }
 
@@ -68,7 +75,20 @@ namespace WinFormsApp1
             }
             try
             {
-                comboBoxPetId.DataSource = await _invoiceService.GetPetByOwnerAsync(ownerId);
+                comboBoxPetId.DataSource = await _ownerRelatedService.GetPetsByOwnerAsync(ownerId);
+                comboBoxPetId.DisplayMember = "Name";
+                comboBoxPetId.ValueMember = "PetID";
+
+
+                DataTable consultations = await _invoiceService.GetConsultationFromPetDataAsync(ownerId);
+
+                comboBoxConsultationId.DataSource = consultations;
+                comboBoxConsultationId.ValueMember = "ConsultationID";
+                comboBoxConsultationId.DisplayMember = "Notes"; // could we display date??
+                int price = Convert.ToInt32(consultations.Rows[0]["Price"]);
+                int.TryParse(textBoxTotalAmount.Text, out _currentTotal);
+                int newTotal = _currentTotal + price;
+                textBoxTotalAmount.Text = newTotal.ToString();
             }
             catch (Exception)
             {
@@ -76,5 +96,66 @@ namespace WinFormsApp1
                 throw;
             }
         }
+
+        private async void comboBoxConsultationId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxConsultationId.SelectedValue == null || !(comboBoxConsultationId.SelectedValue is int consultationId) || consultationId <= 0) //blank if we
+            {
+                comboBoxTreatmentId.DataSource = null;
+                comboBoxCageId.DataSource = null;
+                return;
+            }
+            try
+            {
+
+                DataTable treatment = await _invoiceService.GetTreatmentFromConsultationDataAsync(consultationId);
+                //GetTreatmentFromConsultationDataAsync
+                comboBoxTreatmentId.DataSource = treatment;
+                comboBoxTreatmentId.DisplayMember = "Notes";
+                comboBoxTreatmentId.ValueMember = "TreatmentID";
+                int price = Convert.ToInt32(treatment.Rows[0]["Price"]);
+                int.TryParse(textBoxTotalAmount.Text, out _currentTotal); //WinForms is so #$%&*#@!@# outdated and fixing this is waste of time
+                int newTotal = _currentTotal + price;
+                textBoxTotalAmount.Text = newTotal.ToString();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
+        private async void comboBoxTreatmentId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxTreatmentId.SelectedValue == null || !(comboBoxTreatmentId.SelectedValue is int treatmentId) || treatmentId <= 0)
+            {
+                comboBoxCageId.DataSource = null;
+                return;
+            }
+
+            try
+            {
+                DataTable cage = await _invoiceService.CheckCageFromTreatmentDataAsync(treatmentId);
+                comboBoxCageId.DataSource = cage;
+                comboBoxCageId.DisplayMember = "DisplayText"; // Cleaner column name
+                comboBoxCageId.ValueMember = "CageID";
+                if (cage.Rows.Count > 0)
+                {
+                    object rawPrice = cage.Rows[0]["cagePrice"];
+                    int price = (rawPrice == DBNull.Value) ? 0 : Convert.ToInt32(rawPrice);
+                    int.TryParse(textBoxTotalAmount.Text, out _currentTotal);
+                    int newTotal = _currentTotal + price;
+                    textBoxTotalAmount.Text = newTotal.ToString();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading cage information: {ex.Message}");
+            }
+        }
+
     }
 }

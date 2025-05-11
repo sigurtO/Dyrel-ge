@@ -7,28 +7,32 @@ using System.Threading.Tasks;
 
 namespace WinFormsApp1.Interfaces
 {
-    public interface IConsultationService // rework interfaces so all interfaces are in one cs file.
+    public interface IConsultationService
     {
         Task<DataTable> LoadConsultationDataAsync();
-        Task<DataTable> LoadOwnersAsync();
-        Task<DataTable> GetPetsByOwnerAsync(int ownerId);
         Task<DataTable> GetVeterinariansByPetAsync(int petId);
         Task AddConsultationAsync(int ownerId, int petId, int vetId, DateTime date, int price, string notes);
         Task DeleteConsultationAsync(int consultationId);
     }
 
-    //public interface IOwnerService
-    //{
 
-    //}
+    public interface IOwnerRelated // multiple services will use this one interface
+    {
+        Task<DataTable> LoadOwnerDataAsync();
+        Task<DataTable> GetPetsByOwnerAsync(int ownerId);
 
+    }
 
 
     public interface IInvoiceService
     {
-        Task<DataTable> LoadInvoiceAsync();
-        Task<DataTable> LoadOwnersAsync();
-        Task<DataTable> GetPetByOwnerAsync(int ownerId);
+        Task<DataTable> LoadInvoiceAsync(); 
+        Task<DataTable> GetConsultationFromPetDataAsync(int ownerId);
+        Task<DataTable> GetTreatmentFromConsultationDataAsync(int consultationId);
+        Task<DataTable> CheckCageFromTreatmentDataAsync(int treatmentId);
+        Task<DataTable> GetAllItemsDataAsync();
+        //Task<DataTable> GetItemAndPriceDataAsync(int itemId);
+
     }
 
 
