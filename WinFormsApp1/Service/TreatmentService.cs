@@ -9,7 +9,7 @@ using WinFormsApp1.Objects;
 
 namespace WinFormsApp1.Service
 {
-    public class TreatmentService : ITreatmentService
+    public class TreatmentService //: ITreatmentService
     {
         public async Task LoadTreatmentDataAsync(DataGridView gridView)       //Load the data into the DataGridView
         {

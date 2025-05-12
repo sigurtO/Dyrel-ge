@@ -32,19 +32,6 @@ namespace WinFormsApp1
                 dataGridViewTreatment.DataSource = null; // Clear the DataGridView
             }
         }
-        private async Task LoadOwnersAsync()
-        {
-            try
-            {
-                comboBoxTreatmentOwner.DataSource = await _treatmentService.LoadOwnersAsync();
-                comboBoxTreatmentOwner.DisplayMember = "FirstName";
-                comboBoxTreatmentOwner.ValueMember = "OwnerID";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error loading owners: {ex.Message}");
-            }
-        }
 
         private void buttonBackTreatment_Click(object sender, EventArgs e)
         {
