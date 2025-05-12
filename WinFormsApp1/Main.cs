@@ -14,14 +14,20 @@ namespace WinFormsApp1
     public partial class Main : Form
     {
         private readonly Consultation _consultation;
+        private readonly InvoiceForm _invoiceForm;
         VetForm VetForm = new VetForm();
         OwnerForm ownerForm = new OwnerForm();
         TreatmentForm treatmentForm = new TreatmentForm();
         public Main()
         {
             InitializeComponent();
+
+
             var consultationService = new ConsultationService();
-            _consultation = new Consultation(consultationService);
+            _consultation = new Consultation(consultationService, consultationService); // I dont understand this but it works
+                                                                                        //Needs a parameter becuase interfacse but we put same thing twice??
+            var invoiceService = new InvoiceService();
+            _invoiceForm = new InvoiceForm(invoiceService, invoiceService);
 
         }
 
@@ -51,7 +57,13 @@ namespace WinFormsApp1
 
         private void buttonTreatment_Click(object sender, EventArgs e)
         {
-            treatmentForm.Show(); 
+            treatmentForm.Show();
+            this.Hide();
+        }
+
+        private void buttonInvoice_Click(object sender, EventArgs e)
+        {
+            _invoiceForm.Show();
             this.Hide();
         }
     }

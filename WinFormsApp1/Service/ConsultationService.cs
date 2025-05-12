@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -12,9 +13,10 @@ using WinFormsApp1.Objects;
 
 namespace WinFormsApp1.Service
 {
-    public class ConsultationService : IConsultationService
+    public class ConsultationService : IConsultationService, IOwnerRelated
     {
   
+
         public async Task<DataTable> LoadConsultationDataAsync()
         {
             try
@@ -31,7 +33,7 @@ namespace WinFormsApp1.Service
 
 
    
-        public async Task<DataTable> LoadOwnersAsync()     // load owners into ComboBOx
+        public async Task<DataTable> LoadOwnerDataAsync()     // load owners into ComboBOx
         {
             try
             {
@@ -48,9 +50,6 @@ namespace WinFormsApp1.Service
             {
                 throw new ConsultationServiceException("Failed to load owners", ex);
             }
-            
-
-           
         }
 
 
@@ -109,9 +108,21 @@ namespace WinFormsApp1.Service
             }
         }
 
+        public async Task UpdateConsultationAsync(ConsultationClass consultation, int consultationId)
+        {
+            try
+            {
+                await Program.dbServices.DbUpdateConsultation.UpdateConsultationAsync(consultation, consultationId);
+            }
+            catch (Exception ex)
+            {
+                throw new ConsultationServiceException($"Failed to update consultation {consultationId}", ex);
+            }
+        }
 
 
     }
+
 }
 
 // Custom exception class

@@ -18,11 +18,13 @@ namespace WinFormsApp1
     public partial class Consultation : Form
     {
         private readonly IConsultationService _consultationService;
+        private readonly IOwnerRelated _ownerRelatedService;
 
 
-        public Consultation(IConsultationService consultationService)
+        public Consultation(IConsultationService consultationService, IOwnerRelated ownerRelatedService)
         {
             _consultationService = consultationService;
+            _ownerRelatedService = ownerRelatedService;
             InitializeComponent();
             InitializeAsync();
         }
@@ -49,7 +51,7 @@ namespace WinFormsApp1
         {
             try
             {
-                comboBoxOwner.DataSource = await _consultationService.LoadOwnersAsync();
+                comboBoxOwner.DataSource = await _ownerRelatedService.LoadOwnerDataAsync();
                 comboBoxOwner.DisplayMember = "FirstName";
                 comboBoxOwner.ValueMember = "OwnerID";
             }
@@ -72,7 +74,7 @@ namespace WinFormsApp1
 
             try
             {
-                comboBoxPet.DataSource = await _consultationService.GetPetsByOwnerAsync(ownerId);
+                comboBoxPet.DataSource = await _ownerRelatedService.GetPetsByOwnerAsync(ownerId);
                 comboBoxPet.DisplayMember = "Name";
                 comboBoxPet.ValueMember = "PetID";
                 comboBoxVet.DataSource = null; // Clear vet when owner changes
@@ -120,7 +122,7 @@ namespace WinFormsApp1
                     (int)comboBoxVet.SelectedValue,
                     textBoxDate.Value,
                     Convert.ToInt32(textBoxPrice.Value),
-                    textBoxDate.Text);
+                    textBoxNotes.Text);
 
                 MessageBox.Show("Consultation added successfully");
                 await LoadConsultationsAsync(); // Refresh grid
@@ -158,6 +160,29 @@ namespace WinFormsApp1
             this.Hide();
             Main main = new Main();
             main.Show();
+        }
+
+        private async void dataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                var consultationId = (int)dataGridView.CurrentRow.Cells["ConsultationID"].Value;
+                var consultation = new ConsultationClass(
+                    (int)dataGridView.CurrentRow.Cells["OwnerID"].Value,
+                    (int)dataGridView.CurrentRow.Cells["PetID"].Value,
+                    (int)dataGridView.CurrentRow.Cells["PetDocID"].Value,
+                    (DateTime)dataGridView.CurrentRow.Cells["Date"].Value,
+                    Convert.ToInt32(dataGridView.CurrentRow.Cells["Price"].Value),
+                    dataGridView.CurrentRow.Cells["Notes"].Value?.ToString() ?? string.Empty);
+
+                await _consultationService.UpdateConsultationAsync(consultation, consultationId);
+                MessageBox.Show("Consultation updated successfully");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error updating consultation: {ex.Message}");
+                await LoadConsultationsAsync(); // Refresh to revert any changes
+            }
         }
     }
 }
