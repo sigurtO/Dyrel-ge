@@ -12,9 +12,10 @@ using WinFormsApp1.Objects;
 
 namespace WinFormsApp1.Service
 {
-    public class ConsultationService : IConsultationService
+    public class ConsultationService : IConsultationService, IOwnerRelated
     {
   
+
         public async Task<DataTable> LoadConsultationDataAsync()
         {
             try
@@ -31,7 +32,7 @@ namespace WinFormsApp1.Service
 
 
    
-        public async Task<DataTable> LoadOwnersAsync()     // load owners into ComboBOx
+        public async Task<DataTable> LoadOwnerDataAsync()     // load owners into ComboBOx
         {
             try
             {
@@ -48,9 +49,6 @@ namespace WinFormsApp1.Service
             {
                 throw new ConsultationServiceException("Failed to load owners", ex);
             }
-            
-
-           
         }
 
 
