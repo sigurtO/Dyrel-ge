@@ -26,7 +26,7 @@ namespace WinFormsApp1.Service
                 throw new ConsultationServiceException("Failed to load consultations", ex);
             }
 
-            
+         
         }
 
 
