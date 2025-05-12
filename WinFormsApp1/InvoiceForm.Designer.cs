@@ -55,188 +55,201 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(38, 16);
+            label1.Location = new Point(54, 27);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(55, 15);
+            label1.Size = new Size(85, 25);
             label1.TabIndex = 0;
             label1.Text = "Owner Id";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(42, 64);
+            label2.Location = new Point(60, 107);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(38, 15);
+            label2.Size = new Size(59, 25);
             label2.TabIndex = 1;
             label2.Text = "Pet ID";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(39, 271);
+            label3.Location = new Point(56, 452);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(79, 15);
+            label3.Size = new Size(119, 25);
             label3.TabIndex = 2;
             label3.Text = "Total Amount";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(38, 107);
+            label4.Location = new Point(54, 178);
+            label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(88, 15);
+            label4.Size = new Size(133, 25);
             label4.TabIndex = 3;
             label4.Text = "Consultation Id";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(38, 152);
+            label5.Location = new Point(54, 253);
+            label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
-            label5.Size = new Size(73, 15);
+            label5.Size = new Size(111, 25);
             label5.TabIndex = 4;
             label5.Text = "Treatment Id";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(35, 219);
+            label6.Location = new Point(50, 365);
+            label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
-            label6.Size = new Size(115, 15);
+            label6.Size = new Size(175, 25);
             label6.TabIndex = 5;
             label6.Text = "Item (not added yet)";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(214, 152);
+            label7.Location = new Point(306, 253);
+            label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
-            label7.Size = new Size(92, 15);
+            label7.Size = new Size(140, 25);
             label7.TabIndex = 6;
             label7.Text = "Cage Id (yes no)";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(194, 271);
+            label8.Location = new Point(277, 452);
+            label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
-            label8.Size = new Size(75, 15);
+            label8.Size = new Size(112, 25);
             label8.TabIndex = 7;
             label8.Text = "Discount (%)";
             // 
             // comboBoxOwnerId
             // 
             comboBoxOwnerId.FormattingEnabled = true;
-            comboBoxOwnerId.Location = new Point(38, 40);
-            comboBoxOwnerId.Margin = new Padding(3, 2, 3, 2);
+            comboBoxOwnerId.Location = new Point(54, 67);
+            comboBoxOwnerId.Margin = new Padding(4, 3, 4, 3);
             comboBoxOwnerId.Name = "comboBoxOwnerId";
-            comboBoxOwnerId.Size = new Size(133, 23);
+            comboBoxOwnerId.Size = new Size(188, 33);
             comboBoxOwnerId.TabIndex = 8;
             comboBoxOwnerId.SelectedIndexChanged += comboBoxOwnerId_SelectedIndexChanged;
             // 
             // comboBoxPetId
             // 
             comboBoxPetId.FormattingEnabled = true;
-            comboBoxPetId.Location = new Point(42, 84);
-            comboBoxPetId.Margin = new Padding(3, 2, 3, 2);
+            comboBoxPetId.Location = new Point(60, 140);
+            comboBoxPetId.Margin = new Padding(4, 3, 4, 3);
             comboBoxPetId.Name = "comboBoxPetId";
-            comboBoxPetId.Size = new Size(133, 23);
+            comboBoxPetId.Size = new Size(188, 33);
             comboBoxPetId.TabIndex = 9;
             // 
             // comboBoxConsultationId
             // 
             comboBoxConsultationId.FormattingEnabled = true;
-            comboBoxConsultationId.Location = new Point(42, 128);
-            comboBoxConsultationId.Margin = new Padding(3, 2, 3, 2);
+            comboBoxConsultationId.Location = new Point(60, 213);
+            comboBoxConsultationId.Margin = new Padding(4, 3, 4, 3);
             comboBoxConsultationId.Name = "comboBoxConsultationId";
-            comboBoxConsultationId.Size = new Size(133, 23);
+            comboBoxConsultationId.Size = new Size(188, 33);
             comboBoxConsultationId.TabIndex = 11;
             comboBoxConsultationId.SelectedIndexChanged += comboBoxConsultationId_SelectedIndexChanged;
             // 
             // comboBoxTreatmentId
             // 
             comboBoxTreatmentId.FormattingEnabled = true;
-            comboBoxTreatmentId.Location = new Point(42, 176);
-            comboBoxTreatmentId.Margin = new Padding(3, 2, 3, 2);
+            comboBoxTreatmentId.Location = new Point(60, 293);
+            comboBoxTreatmentId.Margin = new Padding(4, 3, 4, 3);
             comboBoxTreatmentId.Name = "comboBoxTreatmentId";
-            comboBoxTreatmentId.Size = new Size(133, 23);
+            comboBoxTreatmentId.Size = new Size(188, 33);
             comboBoxTreatmentId.TabIndex = 12;
             comboBoxTreatmentId.SelectedIndexChanged += comboBoxTreatmentId_SelectedIndexChanged;
             // 
             // comboBoxItemId
             // 
             comboBoxItemId.FormattingEnabled = true;
-            comboBoxItemId.Location = new Point(38, 238);
-            comboBoxItemId.Margin = new Padding(3, 2, 3, 2);
+            comboBoxItemId.Location = new Point(54, 397);
+            comboBoxItemId.Margin = new Padding(4, 3, 4, 3);
             comboBoxItemId.Name = "comboBoxItemId";
-            comboBoxItemId.Size = new Size(133, 23);
+            comboBoxItemId.Size = new Size(188, 33);
             comboBoxItemId.TabIndex = 13;
             // 
             // comboBoxCageId
             // 
             comboBoxCageId.FormattingEnabled = true;
-            comboBoxCageId.Location = new Point(203, 176);
-            comboBoxCageId.Margin = new Padding(3, 2, 3, 2);
+            comboBoxCageId.Location = new Point(290, 293);
+            comboBoxCageId.Margin = new Padding(4, 3, 4, 3);
             comboBoxCageId.Name = "comboBoxCageId";
-            comboBoxCageId.Size = new Size(133, 23);
+            comboBoxCageId.Size = new Size(188, 33);
             comboBoxCageId.TabIndex = 14;
             // 
             // dataGridViewInvoice
             // 
             dataGridViewInvoice.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewInvoice.Location = new Point(508, 40);
-            dataGridViewInvoice.Margin = new Padding(3, 2, 3, 2);
+            dataGridViewInvoice.Location = new Point(726, 67);
+            dataGridViewInvoice.Margin = new Padding(4, 3, 4, 3);
             dataGridViewInvoice.Name = "dataGridViewInvoice";
             dataGridViewInvoice.RowHeadersWidth = 51;
-            dataGridViewInvoice.Size = new Size(262, 141);
+            dataGridViewInvoice.Size = new Size(374, 235);
             dataGridViewInvoice.TabIndex = 16;
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(42, 322);
+            label9.Location = new Point(60, 537);
+            label9.Margin = new Padding(4, 0, 4, 0);
             label9.Name = "label9";
-            label9.Size = new Size(229, 15);
+            label9.Size = new Size(340, 25);
             label9.TabIndex = 17;
             label9.Text = "NetAmount (auto fill on discount change)";
             // 
             // numericUpDownDiscount
             // 
-            numericUpDownDiscount.Location = new Point(194, 288);
-            numericUpDownDiscount.Margin = new Padding(3, 2, 3, 2);
+            numericUpDownDiscount.Location = new Point(277, 480);
+            numericUpDownDiscount.Margin = new Padding(4, 3, 4, 3);
             numericUpDownDiscount.Name = "numericUpDownDiscount";
-            numericUpDownDiscount.Size = new Size(131, 23);
+            numericUpDownDiscount.Size = new Size(187, 31);
             numericUpDownDiscount.TabIndex = 19;
+            numericUpDownDiscount.ValueChanged += numericUpDownDiscount_ValueChanged_1;
             // 
             // buttonAddInvoice
             // 
-            buttonAddInvoice.Location = new Point(408, 338);
-            buttonAddInvoice.Margin = new Padding(3, 2, 3, 2);
+            buttonAddInvoice.Location = new Point(583, 563);
+            buttonAddInvoice.Margin = new Padding(4, 3, 4, 3);
             buttonAddInvoice.Name = "buttonAddInvoice";
-            buttonAddInvoice.Size = new Size(82, 22);
+            buttonAddInvoice.Size = new Size(117, 37);
             buttonAddInvoice.TabIndex = 20;
             buttonAddInvoice.Text = "buttonAddInvoice";
             buttonAddInvoice.UseVisualStyleBackColor = true;
+            buttonAddInvoice.Click += ButtonAddInvoice_Click;
             // 
             // textBoxTotalAmount
             // 
-            textBoxTotalAmount.Location = new Point(39, 296);
+            textBoxTotalAmount.Location = new Point(56, 493);
+            textBoxTotalAmount.Margin = new Padding(4, 5, 4, 5);
             textBoxTotalAmount.Name = "textBoxTotalAmount";
-            textBoxTotalAmount.Size = new Size(100, 23);
+            textBoxTotalAmount.Size = new Size(141, 31);
             textBoxTotalAmount.TabIndex = 21;
             // 
             // textBoxNetAmount
             // 
-            textBoxNetAmount.Location = new Point(42, 340);
+            textBoxNetAmount.Location = new Point(60, 567);
+            textBoxNetAmount.Margin = new Padding(4, 5, 4, 5);
             textBoxNetAmount.Name = "textBoxNetAmount";
-            textBoxNetAmount.Size = new Size(100, 23);
+            textBoxNetAmount.Size = new Size(141, 31);
             textBoxNetAmount.TabIndex = 22;
             // 
             // InvoiceForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(810, 365);
+            ClientSize = new Size(1157, 608);
             Controls.Add(textBoxNetAmount);
             Controls.Add(textBoxTotalAmount);
             Controls.Add(buttonAddInvoice);
@@ -257,7 +270,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Margin = new Padding(3, 2, 3, 2);
+            Margin = new Padding(4, 3, 4, 3);
             Name = "InvoiceForm";
             Text = "InvoiceForm";
             ((System.ComponentModel.ISupportInitialize)dataGridViewInvoice).EndInit();
