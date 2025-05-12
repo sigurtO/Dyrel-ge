@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WinFormsApp1.Objects;
 
 namespace WinFormsApp1.Interfaces
 {
@@ -13,6 +14,7 @@ namespace WinFormsApp1.Interfaces
         Task<DataTable> GetVeterinariansByPetAsync(int petId);
         Task AddConsultationAsync(int ownerId, int petId, int vetId, DateTime date, int price, string notes);
         Task DeleteConsultationAsync(int consultationId);
+        Task UpdateConsultationAsync(ConsultationClass consultation, int consultationId);
     }
 
 

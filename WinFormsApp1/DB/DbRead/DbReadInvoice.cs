@@ -45,20 +45,20 @@ namespace WinFormsApp1.DB.DbRead //HAVE TO ADD DELETE TO INVOICE OR YOU CANT DEL
             return dataTable;
         }
 
-        public async Task<DataTable> GetTreatmentFromConsultationAsync(int consultationID)
-        {
-            string query = "SELECT Notes, Price, TreatmentID FROM Treatment WHERE ConsultationID = @ConsultationID";
-            DataTable dataTable = new DataTable();
-            using (SqlConnection connection = CreateConnection())
+            public async Task<DataTable> GetTreatmentFromConsultationAsync(int consultationID)
             {
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@ConsultationID", consultationID);
-                await connection.OpenAsync();
-                SqlDataReader reader = await command.ExecuteReaderAsync();
-                dataTable.Load(reader);
+                string query = "SELECT Notes, Price, TreatmentID FROM Treatment WHERE ConsultationID = @ConsultationID";
+                DataTable dataTable = new DataTable();
+                using (SqlConnection connection = CreateConnection())
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@ConsultationID", consultationID);
+                    await connection.OpenAsync();
+                    SqlDataReader reader = await command.ExecuteReaderAsync();
+                    dataTable.Load(reader);
+                }
+                return dataTable;
             }
-            return dataTable;
-        }
 
         public async Task<DataTable>  CheckCageFromTreatment(int treatmentID)
         {
