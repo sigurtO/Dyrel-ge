@@ -60,5 +60,10 @@ namespace WinFormsApp1
             Main main = new Main();
             main.Show();
         }
+
+        private void dataGridViewOwner_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
