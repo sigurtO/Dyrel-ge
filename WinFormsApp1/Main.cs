@@ -21,11 +21,13 @@ namespace WinFormsApp1
         public Main()
         {
             InitializeComponent();
-            var consultationService = new ConsultationService();
-            _consultation = new Consultation(consultationService);
 
+
+            var consultationService = new ConsultationService();
+            _consultation = new Consultation(consultationService, consultationService); // I dont understand this but it works
+                                                                                        //Needs a parameter becuase interfacse but we put same thing twice??
             var invoiceService = new InvoiceService();
-            _invoiceForm = new InvoiceForm(invoiceService);
+            _invoiceForm = new InvoiceForm(invoiceService, invoiceService);
 
         }
 
