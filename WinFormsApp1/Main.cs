@@ -14,6 +14,7 @@ namespace WinFormsApp1
     public partial class Main : Form
     {
         private readonly Consultation _consultation;
+        private readonly InvoiceForm _invoiceForm;
         VetForm VetForm = new VetForm();
         OwnerForm ownerForm = new OwnerForm();
         TreatmentForm treatmentForm = new TreatmentForm();
@@ -22,6 +23,9 @@ namespace WinFormsApp1
             InitializeComponent();
             var consultationService = new ConsultationService();
             _consultation = new Consultation(consultationService);
+
+            var invoiceService = new InvoiceService();
+            _invoiceForm = new InvoiceForm(invoiceService);
 
         }
 
@@ -51,7 +55,13 @@ namespace WinFormsApp1
 
         private void buttonTreatment_Click(object sender, EventArgs e)
         {
-            treatmentForm.Show(); 
+            treatmentForm.Show();
+            this.Hide();
+        }
+
+        private void buttonInvoice_Click(object sender, EventArgs e)
+        {
+            _invoiceForm.Show();
             this.Hide();
         }
     }

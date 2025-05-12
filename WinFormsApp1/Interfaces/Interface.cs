@@ -24,4 +24,11 @@ namespace WinFormsApp1.Interfaces
 
 
 
+    public interface IInvoiceService
+    {
+        Task<DataTable> LoadInvoiceAsync();
+    }
+
+
+
 }
