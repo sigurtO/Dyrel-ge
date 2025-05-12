@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using WinFormsApp1.DB.DbCreate;
 using WinFormsApp1.DB.DbDelete;
 using WinFormsApp1.DB.DbRead;
+using WinFormsApp1.DB.DbUpdate;
 
 namespace WinFormsApp1.Service
 {
@@ -30,6 +31,8 @@ namespace WinFormsApp1.Service
 
         //Update
 
+        public DbUpdateConsultation DbUpdateConsultation { get; }
+
         public DbService(string connectionString)
         {
             //Read
@@ -47,7 +50,7 @@ namespace WinFormsApp1.Service
             DbDeleteConsultation = new DbDeleteConsultation(connectionString);
 
             //Update (comming soon)
-
+            DbUpdateConsultation = new DbUpdateConsultation(connectionString);
         }
     }
 }
