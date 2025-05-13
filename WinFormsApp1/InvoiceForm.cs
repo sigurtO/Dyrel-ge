@@ -182,7 +182,7 @@ namespace WinFormsApp1
         }
         
 
-        private void CalculateNetAmount()
+        public void CalculateNetAmount()
         {
             if (decimal.TryParse(textBoxTotalAmount.Text, out decimal totalAmount))
             {
