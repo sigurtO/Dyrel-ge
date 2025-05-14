@@ -18,11 +18,9 @@ namespace WinFormsApp1
 
         private readonly TreatmentForm _treatmentForm;
         VetForm VetForm = new VetForm();
-        OwnerForm ownerForm = new OwnerForm();
 
         private readonly VetForm _vetForm;
         private readonly OwnerForm _ownerForm;
-        VetForm VetForm = new VetForm();
 
         public Main()
         {
