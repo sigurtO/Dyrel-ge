@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using WinFormsApp1.DB.DbCreate;
 using WinFormsApp1.DB.DbDelete;
 using WinFormsApp1.DB.DbRead;
+using WinFormsApp1.DB.DbUpdate;
+using WinFormsApp1.Objects;
 
 namespace WinFormsApp1.Service
 {
@@ -20,18 +22,30 @@ namespace WinFormsApp1.Service
         public DbReadPet DbReadPet { get; } 
 
 
+
+
+        public DbReadTreatment DbReadTreatment { get; }
+
         //Create
         public DbCreateConsultation DbCreateConsultation { get; }
         public DbCreateOwner DbCreateOwner { get; }
         public DbCreateVet DbCreateVet { get; }
         public DbCreateInvoice DbCreateInvoice { get; }
-
         public DbCreatePet DbCreatePet { get; }   
+        public DbCreateTreatment DbCreateTreatment { get; }
 
         //Delete
         public DbDeleteConsultation DbDeleteConsultation { get; }
 
         //Update
+
+        public DbUpdateConsultation DbUpdateConsultation { get; }
+        public DbUpdateOwner DbUpdateOwner { get; }
+
+
+
+
+
 
         public DbService(string connectionString)
         {
@@ -39,6 +53,7 @@ namespace WinFormsApp1.Service
             DbReadConsultation = new DbReadConsultation(connectionString);
             DbReadOwner = new DbReadOwner(connectionString);
             DbReadVet = new DbReadVet(connectionString);
+            DbReadTreatment = new DbReadTreatment(connectionString);
             DbReadLogin = new DbReadLogin(connectionString);
             DbReadInvoice = new DbReadInvoice(connectionString);
             DbReadPet = new DbReadPet(connectionString);   
@@ -47,12 +62,16 @@ namespace WinFormsApp1.Service
             DbCreateConsultation = new DbCreateConsultation(connectionString);
             DbCreateOwner = new DbCreateOwner(connectionString);
             DbCreateVet = new DbCreateVet(connectionString);
+            DbCreateTreatment = new DbCreateTreatment(connectionString);
             DbCreateInvoice = new DbCreateInvoice(connectionString);
             //Delete
             DbDeleteConsultation = new DbDeleteConsultation(connectionString);
 
             //Update (comming soon)
-
+            DbUpdateConsultation = new DbUpdateConsultation(connectionString);
+            DbUpdateOwner = new DbUpdateOwner(connectionString);
         }
+
+       
     }
 }

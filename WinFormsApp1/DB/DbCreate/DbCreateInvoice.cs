@@ -17,10 +17,10 @@ namespace WinFormsApp1.DB.DbCreate
         {
             string query = @"INSERT INTO Invoice 
                             (OwnerID, ConsultationID, PetID, Date, TotalAmount, NetAmount,
-                            TreatmentID, ItemID, CageID, Discount) 
+                            TreatmentID, ItemID, Discount) 
                             VALUES 
                             (@OwnerID, @ConsultationID, @PetID, @Date, @TotalAmount, @NetAmount,
-                                @TreatmentID, @ItemID, @CageID, @Discount)";
+                                @TreatmentID, @ItemID, @Discount)";
 
             using (SqlConnection connection = CreateConnection())
             {

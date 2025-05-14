@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace WinFormsApp1.Service
                 throw new ConsultationServiceException("Failed to load consultations", ex);
             }
 
-            
+         
         }
 
 
@@ -107,9 +108,21 @@ namespace WinFormsApp1.Service
             }
         }
 
+        public async Task UpdateConsultationAsync(ConsultationClass consultation, int consultationId)
+        {
+            try
+            {
+                await Program.dbServices.DbUpdateConsultation.UpdateConsultationAsync(consultation, consultationId);
+            }
+            catch (Exception ex)
+            {
+                throw new ConsultationServiceException($"Failed to update consultation {consultationId}", ex);
+            }
+        }
 
 
     }
+
 }
 
 // Custom exception class

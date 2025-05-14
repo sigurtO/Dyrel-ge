@@ -15,8 +15,11 @@ namespace WinFormsApp1
     {
         private readonly Consultation _consultation;
         private readonly InvoiceForm _invoiceForm;
+        private readonly VetForm _vetForm;
+        private readonly OwnerForm _ownerForm;
+
         VetForm VetForm = new VetForm();
-        OwnerForm ownerForm = new OwnerForm();
+        //OwnerForm ownerForm = new OwnerForm();
         TreatmentForm treatmentForm = new TreatmentForm();
         public Main()
         {
@@ -29,6 +32,8 @@ namespace WinFormsApp1
             var invoiceService = new InvoiceService();
             _invoiceForm = new InvoiceForm(invoiceService, invoiceService);
 
+            var ownerService = new OwnerService();
+            _ownerForm = new OwnerForm(ownerService, invoiceService);
         }
 
         private void buttonConsultation_Click(object sender, EventArgs e)
@@ -43,7 +48,7 @@ namespace WinFormsApp1
         }
         private void buttonOwners_Click(object sender, EventArgs e)
         {
-            ownerForm.Show();
+            _ownerForm.Show();
             this.Hide();
         }
 

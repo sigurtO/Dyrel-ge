@@ -161,5 +161,28 @@ namespace WinFormsApp1
             Main main = new Main();
             main.Show();
         }
+
+        private async void dataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                var consultationId = (int)dataGridView.CurrentRow.Cells["ConsultationID"].Value;
+                var consultation = new ConsultationClass(
+                    (int)dataGridView.CurrentRow.Cells["OwnerID"].Value,
+                    (int)dataGridView.CurrentRow.Cells["PetID"].Value,
+                    (int)dataGridView.CurrentRow.Cells["PetDocID"].Value,
+                    (DateTime)dataGridView.CurrentRow.Cells["Date"].Value,
+                    Convert.ToInt32(dataGridView.CurrentRow.Cells["Price"].Value),
+                    dataGridView.CurrentRow.Cells["Notes"].Value?.ToString() ?? string.Empty);
+
+                await _consultationService.UpdateConsultationAsync(consultation, consultationId);
+                MessageBox.Show("Consultation updated successfully");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error updating consultation: {ex.Message}");
+                await LoadConsultationsAsync(); // Refresh to revert any changes
+            }
+        }
     }
 }
