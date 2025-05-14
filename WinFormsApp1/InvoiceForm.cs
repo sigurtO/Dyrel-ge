@@ -26,13 +26,13 @@ namespace WinFormsApp1
             InitializeAsync();
         }
 
-        private async void InitializeAsync()
+        public async void InitializeAsync()
         {
             await LoadInvoiceDataAsync();
             await LoadOwnerDataAsync();
         }
 
-        private async Task LoadInvoiceDataAsync()
+        public async Task LoadInvoiceDataAsync()
         {
             try
             {
@@ -44,7 +44,7 @@ namespace WinFormsApp1
             }
         }
 
-        private async Task LoadOwnerDataAsync()
+        public async Task LoadOwnerDataAsync()
         {
             try
             {
@@ -63,7 +63,7 @@ namespace WinFormsApp1
             }
         }
         //starting from here
-        private async void comboBoxOwnerId_SelectedIndexChanged(object sender, EventArgs e)
+        public async void comboBoxOwnerId_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBoxOwnerId.SelectedValue == null || !(comboBoxOwnerId.SelectedValue is int ownerId) || ownerId <= 0)
             {
@@ -98,7 +98,7 @@ namespace WinFormsApp1
             }
         }
 
-        private async void comboBoxConsultationId_SelectedIndexChanged(object sender, EventArgs e)
+        public async void comboBoxConsultationId_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBoxConsultationId.SelectedValue == null || !(comboBoxConsultationId.SelectedValue is int consultationId) || consultationId <= 0)
             {
@@ -128,7 +128,7 @@ namespace WinFormsApp1
             }
         }
 
-        private async void comboBoxTreatmentId_SelectedIndexChanged(object sender, EventArgs e)
+        public async void comboBoxTreatmentId_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBoxTreatmentId.SelectedValue == null || !(comboBoxTreatmentId.SelectedValue is int treatmentId) || treatmentId <= 0)
             {
@@ -157,7 +157,7 @@ namespace WinFormsApp1
                 MessageBox.Show($"Error loading cage information: {ex.Message}");
             }
         }
-        private async void comboBoxItemId_SelectedIndexChanged(object sender, EventArgs e)
+        public async void comboBoxItemId_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBoxItemId.SelectedValue == null || !(comboBoxItemId.SelectedValue is int itemId) || itemId <= 0)
             {
@@ -182,7 +182,7 @@ namespace WinFormsApp1
         }
         
 
-        private void CalculateNetAmount()
+        public void CalculateNetAmount()
         {
             if (decimal.TryParse(textBoxTotalAmount.Text, out decimal totalAmount))
             {
@@ -191,7 +191,7 @@ namespace WinFormsApp1
                 textBoxNetAmount.Text = netAmount.ToString("F2");
             }
         }
-        private async void ButtonAddInvoice_Click(object sender, EventArgs e)
+        public async void ButtonAddInvoice_Click(object sender, EventArgs e)
         {
             if (comboBoxOwnerId.SelectedValue == null ||
                 comboBoxPetId.SelectedValue == null ||
@@ -232,7 +232,7 @@ namespace WinFormsApp1
                 MessageBox.Show($"Error creating invoice: {ex.Message}");
             }
         }
-        private void ResetForm()
+        public void ResetForm()
         {
             comboBoxOwnerId.SelectedIndex = 0;
             comboBoxPetId.DataSource = null;
@@ -246,7 +246,7 @@ namespace WinFormsApp1
             _currentTotal = 0;
         }
 
-        private void numericUpDownDiscount_ValueChanged_1(object sender, EventArgs e)
+        public void numericUpDownDiscount_ValueChanged_1(object sender, EventArgs e)
         {
             CalculateNetAmount();
 

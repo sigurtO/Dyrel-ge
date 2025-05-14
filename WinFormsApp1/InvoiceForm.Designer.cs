@@ -289,17 +289,17 @@
         private Label label6;
         private Label label7;
         private Label label8;
-        private ComboBox comboBoxOwnerId;
-        private ComboBox comboBoxPetId;
-        private ComboBox comboBoxConsultationId;
-        private ComboBox comboBoxTreatmentId;
-        private ComboBox comboBoxItemId;
-        private ComboBox comboBoxCageId;
-        private DataGridView dataGridViewInvoice;
         private Label label9;
-        private NumericUpDown numericUpDownDiscount;
-        private Button buttonAddInvoice;
-        private TextBox textBoxTotalAmount;
-        private TextBox textBoxNetAmount;
+        public ComboBox comboBoxOwnerId;
+        public ComboBox comboBoxPetId;
+        public ComboBox comboBoxConsultationId;
+        public ComboBox comboBoxTreatmentId;
+        public ComboBox comboBoxItemId;
+        public ComboBox comboBoxCageId;
+        public DataGridView dataGridViewInvoice;
+        public NumericUpDown numericUpDownDiscount;
+        public Button buttonAddInvoice;
+        public TextBox textBoxTotalAmount;
+        public TextBox textBoxNetAmount;
     }
 }
