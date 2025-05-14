@@ -36,9 +36,8 @@ namespace WinFormsApp1.Interfaces
     {
         Task<DataTable> LoadOwnerDataAsync();
         Task<DataTable> GetPetsByOwnerAsync(int ownerId);
-
     }
-
+    
 
     public interface IInvoiceService
     {
@@ -52,6 +51,11 @@ namespace WinFormsApp1.Interfaces
 
     }
 
-
+    public interface IOwnerService
+    {
+        Task AddOwnerAsync(OwnerClass owner);
+        Task UpdateOwnerAsync(OwnerClass owner, int ownerId);
+        Task<DataTable> LoadOwnerDataAsync();
+    }
 
 }

@@ -1,45 +1,59 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using WinFormsApp1.Interfaces;
 using WinFormsApp1.Objects;
 
 namespace WinFormsApp1.Service
 {
-    public class OwnerService
+    public class OwnerService : IOwnerService  // Explicitly implement the interface
     {
-        public async Task LoadOwnerDataAsync(DataGridView gridView)       //Load the data into the DataGridView
+        public async Task<DataTable> LoadOwnerDataAsync()
         {
             try
             {
-                DataTable owners = await Program.dbServices.DbReadOwner.ShowAllOwnersAsync();
-                gridView.DataSource = owners;
+                return await Program.dbServices.DbReadOwner.ShowAllOwnersAsync();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Error:: Failed to load owners:");
-                gridView.DataSource = null; // Clear the DataGridView
+                // Throw instead of showing MessageBox here
+                throw new OwnerServiceException("Failed to load owners", ex);
             }
         }
-    
-        public async Task HandleAddOwnerAsync(TextBox textBoxFirstName, TextBox textBoxLastName, TextBox textBoxEmail, TextBox textBoxPhoneNumber, TextBox textBoxAdress)
+
+        public async Task AddOwnerAsync(OwnerClass owner)  // Changed to match interface
         {
             try
             {
-                string firstName = textBoxFirstName.Text;
-                string lastName = textBoxLastName.Text;
-                string email = textBoxEmail.Text;
-                int phoneNumber = Convert.ToInt32(textBoxPhoneNumber.Text);
-                string adress = textBoxAdress.Text;
-                OwnerClass newOwner = new OwnerClass(firstName, lastName, email, phoneNumber, adress);
-                await Program.dbServices.DbCreateOwner.AddOwnerAsync(newOwner);
+                await Program.dbServices.DbCreateOwner.AddOwnerAsync(owner);
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Error:: Failed to add owner: ");
+                throw new OwnerServiceException("Failed to add owner", ex);
             }
         }
+
+        public async Task UpdateOwnerAsync(OwnerClass owner, int ownerId)
+        {
+            try
+            {
+                await Program.dbServices.DbUpdateOwner.UpdateOwnerAsync(owner, ownerId);
+            }
+            catch (Exception ex)
+            {
+                throw new OwnerServiceException($"Failed to update owner {ownerId}", ex);
+            }
+        }
+
+        // Missing from original code - add this to fulfill interface
+      
+    }
+
+    // Add custom exception class
+    public class OwnerServiceException : Exception
+    {
+        public OwnerServiceException(string message, Exception inner)
+            : base(message, inner) { }
     }
 }
