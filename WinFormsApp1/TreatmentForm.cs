@@ -108,13 +108,15 @@ namespace WinFormsApp1
             }
 
             try
-            {
-                await _treatmentService.AddTreatmentnAsync(
+            { //int ownerId, int petDocId, int consultationId, int price, DateTime date, string notes, int petID
+                await _treatmentService.AddTreatmentAsync(
                     (int)comboBoxTreatmentOwner.SelectedValue,
-                    (int)comboBoxTreatmentPet.SelectedValue,
-                (int)comboBoxTreatmentVet.SelectedValue,
+                    (int)comboBoxTreatmentVet.SelectedValue,
+                    (int)comboBoxTreatmentConsultation.SelectedValue,
+                    Convert.ToInt32(textBoxPriceTreatment.Text),
                     textBoxDateTreatment.Value,
-                    textBoxNotesTreatment.Text);
+                    textBoxNotesTreatment.Text,
+                    (int)comboBoxTreatmentPet.SelectedValue);
 
                 MessageBox.Show("Consultation added successfully");
                 await LoadTreatmentAsync(); // Refresh grid

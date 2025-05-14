@@ -47,116 +47,129 @@
             // dataGridViewTreatment
             // 
             dataGridViewTreatment.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewTreatment.Location = new Point(609, 67);
+            dataGridViewTreatment.Location = new Point(487, 54);
+            dataGridViewTreatment.Margin = new Padding(2);
             dataGridViewTreatment.Name = "dataGridViewTreatment";
             dataGridViewTreatment.RowHeadersWidth = 62;
-            dataGridViewTreatment.Size = new Size(587, 379);
+            dataGridViewTreatment.Size = new Size(470, 303);
             dataGridViewTreatment.TabIndex = 1;
             // 
             // comboBoxTreatmentOwner
             // 
             comboBoxTreatmentOwner.FormattingEnabled = true;
-            comboBoxTreatmentOwner.Location = new Point(70, 67);
+            comboBoxTreatmentOwner.Location = new Point(56, 54);
+            comboBoxTreatmentOwner.Margin = new Padding(2);
             comboBoxTreatmentOwner.Name = "comboBoxTreatmentOwner";
-            comboBoxTreatmentOwner.Size = new Size(182, 33);
+            comboBoxTreatmentOwner.Size = new Size(146, 28);
             comboBoxTreatmentOwner.TabIndex = 2;
             // 
             // comboBoxTreatmentVet
             // 
             comboBoxTreatmentVet.FormattingEnabled = true;
-            comboBoxTreatmentVet.Location = new Point(70, 145);
+            comboBoxTreatmentVet.Location = new Point(56, 116);
+            comboBoxTreatmentVet.Margin = new Padding(2);
             comboBoxTreatmentVet.Name = "comboBoxTreatmentVet";
-            comboBoxTreatmentVet.Size = new Size(182, 33);
+            comboBoxTreatmentVet.Size = new Size(146, 28);
             comboBoxTreatmentVet.TabIndex = 3;
             // 
             // comboBoxTreatmentConsultation
             // 
             comboBoxTreatmentConsultation.FormattingEnabled = true;
-            comboBoxTreatmentConsultation.Location = new Point(70, 225);
+            comboBoxTreatmentConsultation.Location = new Point(56, 180);
+            comboBoxTreatmentConsultation.Margin = new Padding(2);
             comboBoxTreatmentConsultation.Name = "comboBoxTreatmentConsultation";
-            comboBoxTreatmentConsultation.Size = new Size(182, 33);
+            comboBoxTreatmentConsultation.Size = new Size(146, 28);
             comboBoxTreatmentConsultation.TabIndex = 4;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(70, 39);
+            label1.Location = new Point(56, 31);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(64, 25);
+            label1.Size = new Size(52, 20);
             label1.TabIndex = 5;
             label1.Text = "Owner";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(70, 117);
+            label2.Location = new Point(56, 94);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(104, 25);
+            label2.Size = new Size(88, 20);
             label2.TabIndex = 6;
             label2.Text = "Veterinarian";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(70, 197);
+            label3.Location = new Point(56, 158);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(130, 25);
+            label3.Size = new Size(107, 20);
             label3.TabIndex = 7;
             label3.Text = "ConsultationID";
             // 
             // textBoxPriceTreatment
             // 
-            textBoxPriceTreatment.Location = new Point(70, 302);
+            textBoxPriceTreatment.Location = new Point(56, 242);
+            textBoxPriceTreatment.Margin = new Padding(2);
             textBoxPriceTreatment.Name = "textBoxPriceTreatment";
-            textBoxPriceTreatment.Size = new Size(182, 31);
+            textBoxPriceTreatment.Size = new Size(146, 27);
             textBoxPriceTreatment.TabIndex = 8;
             // 
             // textBoxNotesTreatment
             // 
-            textBoxNotesTreatment.Location = new Point(70, 453);
+            textBoxNotesTreatment.Location = new Point(56, 362);
+            textBoxNotesTreatment.Margin = new Padding(2);
             textBoxNotesTreatment.Multiline = true;
             textBoxNotesTreatment.Name = "textBoxNotesTreatment";
-            textBoxNotesTreatment.Size = new Size(243, 119);
+            textBoxNotesTreatment.Size = new Size(195, 96);
             textBoxNotesTreatment.TabIndex = 9;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(70, 274);
+            label4.Location = new Point(56, 219);
+            label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(49, 25);
+            label4.Size = new Size(41, 20);
             label4.TabIndex = 10;
             label4.Text = "Price";
             // 
             // comboBoxTreatmentPet
             // 
             comboBoxTreatmentPet.FormattingEnabled = true;
-            comboBoxTreatmentPet.Location = new Point(294, 67);
+            comboBoxTreatmentPet.Location = new Point(235, 54);
+            comboBoxTreatmentPet.Margin = new Padding(2);
             comboBoxTreatmentPet.Name = "comboBoxTreatmentPet";
-            comboBoxTreatmentPet.Size = new Size(182, 33);
+            comboBoxTreatmentPet.Size = new Size(146, 28);
             comboBoxTreatmentPet.TabIndex = 11;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(294, 39);
+            label6.Location = new Point(235, 31);
+            label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
-            label6.Size = new Size(36, 25);
+            label6.Size = new Size(29, 20);
             label6.TabIndex = 12;
             label6.Text = "Pet";
             // 
             // textBoxDateTreatment
             // 
-            textBoxDateTreatment.Location = new Point(70, 375);
+            textBoxDateTreatment.Location = new Point(56, 300);
+            textBoxDateTreatment.Margin = new Padding(2);
             textBoxDateTreatment.Name = "textBoxDateTreatment";
-            textBoxDateTreatment.Size = new Size(300, 31);
+            textBoxDateTreatment.Size = new Size(241, 27);
             textBoxDateTreatment.TabIndex = 13;
             // 
             // TreatmentForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1241, 630);
+            ClientSize = new Size(993, 504);
             Controls.Add(textBoxDateTreatment);
             Controls.Add(label6);
             Controls.Add(comboBoxTreatmentPet);
@@ -170,7 +183,7 @@
             Controls.Add(comboBoxTreatmentVet);
             Controls.Add(comboBoxTreatmentOwner);
             Controls.Add(dataGridViewTreatment);
-            Margin = new Padding(4, 5, 4, 5);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "TreatmentForm";
             Text = "TreatmentForm";
             ((System.ComponentModel.ISupportInitialize)dataGridViewTreatment).EndInit();
