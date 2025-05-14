@@ -17,6 +17,7 @@ namespace WinFormsApp1.Service
         public DbReadVet DbReadVet { get; }
         public DbReadLogin DbReadLogin { get; }
         public DbReadInvoice DbReadInvoice { get; }
+        public DbReadPet DbReadPet { get; } 
 
 
         //Create
@@ -24,6 +25,8 @@ namespace WinFormsApp1.Service
         public DbCreateOwner DbCreateOwner { get; }
         public DbCreateVet DbCreateVet { get; }
         public DbCreateInvoice DbCreateInvoice { get; }
+
+        public DbCreatePet DbCreatePet { get; }   
 
         //Delete
         public DbDeleteConsultation DbDeleteConsultation { get; }
@@ -38,6 +41,8 @@ namespace WinFormsApp1.Service
             DbReadVet = new DbReadVet(connectionString);
             DbReadLogin = new DbReadLogin(connectionString);
             DbReadInvoice = new DbReadInvoice(connectionString);
+            DbReadPet = new DbReadPet(connectionString);   
+            
             //Create
             DbCreateConsultation = new DbCreateConsultation(connectionString);
             DbCreateOwner = new DbCreateOwner(connectionString);

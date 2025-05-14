@@ -66,5 +66,12 @@ namespace WinFormsApp1
             _invoiceForm.Show();
             this.Hide();
         }
+
+        private void CreatePet_Click(object sender, EventArgs e)
+        {
+            var petForm = new PetForm(); // Create a new instance
+            petForm.Show();
+            this.Hide(); // Hides the current form
+        }
     }
 }
