@@ -7,6 +7,7 @@ using WinFormsApp1.DB.DbCreate;
 using WinFormsApp1.DB.DbDelete;
 using WinFormsApp1.DB.DbRead;
 using WinFormsApp1.DB.DbUpdate;
+using WinFormsApp1.Objects;
 
 namespace WinFormsApp1.Service
 {
@@ -38,6 +39,12 @@ namespace WinFormsApp1.Service
         //Update
 
         public DbUpdateConsultation DbUpdateConsultation { get; }
+        public DbUpdateOwner DbUpdateOwner { get; }
+
+
+
+
+
 
         public DbService(string connectionString)
         {
@@ -59,6 +66,9 @@ namespace WinFormsApp1.Service
 
             //Update (comming soon)
             DbUpdateConsultation = new DbUpdateConsultation(connectionString);
+            DbUpdateOwner = new DbUpdateOwner(connectionString);
         }
+
+       
     }
 }
