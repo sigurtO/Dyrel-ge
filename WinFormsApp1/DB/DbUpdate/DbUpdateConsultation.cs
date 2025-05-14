@@ -24,7 +24,7 @@ namespace WinFormsApp1.DB.DbUpdate
                         Date = @Date, 
                         Notes = @Notes, 
                         Price = @Price
-                    WHERE ConsultationID = @ConsultationID"; // Assuming you have a primary key
+                    WHERE ConsultationID = @ConsultationID";
 
             using (SqlConnection connection = CreateConnection())
             {
