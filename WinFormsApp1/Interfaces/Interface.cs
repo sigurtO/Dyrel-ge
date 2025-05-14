@@ -4,7 +4,6 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WinFormsApp1.Objects;
 
 namespace WinFormsApp1.Interfaces
 {
@@ -36,8 +35,9 @@ namespace WinFormsApp1.Interfaces
     {
         Task<DataTable> LoadOwnerDataAsync();
         Task<DataTable> GetPetsByOwnerAsync(int ownerId);
+
     }
-    
+
 
     public interface IInvoiceService
     {
@@ -51,7 +51,6 @@ namespace WinFormsApp1.Interfaces
 
     }
 
-    public interface IOwnerService
     {
         Task AddOwnerAsync(OwnerClass owner);
         Task UpdateOwnerAsync(OwnerClass owner, int ownerId);

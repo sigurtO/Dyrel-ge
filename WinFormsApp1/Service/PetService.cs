@@ -5,11 +5,12 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WinFormsApp1.Interfaces;
 using WinFormsApp1.Objects;
 
 namespace WinFormsApp1.Service
 {
-    public class PetService
+    public class PetService : IPetService
     {
         public async Task LoadPetDataAsync(DataGridView gridView)       //Load the data into the DataGridView
         {
