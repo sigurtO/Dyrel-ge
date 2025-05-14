@@ -40,6 +40,7 @@
             label4 = new Label();
             comboBoxTreatmentPet = new ComboBox();
             label6 = new Label();
+            textBoxDateTreatment = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTreatment).BeginInit();
             SuspendLayout();
             // 
@@ -112,7 +113,7 @@
             // 
             // textBoxNotesTreatment
             // 
-            textBoxNotesTreatment.Location = new Point(70, 388);
+            textBoxNotesTreatment.Location = new Point(70, 453);
             textBoxNotesTreatment.Multiline = true;
             textBoxNotesTreatment.Name = "textBoxNotesTreatment";
             textBoxNotesTreatment.Size = new Size(243, 119);
@@ -144,11 +145,19 @@
             label6.TabIndex = 12;
             label6.Text = "Pet";
             // 
+            // textBoxDateTreatment
+            // 
+            textBoxDateTreatment.Location = new Point(70, 375);
+            textBoxDateTreatment.Name = "textBoxDateTreatment";
+            textBoxDateTreatment.Size = new Size(300, 31);
+            textBoxDateTreatment.TabIndex = 13;
+            // 
             // TreatmentForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1241, 630);
+            Controls.Add(textBoxDateTreatment);
             Controls.Add(label6);
             Controls.Add(comboBoxTreatmentPet);
             Controls.Add(label4);
@@ -183,5 +192,6 @@
         private Label label5;
         private ComboBox comboBoxTreatmentPet;
         private Label label6;
+        private DateTimePicker textBoxDateTreatment;
     }
 }

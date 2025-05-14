@@ -21,11 +21,10 @@ namespace WinFormsApp1.Interfaces
     public interface ITreatmentService
     {
         Task<DataTable> LoadTreatmentDataAsync();
-        Task<DataTable> LoadOwnersAsync();
-        Task<DataTable> GetPetsByOwnerAsync(int ownerId);
         Task<DataTable> GetVeterinariansByPetAsync(int petId);
         Task AddTreatmentAsync(int ownerId, int petDocId, int consultationId, int price, DateTime date, string notes, int petID);
-        Task DeleteTreatmentAsync(int consultationId);
+        Task DeleteTreatmentAsync(int treatmentId);
+        Task UpdateTreatmentAsync(TreatmentClass treatment, int treatmentId);
     }
     
 

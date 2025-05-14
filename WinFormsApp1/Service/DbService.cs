@@ -34,10 +34,12 @@ namespace WinFormsApp1.Service
         public DbCreateTreatment DbCreateTreatment { get; }
         //Delete
         public DbDeleteConsultation DbDeleteConsultation { get; }
+        public DbDeleteTreatment DbDeleteTreatment { get;}
 
         //Update
 
         public DbUpdateConsultation DbUpdateConsultation { get; }
+        public DbUpdateTreatment DbUpdateTreatment { get; }
 
         public DbService(string connectionString)
         {
@@ -56,9 +58,11 @@ namespace WinFormsApp1.Service
             DbCreateInvoice = new DbCreateInvoice(connectionString);
             //Delete
             DbDeleteConsultation = new DbDeleteConsultation(connectionString);
+            DbDeleteTreatment = new DbDeleteTreatment(connectionString);
 
             //Update (comming soon)
             DbUpdateConsultation = new DbUpdateConsultation(connectionString);
+            DbUpdateTreatment = new DbUpdateTreatment(connectionString);
         }
     }
 }

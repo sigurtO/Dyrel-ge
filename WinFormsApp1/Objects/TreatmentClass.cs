@@ -26,5 +26,9 @@ namespace WinFormsApp1.Objects
             Notes = notes;
             PetID = petID;
         }
+        public TreatmentClass()
+        {
+            
+        }
     }
 }
