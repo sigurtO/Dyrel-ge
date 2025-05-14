@@ -42,6 +42,7 @@ namespace WinFormsApp1.Service
                 throw new TreatmentServiceException("Failed to load owners", ex);
             }
         }
+
         public async Task<DataTable> LoadOwnerDataAsync()     // load owners into ComboBOx
         {
             try

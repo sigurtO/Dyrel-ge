@@ -56,7 +56,7 @@ namespace WinFormsApp1
             }
         }
 
-        private async void comboBoxOwner_SelectedIndexChanged(object sender, EventArgs e) //Index changed in Owner box
+        private async void comboBoxTreatmentOwner_SelectedIndexChanged(object sender, EventArgs e) //Index changed in Owner box
         {
             if (comboBoxTreatmentOwner.SelectedValue == null || !(comboBoxTreatmentOwner.SelectedValue is int ownerId) || ownerId <= 0)
             {
@@ -78,7 +78,7 @@ namespace WinFormsApp1
             }
         }
 
-        private async void comboBoxPet_SelectedIndexChanged(object sender, EventArgs e) //Index changed in Pet box
+        private async void comboBoxTreatmentPet_SelectedIndexChanged(object sender, EventArgs e) //Index changed in Pet box
         {
             if (comboBoxTreatmentPet.SelectedValue == null || !(comboBoxTreatmentPet.SelectedValue is int petId) || petId <= 0)
             {
@@ -98,7 +98,7 @@ namespace WinFormsApp1
             }
         }
 
-        private async void buttonAdd_Click(object sender, EventArgs e)
+        private async void buttonAddTreatment_Click(object sender, EventArgs e)
         {
             if (comboBoxTreatmentOwner.SelectedValue == null || comboBoxTreatmentPet.SelectedValue == null ||
                 comboBoxTreatmentVet.SelectedValue == null)
@@ -118,12 +118,34 @@ namespace WinFormsApp1
                     textBoxNotesTreatment.Text,
                     (int)comboBoxTreatmentPet.SelectedValue);
 
-                MessageBox.Show("Consultation added successfully");
+                MessageBox.Show("Treatment added successfully");
                 await LoadTreatmentAsync(); // Refresh grid
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error adding consultation: {ex.Message}");
+                MessageBox.Show($"Error adding treatment: {ex.Message}");
+            }
+        }
+
+        private async void buttonDeleteTreatment_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewTreatment.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select a treatment to delete");
+                return;
+            }
+
+            var treatmentId = (int)dataGridViewTreatment.SelectedRows[0].Cells["TreatmentID"].Value;
+
+            try
+            {
+                await _treatmentService.DeleteTreatmentAsync(treatmentId);
+                MessageBox.Show("Treatment deleted successfully");
+                await LoadTreatmentAsync(); // Refresh grid
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error deleting treatment: {ex.Message}");
             }
         }
 
