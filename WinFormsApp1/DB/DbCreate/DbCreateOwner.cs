@@ -21,7 +21,7 @@ namespace WinFormsApp1.DB.DbCreate
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@FirstName", owner.FirstName);
                 command.Parameters.AddWithValue("@LastName", owner.LastName);
-                command.Parameters.AddWithValue("@Phone", owner.PhoneNumber);
+                command.Parameters.AddWithValue("@Phone", owner.Phone);
                 command.Parameters.AddWithValue("@Email", owner.Email);
                 command.Parameters.AddWithValue("@Adress", owner.Adress);
                 await connection.OpenAsync();

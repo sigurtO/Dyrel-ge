@@ -7,63 +7,112 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormsApp1.Interfaces;
+using WinFormsApp1.Objects;
 using WinFormsApp1.Service;
 
 namespace WinFormsApp1
 {
     public partial class OwnerForm : Form
     {
-        private OwnerService ownerService = new OwnerService();
+        private readonly IOwnerService _ownerService;
+        private readonly IOwnerRelated _ownerRelatedService;
 
-        public OwnerForm()
+        public OwnerForm(IOwnerService ownerService, IOwnerRelated ownerRelatedService)
         {
+            _ownerService = ownerService;
+            _ownerRelatedService = ownerRelatedService;
             InitializeComponent();
+            InitializeAsync();
         }
-        protected override async void OnLoad(EventArgs e)
+
+        private async void InitializeAsync()
         {
-            base.OnLoad(e); // loads UI
+            await LoadOwnersAsync();
+        }
+
+        private async Task LoadOwnersAsync()
+        {
             try
             {
-                await ownerService.LoadOwnerDataAsync(dataGridViewOwner); // Load the data into the DataGridView
+                dataGridViewOwner.DataSource = await _ownerService.LoadOwnerDataAsync();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Error:: Failed to load owners:");
-                dataGridViewOwner.DataSource = null; // Clear the DataGridView
+                MessageBox.Show($"Error loading owners: {ex.Message}");
+                dataGridViewOwner.DataSource = null;
             }
         }
 
         private async void AddOwnerButton_Click(object sender, EventArgs e)
         {
-            await ownerService.HandleAddOwnerAsync(textBoxFirstName, textBoxLastName, textBoxEmail, textBoxPhoneNumber, textBoxAdress);
-            await ownerService.LoadOwnerDataAsync(dataGridViewOwner); // Refresh the DataGridView
+            if (string.IsNullOrWhiteSpace(textBoxFirstName.Text) ||
+                string.IsNullOrWhiteSpace(textBoxLastName.Text))
+            {
+                MessageBox.Show("First name and last name are required");
+                return;
+            }
 
-
-        }
-        public async void OwnerForm_Load(object sender, EventArgs e)
-        {
             try
             {
-                await ownerService.LoadOwnerDataAsync(dataGridViewOwner); // Load the data into the DataGridView
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Error:: Failed to load owners:");
-                dataGridViewOwner.DataSource = null; // Clear the DataGridView
-            }
+                var newOwner = new OwnerClass(
+                 textBoxFirstName.Text,
+                   textBoxLastName.Text,
+                     textBoxEmail.Text, // email is third!
+                       Convert.ToInt32(textBoxPhone.Text), // phone is int
+                          textBoxAdress.Text);
 
+
+
+
+                await _ownerService.AddOwnerAsync(newOwner);
+                MessageBox.Show("Owner added successfully");
+                await LoadOwnersAsync(); // Refresh grid
+
+                // Clear input fields
+                textBoxFirstName.Clear();
+                textBoxLastName.Clear();
+                textBoxPhone.Clear();
+                textBoxEmail.Clear();
+                textBoxAdress.Clear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error adding owner: {ex.Message}");
+            }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+        private async void dataGridView_CellEndEditOwner(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridViewOwner.CurrentRow == null) return;
+
+            try
+            {
+                var ownerId = Convert.ToInt32(dataGridViewOwner.CurrentRow.Cells["OwnerID"].Value); // <--- THIS LINE IS NEEDED!
+                var owner = new OwnerClass(
+                    dataGridViewOwner.CurrentRow.Cells["FirstName"].Value?.ToString(),
+                    dataGridViewOwner.CurrentRow.Cells["LastName"].Value?.ToString(),
+                    dataGridViewOwner.CurrentRow.Cells["Email"].Value?.ToString(),
+                    Convert.ToInt32(dataGridViewOwner.CurrentRow.Cells["Phone"].Value),
+                    dataGridViewOwner.CurrentRow.Cells["Adress"].Value?.ToString());
+
+                await _ownerService.UpdateOwnerAsync(owner, ownerId);
+                MessageBox.Show("Owner updated successfully");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error updating owner: {ex.Message}");
+                await LoadOwnersAsync(); // Refresh to revert any changes
+            }
+        }
+
+
+        private void buttonBack_Click(object sender, EventArgs e)
         {
             this.Hide();
             Main main = new Main();
             main.Show();
-        }
-
-        private void dataGridViewOwner_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

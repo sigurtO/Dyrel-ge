@@ -14,17 +14,21 @@ namespace WinFormsApp1.Objects
 
         public string Email { get; set; }
 
-        public int PhoneNumber { get; set; }
+        public int Phone { get; set; }
 
         public string Adress { get; set; }
 
-        public OwnerClass(string firstName, string lastName, string email, int phoneNumber, string adress)
+        public OwnerClass(string firstName, string lastName, string email, int phone, string adress)
         {
             FirstName = firstName;
             LastName = lastName;
             Email = email;
-            PhoneNumber = phoneNumber;
+            Phone = phone;
             Adress = adress;
+        }
+
+        public OwnerClass()
+        {
         }
     }
 }

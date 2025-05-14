@@ -13,7 +13,6 @@ namespace WinFormsApp1.DB.DbRead
     {
         public DbReadVet(string connectionString) : base(connectionString) { }
 
-        // retarded emil
         public async Task<DataTable> GetAllVetsAsync()
         {
             string query = @"SELECT 
