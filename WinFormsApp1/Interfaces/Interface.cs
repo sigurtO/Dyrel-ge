@@ -46,7 +46,7 @@ namespace WinFormsApp1.Interfaces
         Task<DataTable> CheckCageFromTreatmentDataAsync(int treatmentId);
 
         Task<DataTable> GetAllItemsDataAsync();
-        Task<int> CalculateTotalAmount(int ownerId, int consultationId, int treatmentId, int cageId, int itemId, int currentTotal);
+        Task<int> CalculateTotalAmount(int consultationId, int treatmentId, int cageId, int itemId, int currentTotal);
 
     }
 

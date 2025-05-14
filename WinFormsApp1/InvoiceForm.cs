@@ -80,22 +80,44 @@ namespace WinFormsApp1
                 comboBoxPetId.DisplayMember = "Name";
                 comboBoxPetId.ValueMember = "PetID";
 
-                DataTable consultations = await _invoiceService.GetConsultationFromPetDataAsync(ownerId);
-                comboBoxConsultationId.DataSource = consultations;
-                comboBoxConsultationId.ValueMember = "ConsultationID";
-                comboBoxConsultationId.DisplayMember = "Notes";
 
-                _currentTotal = await _invoiceService.CalculateTotalAmount(
-                    ownerId,
-                    consultations.Rows.Count > 0 ? Convert.ToInt32(consultations.Rows[0]["ConsultationID"]) : 0,
-                    0, 0, 0, _currentTotal);
-
-                textBoxTotalAmount.Text = _currentTotal.ToString();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error loading data: {ex.Message}");
             }
+        }
+
+        private async void comboBoxPetId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxPetId.SelectedValue == null || !(comboBoxPetId.SelectedValue is int petId) || petId <= 0)
+            {
+                comboBoxConsultationId.DataSource = null;
+                comboBoxTreatmentId.DataSource = null;
+                comboBoxCageId.DataSource = null;
+                return;
+            }
+            try
+            {
+                DataTable consultations = await _invoiceService.GetConsultationFromPetDataAsync(petId);
+                comboBoxConsultationId.DataSource = consultations;
+                comboBoxConsultationId.ValueMember = "ConsultationID";
+                comboBoxConsultationId.DisplayMember = "Notes";
+
+                _currentTotal = await _invoiceService.CalculateTotalAmount(
+                    consultations.Rows.Count > 0 ? Convert.ToInt32(consultations.Rows[0]["ConsultationID"]) : 0,
+                    0, 0, 0, _currentTotal);
+
+                textBoxTotalAmount.Text = _currentTotal.ToString();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
         }
 
         public async void comboBoxConsultationId_SelectedIndexChanged(object sender, EventArgs e)
@@ -115,7 +137,6 @@ namespace WinFormsApp1
                 comboBoxTreatmentId.ValueMember = "TreatmentID";
 
                 _currentTotal = await _invoiceService.CalculateTotalAmount(
-                    Convert.ToInt32(comboBoxOwnerId.SelectedValue),
                     consultationId,
                     treatment.Rows.Count > 0 ? Convert.ToInt32(treatment.Rows[0]["TreatmentID"]) : 0,
                     0, 0, _currentTotal);
@@ -144,7 +165,6 @@ namespace WinFormsApp1
                 comboBoxCageId.ValueMember = "CageID";
 
                 _currentTotal = await _invoiceService.CalculateTotalAmount(
-                    Convert.ToInt32(comboBoxOwnerId.SelectedValue),
                     Convert.ToInt32(comboBoxConsultationId.SelectedValue),
                     treatmentId,
                     cage.Rows.Count > 0 ? Convert.ToInt32(cage.Rows[0]["CageID"]) : 0,
@@ -167,7 +187,6 @@ namespace WinFormsApp1
             try
             {
                 _currentTotal = await _invoiceService.CalculateTotalAmount(
-                    comboBoxOwnerId.SelectedValue != null ? Convert.ToInt32(comboBoxOwnerId.SelectedValue) : 0,
                     comboBoxConsultationId.SelectedValue != null ? Convert.ToInt32(comboBoxConsultationId.SelectedValue) : 0,
                     comboBoxTreatmentId.SelectedValue != null ? Convert.ToInt32(comboBoxTreatmentId.SelectedValue) : 0,
                     comboBoxCageId.SelectedValue != null ? Convert.ToInt32(comboBoxCageId.SelectedValue) : 0,
@@ -180,7 +199,7 @@ namespace WinFormsApp1
                 MessageBox.Show($"Error calculating total: {ex.Message}");
             }
         }
-        
+
 
         public void CalculateNetAmount()
         {
@@ -251,7 +270,9 @@ namespace WinFormsApp1
             CalculateNetAmount();
 
         }
+
+       
     }
 }
 
-    
+

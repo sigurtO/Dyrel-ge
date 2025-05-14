@@ -133,13 +133,13 @@ namespace WinFormsApp1.Service
             }
         }
 
-        public async Task<int> CalculateTotalAmount(int ownerId, int consultationId, int treatmentId, int cageId, int itemId, int currentTotal)
+        public async Task<int> CalculateTotalAmount( int consultationId, int treatmentId, int cageId, int itemId, int currentTotal)
         {
             int total = currentTotal;
 
             if (consultationId > 0)
             {
-                DataTable consultation = await Program.dbServices.DbReadInvoice.GetConsultationFromPetAsync(ownerId);
+                DataTable consultation = await Program.dbServices.DbReadInvoice.GetConsultationFromPetAsync(consultationId);
                 if (consultation.Rows.Count > 0)
                 {
                     total += Convert.ToInt32(consultation.Rows[0]["Price"]);

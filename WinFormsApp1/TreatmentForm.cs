@@ -98,7 +98,41 @@ namespace WinFormsApp1
             }
         }
 
-        private async void buttonAddTreatment_Click(object sender, EventArgs e)
+
+        private async void buttonDeleteTreatment_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewTreatment.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select a treatment to delete");
+                return;
+            }
+
+            var treatmentId = (int)dataGridViewTreatment.SelectedRows[0].Cells["TreatmentID"].Value;
+
+            try
+            {
+                await _treatmentService.DeleteTreatmentAsync(treatmentId);
+                MessageBox.Show("Treatment deleted successfully");
+                await LoadTreatmentAsync(); // Refresh grid
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error deleting treatment: {ex.Message}");
+            }
+        }
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            //bruh dont double click it's not hard
+        }
+
+        private void buttonBackTreatment_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            Main main = new Main();
+            main.Show();
+        }
+
+        private async void buttonAddTreatment_Click_1(object sender, EventArgs e)
         {
             if (comboBoxTreatmentOwner.SelectedValue == null || comboBoxTreatmentPet.SelectedValue == null ||
                 comboBoxTreatmentVet.SelectedValue == null)
@@ -125,40 +159,6 @@ namespace WinFormsApp1
             {
                 MessageBox.Show($"Error adding treatment: {ex.Message}");
             }
-        }
-
-        private async void buttonDeleteTreatment_Click(object sender, EventArgs e)
-        {
-            if (dataGridViewTreatment.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Please select a treatment to delete");
-                return;
-            }
-
-            var treatmentId = (int)dataGridViewTreatment.SelectedRows[0].Cells["TreatmentID"].Value;
-
-            try
-            {
-                await _treatmentService.DeleteTreatmentAsync(treatmentId);
-                MessageBox.Show("Treatment deleted successfully");
-                await LoadTreatmentAsync(); // Refresh grid
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error deleting treatment: {ex.Message}");
-            }
-        }
-
-        private void buttonBackTreatment_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Main main = new Main();
-            main.Show();
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
