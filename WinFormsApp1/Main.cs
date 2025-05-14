@@ -15,12 +15,15 @@ namespace WinFormsApp1
     {
         private readonly Consultation _consultation;
         private readonly InvoiceForm _invoiceForm;
+
+        private readonly TreatmentForm _treatmentForm;
+        VetForm VetForm = new VetForm();
+        OwnerForm ownerForm = new OwnerForm();
+
         private readonly VetForm _vetForm;
         private readonly OwnerForm _ownerForm;
-
         VetForm VetForm = new VetForm();
-        //OwnerForm ownerForm = new OwnerForm();
-        TreatmentForm treatmentForm = new TreatmentForm();
+
         public Main()
         {
             InitializeComponent();
@@ -31,6 +34,15 @@ namespace WinFormsApp1
                                                                                         //Needs a parameter becuase interfacse but we put same thing twice??
             var invoiceService = new InvoiceService();
             _invoiceForm = new InvoiceForm(invoiceService, invoiceService);
+
+
+            
+
+
+            var treatmentService = new TreatmentService();
+            _treatmentForm = new TreatmentForm(treatmentService, treatmentService);
+
+
 
             var ownerService = new OwnerService();
             _ownerForm = new OwnerForm(ownerService, invoiceService);
@@ -62,7 +74,7 @@ namespace WinFormsApp1
 
         private void buttonTreatment_Click(object sender, EventArgs e)
         {
-            treatmentForm.Show();
+            _treatmentForm.Show();
             this.Hide();
         }
 
