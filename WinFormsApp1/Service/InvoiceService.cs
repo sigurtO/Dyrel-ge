@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WinFormsApp1.Interfaces;
+using WinFormsApp1.Objects;
 
 namespace WinFormsApp1.Service
 {
@@ -129,6 +130,23 @@ namespace WinFormsApp1.Service
             }
             catch (Exception)
             {
+                throw;
+            }
+        }
+
+        public async Task<DataTable> AddInvoiceAsync(int? treatmentID, int ownerID, int? consultationID, int petID, int? itemID, int? cageID, DateTime date, decimal? discount, decimal totalAmount, decimal netAmount)
+        {
+            try
+            {
+                var invoice = new InvoiceClass(treatmentID, ownerID, consultationID, petID, itemID, cageID, date, discount, totalAmount, netAmount);
+                await Program.dbServices.DbCreateInvoice.CreateInvoiceAsync(invoice);
+
+                // Return an empty DataTable or a meaningful result if required
+                return new DataTable();
+            }
+            catch (Exception ex)
+            {
+                // Handle or log the exception as needed
                 throw;
             }
         }

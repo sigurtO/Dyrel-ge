@@ -63,6 +63,8 @@ namespace WinFormsApp1.Interfaces
         Task<DataTable> GetTreatmentFromConsultationDataAsync(int consultationId);
         Task<DataTable> CheckCageFromTreatmentDataAsync(int treatmentId);
 
+        Task<DataTable> AddInvoiceAsync(int? treatmentID, int ownerID, int? consultationID, int petID, int? itemID, int? cageID, DateTime date, decimal? discount, decimal totalAmount, decimal netAmount);
+
         Task<DataTable> GetAllItemsDataAsync();
         Task<int> CalculateTotalAmount(int consultationId, int treatmentId, int cageId, int itemId, int currentTotal);
 
