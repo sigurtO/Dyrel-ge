@@ -16,7 +16,12 @@ namespace WinFormsApp1.DB.DbUpdate
 
         public async Task UpdateOwnerAsync(OwnerClass owner, int ownerId)
         {
-            string query = "UPDATE PetOwner SET FirstName=@FirstName, LastName=@LastName, Phone=@Phone, Email=@Email, Adress=@Adress WHERE OwnerID=@OwnerID";
+            string query = @"UPDATE PetOwner SET FirstName=@FirstName,
+                            LastName=@LastName,
+                            Phone=@Phone, 
+                            Email=@Email,
+                            Adress=@Adress
+                            WHERE OwnerID=@OwnerID";
             using (SqlConnection connection = CreateConnection())
             using (SqlCommand command = new SqlCommand(query, connection))
             {
