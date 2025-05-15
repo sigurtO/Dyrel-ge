@@ -7,39 +7,67 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormsApp1.Objects;
 using WinFormsApp1.Interfaces;
 using WinFormsApp1.Service;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 
 namespace WinFormsApp1
 {
     public partial class VetForm : Form
     {
-        private readonly VetService vetService = new VetService();
-        private readonly IVeterinarianService _veterinarianService;
-        public VetForm(IVeterinarianService veterinarianService, IOwnerRelated ownerRelated)
+        private readonly IVeterinarianService vetService;
+
+        public VetForm(IVeterinarianService vetService)
         {
-            _veterinarianService = veterinarianService;
             InitializeComponent();
+            this.vetService = vetService;
         }
+
         protected override async void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            await vetService.LoadVetsAsync(dataGridViewVets);
+            await LoadVetsAsync();
+        }
+
+        private async Task LoadVetsAsync()
+        {
+            try
+            {
+                dataGridViewVets.DataSource = await vetService.LoadVetsAsync();
+            }
+            catch (VetServiceException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private async void buttonAdd_Click(object sender, EventArgs e)
         {
-            await vetService.HandleAddVetAsync(
-                textBoxFirstName,
-                textBoxLastName,
-                textBoxUsername,
-                textBoxPassword,
-                textBoxSpeciale
-            );
-            await vetService.LoadVetsAsync(dataGridViewVets);
-            ClearForm();
+            try
+            {
+                var newVet = new VetClass(
+                    0,
+                    textBoxFirstName.Text,
+                    textBoxLastName.Text,
+                    textBoxUsername.Text,
+                    PasswordHelper.HashPassword(textBoxPassword.Text),
+                    textBoxSpeciale.Text
+                );
+
+                await vetService.AddVetAsync(newVet);
+                MessageBox.Show("Veterinarian added successfully!");
+
+                await LoadVetsAsync();
+                ClearForm();
+            }
+            catch (VetServiceException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
+
         private void ClearForm()
         {
             textBoxFirstName.Clear();
