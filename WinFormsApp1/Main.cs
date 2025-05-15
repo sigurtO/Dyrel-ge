@@ -20,7 +20,9 @@ namespace WinFormsApp1
 
         private readonly VetForm _vetForm;
         private readonly OwnerForm _ownerForm;
-       
+        
+        private readonly PetForm _petForm;
+
 
         public Main()
         {
@@ -41,6 +43,13 @@ namespace WinFormsApp1
             var ownerRelatedService = new OwnerService();
             _ownerForm = new OwnerForm(ownerService, invoiceService);
 
+
+
+
+
+            var petService = new PetService();
+            _petForm = new PetForm(invoiceService, petService);
+            
             var veterinarianService = new VetService();
             _vetForm = new VetForm(veterinarianService, consultationService);
 
@@ -89,6 +98,13 @@ namespace WinFormsApp1
         {
             _invoiceForm.Show();
             this.Hide();
+        }
+
+        private void CreatePet_Click(object sender, EventArgs e)
+        {
+            
+            _petForm.Show();
+            this.Hide(); // Hides the current form
         }
     }
 }

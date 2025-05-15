@@ -20,8 +20,9 @@ namespace WinFormsApp1.Interfaces
         //Task<DataTable> GetVeterinariansByPetAsync(int petId);
         Task AddConsultationAsync(int ownerId, int petId, int vetId, DateTime date, int price, string notes);
         Task DeleteConsultationAsync(int consultationId);
+
+
         Task UpdateConsultationAsync(ConsultationClass consultation, int consultationId);
-    }
 
     public interface IVeterinarianService
     {
@@ -47,18 +48,17 @@ namespace WinFormsApp1.Interfaces
         Task AddTreatmentAsync(int ownerId, int petDocId, int consultationId, int price, DateTime date, string notes, int petID);
         Task DeleteTreatmentAsync(int treatmentId); 
         Task UpdateTreatmentAsync(TreatmentClass treatment, int treatmentId);
+
     }
-    
 
-
-    //public interface IOwnerService
 
     public interface IOwnerRelated // multiple services will use this one interface
     {
         Task<DataTable> LoadOwnerDataAsync();
         Task<DataTable> GetPetsByOwnerAsync(int ownerId);
+
     }
-    
+
 
     public interface IInvoiceService
     {
@@ -74,11 +74,22 @@ namespace WinFormsApp1.Interfaces
 
     }
 
+
     public interface IOwnerService
     {
         Task AddOwnerAsync(OwnerClass owner);
         Task UpdateOwnerAsync(OwnerClass owner, int ownerId);
         Task<DataTable> LoadOwnerDataAsync();
+    }
+
+
+
+    public interface IPetService 
+    {   
+            Task<DataTable> LoadPetDataAsync();
+            Task AddPetAsync(PetClass pet);
+          
+ 
     }
 
 }

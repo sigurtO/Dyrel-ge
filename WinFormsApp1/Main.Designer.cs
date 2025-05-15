@@ -34,6 +34,7 @@
             buttonTreatment = new Button();
             buttonBackMain = new Button();
             buttonInvoice = new Button();
+            CreatePet = new Button();
             SuspendLayout();
             // 
             // buttonConsultation
@@ -101,11 +102,22 @@
             buttonInvoice.UseVisualStyleBackColor = true;
             buttonInvoice.Click += buttonInvoice_Click;
             // 
+            // CreatePet
+            // 
+            CreatePet.Location = new Point(199, 204);
+            CreatePet.Name = "CreatePet";
+            CreatePet.Size = new Size(94, 29);
+            CreatePet.TabIndex = 6;
+            CreatePet.Text = "Pet";
+            CreatePet.UseVisualStyleBackColor = true;
+            CreatePet.Click += CreatePet_Click;
+            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(914, 600);
+            Controls.Add(CreatePet);
             Controls.Add(buttonInvoice);
             Controls.Add(buttonBackMain);
             Controls.Add(buttonTreatment);
@@ -126,5 +138,6 @@
         private Button buttonTreatment;
         private Button buttonBackMain;
         private Button buttonInvoice;
+        private Button CreatePet;
     }
 }
