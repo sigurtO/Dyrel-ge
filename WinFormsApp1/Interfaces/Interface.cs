@@ -17,11 +17,22 @@ namespace WinFormsApp1.Interfaces
     public interface IConsultationService
     {
         Task<DataTable> LoadConsultationDataAsync();
-        Task<DataTable> GetVeterinariansByPetAsync(int petId);
+        //Task<DataTable> GetVeterinariansByPetAsync(int petId);
         Task AddConsultationAsync(int ownerId, int petId, int vetId, DateTime date, int price, string notes);
         Task DeleteConsultationAsync(int consultationId);
         Task UpdateConsultationAsync(ConsultationClass consultation, int consultationId);
     }
+
+    public interface IVeterinarianService
+    {
+        Task<DataTable> GetVeterinariansByPetAsync(int petId);
+
+
+
+
+    }
+
+
 
     
     public interface ITreatmentService

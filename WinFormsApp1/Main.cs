@@ -17,33 +17,37 @@ namespace WinFormsApp1
         private readonly InvoiceForm _invoiceForm;
 
         private readonly TreatmentForm _treatmentForm;
-        VetForm VetForm = new VetForm();
 
         private readonly VetForm _vetForm;
         private readonly OwnerForm _ownerForm;
+       
 
         public Main()
         {
             InitializeComponent();
 
 
+
             var consultationService = new ConsultationService();
-            _consultation = new Consultation(consultationService, consultationService); // I dont understand this but it works
-                                                                                        //Needs a parameter becuase interfacse but we put same thing twice??
+            _consultation = new Consultation(consultationService, consultationService, consultationService); // I dont understand this but it works
+                                                                                        //Needs a parameter becuase interfacse but we put same thing twice?? sometimes thre times?
             var invoiceService = new InvoiceService();
             _invoiceForm = new InvoiceForm(invoiceService, invoiceService);
 
 
-            
+            var ownerService = new OwnerService();
+            _ownerForm = new OwnerForm(ownerService, invoiceService);
 
+
+            var veterinarianService = new VetService();
+            _vetForm = new VetForm(veterinarianService, consultationService);
 
             var treatmentService = new TreatmentService();
             _treatmentForm = new TreatmentForm(treatmentService, treatmentService);
 
 
 
-            var ownerService = new OwnerService();
-            _ownerForm = new OwnerForm(ownerService, invoiceService);
+
         }
 
         private void buttonConsultation_Click(object sender, EventArgs e)
@@ -53,7 +57,7 @@ namespace WinFormsApp1
         }
         private void buttonVets_Click(object sender, EventArgs e)
         {
-            VetForm.Show();
+            _vetForm.Show();
             this.Hide();
         }
         private void buttonOwners_Click(object sender, EventArgs e)
