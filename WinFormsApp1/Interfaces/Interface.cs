@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WinFormsApp1.Objects;
 
 namespace WinFormsApp1.Interfaces
 {
@@ -37,14 +38,20 @@ namespace WinFormsApp1.Interfaces
     }
 
 
-
-
-
-
-
-    public interface IPetService
+    public interface IOwnerService
     {
-        Task<DataTable> LoadPetDataAsync();
+        Task AddOwnerAsync(OwnerClass owner);
+        Task UpdateOwnerAsync(OwnerClass owner, int ownerId);
+        Task<DataTable> LoadOwnerDataAsync();
+    }
+
+
+
+
+
+    public interface IPetService //doesnt work
+    {
+        Task<DataTable> LoadPetDataAsync(DataGridView gridView);
 
     }
 

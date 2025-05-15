@@ -10,7 +10,7 @@ using WinFormsApp1.Objects;
 
 namespace WinFormsApp1.Service
 {
-    public class PetService : IPetService
+    public class PetService
     {
         public async Task LoadPetDataAsync(DataGridView gridView)       //Load the data into the DataGridView
         {
