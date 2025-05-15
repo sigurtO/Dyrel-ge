@@ -1,66 +1,83 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormsApp1.Interfaces;
+using WinFormsApp1.Objects;
 using WinFormsApp1.Service;
-using WinFormsApp1;
 
 namespace WinFormsApp1
 {
-
     public partial class PetForm : Form
     {
-        private PetService petService = new PetService();
+        private readonly IOwnerRelated _ownerRelatedService;
+        private readonly IPetService _petService;
 
-        public PetForm()
+        public PetForm(IOwnerRelated ownerRelatedService, IPetService petService)
         {
+            _ownerRelatedService = ownerRelatedService;
+            _petService = petService;
             InitializeComponent();
+            InitializeAsync();
         }
-        protected override async void OnLoad(EventArgs e)
+
+        private async void InitializeAsync()
         {
-            base.OnLoad(e); // loads UI
-            try
-            {
-                await petService.LoadPetDataAsync(dataGridView1); // Load the data into the DataGridView
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Error:: Failed to load pets:");
-                dataGridView1.DataSource = null; // Clear the DataGridView
-            }
+            await LoadPetsAsync();
         }
 
-        private async void AddPetButton_Click(object sender, EventArgs e)
-        {
-            await PetService.HandleAddPetAsync(PetNameTextBox, PetNameTextBox, PetBreedTextBox, PetSpeciesTextBox, PetOwnerTextBoxID);
-            await PetService.LoadPetDataAsync(dataGridView1); // Refresh the DataGridView
-
-
-        }
-        public async void PetForm_Load(object sender, EventArgs e)
+        private async Task LoadPetsAsync()
         {
             try
             {
-                await petService.LoadPetDataAsync(dataGridView1); // Load the data into the DataGridView
+                dataGridView1.DataSource = await _petService.LoadPetDataAsync();
+                dataGridView1.Columns["PetID"].Visible = false; // Hide ID column
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Error:: Failed to load owners:");
-                dataGridView1.DataSource = null; // Clear the DataGridView
+                MessageBox.Show($"Error loading pets: {ex.Message}");
+                dataGridView1.DataSource = null;
+            }
+        }
+
+        private async void PetCreateButton_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(PetNameTextBox.Text) ||
+                string.IsNullOrWhiteSpace(PetBreedTextBox.Text) ||
+                string.IsNullOrWhiteSpace(PetOwnerTextBoxID.Text) ||
+                string.IsNullOrWhiteSpace(PetSpeciesTextBox.Text))
+            {
+                MessageBox.Show("All fields are required");
+                return;
             }
 
+            try
+            {
+                var newPet = new PetClass(
+                    Convert.ToInt32(PetOwnerTextBoxID.Text),
+                    Convert.ToInt32(PetDocIDTextBox.Text),
+                    PetNameTextBox.Text,
+                    petDateTimePicker.Value,
+                    PetSpeciesTextBox.Text,
+                    PetBreedTextBox.Text);
+
+                await _petService.AddPetAsync(newPet);
+                MessageBox.Show("Pet added successfully");
+                await LoadPetsAsync();
+
+                // Clear fields
+                PetNameTextBox.Clear();
+                PetBreedTextBox.Clear();
+                PetOwnerTextBoxID.Clear();
+                PetSpeciesTextBox.Clear();
+                PetDocIDTextBox.Clear();
+                petDateTimePicker.Value = DateTime.Now;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error adding pet: {ex.Message}");
+            }
         }
 
-        private void CreatePetButton(object sender, EventArgs e)
-        {
-            this.Hide();
-            Main main = new Main();
-            main.Show();
-        }
     }
 }

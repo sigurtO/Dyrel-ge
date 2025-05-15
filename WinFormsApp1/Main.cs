@@ -17,6 +17,7 @@ namespace WinFormsApp1
         private readonly InvoiceForm _invoiceForm;
         private readonly VetForm _vetForm;
         private readonly OwnerForm _ownerForm;
+        private readonly PetForm _petForm;
 
         VetForm VetForm = new VetForm();
         //OwnerForm ownerForm = new OwnerForm();
@@ -34,6 +35,15 @@ namespace WinFormsApp1
 
             var ownerService = new OwnerService();
             _ownerForm = new OwnerForm(ownerService, invoiceService);
+
+
+
+
+
+
+            var petService = new PetService();
+            _petForm = new PetForm(invoiceService, petService);
+
         }
 
         private void buttonConsultation_Click(object sender, EventArgs e)
@@ -74,8 +84,8 @@ namespace WinFormsApp1
 
         private void CreatePet_Click(object sender, EventArgs e)
         {
-            var petForm = new PetForm(); // Create a new instance
-            petForm.Show();
+            
+            _petForm.Show();
             this.Hide(); // Hides the current form
         }
     }

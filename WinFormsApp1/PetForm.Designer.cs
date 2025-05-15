@@ -51,10 +51,10 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(452, 44);
+            dataGridView1.Location = new Point(386, 44);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(300, 188);
+            dataGridView1.Size = new Size(402, 321);
             dataGridView1.TabIndex = 0;
             // 
             // label1
@@ -171,6 +171,7 @@
             PetCreateButton.TabIndex = 17;
             PetCreateButton.Text = "Create";
             PetCreateButton.UseVisualStyleBackColor = true;
+            PetCreateButton.Click += PetCreateButton_Click;
             // 
             // petDateTimePicker
             // 

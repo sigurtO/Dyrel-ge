@@ -64,6 +64,7 @@ namespace WinFormsApp1.Service
             DbCreateVet = new DbCreateVet(connectionString);
             DbCreateTreatment = new DbCreateTreatment(connectionString);
             DbCreateInvoice = new DbCreateInvoice(connectionString);
+            DbCreatePet = new DbCreatePet(connectionString);
             //Delete
             DbDeleteConsultation = new DbDeleteConsultation(connectionString);
 
