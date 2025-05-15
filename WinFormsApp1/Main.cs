@@ -38,12 +38,17 @@ namespace WinFormsApp1
             var ownerService = new OwnerService();
             _ownerForm = new OwnerForm(ownerService, invoiceService);
 
+            var ownerRelatedService = new OwnerService();
+            _ownerForm = new OwnerForm(ownerService, invoiceService);
 
             var veterinarianService = new VetService();
             _vetForm = new VetForm(veterinarianService, consultationService);
 
+            var veterinarianRelated = new VetService();
+            _vetForm = new VetForm(veterinarianService, invoiceService);
+
             var treatmentService = new TreatmentService();
-            _treatmentForm = new TreatmentForm(treatmentService, treatmentService);
+            _treatmentForm = new TreatmentForm(ownerRelatedService, ownerRelatedService);
 
 
 

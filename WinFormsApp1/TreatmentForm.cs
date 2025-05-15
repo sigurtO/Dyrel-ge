@@ -17,14 +17,25 @@ namespace WinFormsApp1
     {
         private readonly ITreatmentService _treatmentService;
         private readonly IOwnerRelated _ownerRelatedService;
+        private readonly IVetinarianRelated _veterianRelated;
+        private OwnerService ownerRelatedService1;
+        private OwnerService ownerRelatedService2;
 
-        public TreatmentForm(ITreatmentService treatmentService, IOwnerRelated ownerRelatedService)
+        public TreatmentForm(ITreatmentService treatmentService, IOwnerRelated ownerRelatedService, IVetinarianRelated vetinarianRelated)
         {
             _treatmentService = treatmentService;
             _ownerRelatedService = ownerRelatedService;
+            _veterianRelated = vetinarianRelated;
             InitializeComponent();
             InitializeAsync();
         }
+
+        public TreatmentForm(OwnerService ownerRelatedService1, OwnerService ownerRelatedService2)
+        {
+            this.ownerRelatedService1 = ownerRelatedService1;
+            this.ownerRelatedService2 = ownerRelatedService2;
+        }
+
         private async void InitializeAsync()
         {
             await LoadTreatmentAsync();
@@ -88,7 +99,7 @@ namespace WinFormsApp1
 
             try
             {
-                comboBoxTreatmentVet.DataSource = await _treatmentService.GetVeterinariansByPetAsync(petId);
+                comboBoxTreatmentVet.DataSource = await _veterianRelated.GetVeterinariansByPetAsync(petId);
                 comboBoxTreatmentVet.DisplayMember = "FirstName";
                 comboBoxTreatmentVet.ValueMember = "PetDocID";
             }
