@@ -4,56 +4,66 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WinFormsApp1.Interfaces;
 using WinFormsApp1.Objects;
+
 
 namespace WinFormsApp1.Service
 {
-    public class VetService
+    public class VetService : IVeterinarianService
     {
-            public async Task LoadVetsAsync(DataGridView gridView)
+        public async Task<DataTable> LoadVetsAsync()
+        {
+            try
             {
-                try
-                {
-                    DataTable vets = await Program.dbServices.DbReadVet.GetAllVetsAsync();
-                    gridView.DataSource = vets;
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Error: Failed to load veterinarians");
-                    gridView.DataSource = null;
-                }
+                return await Program.dbServices.DbReadVet.GetAllVetsAsync();
             }
-            public async Task HandleAddVetAsync(TextBox txtFirstName, TextBox txtLastName,
-                                          TextBox txtUsername, TextBox txtPassword,
-                                          TextBox txtThesis)
+            catch (Exception ex)
             {
-                if (string.IsNullOrWhiteSpace(txtFirstName.Text) ||
-                    string.IsNullOrWhiteSpace(txtUsername.Text) ||
-                    string.IsNullOrWhiteSpace(txtPassword.Text))
-                {
-                    MessageBox.Show("First name, username and password are required");
-                    return;
-                }
+                throw new VetServiceException("Failed to load veterinarians", ex);
+            }
+        }
 
-                string passwordHash = PasswordHelper.HashPassword(txtPassword.Text);
-
-                VetClass newVet = new VetClass(
-                     0,
-                txtFirstName.Text,
-                txtLastName.Text,
-                txtUsername.Text,
-                passwordHash,
-                txtThesis.Text
-            );
-
-                await Program.dbServices.DbCreateVet.CreateVetAsync(newVet);
-                MessageBox.Show("Veterinarian added successfully!");
+        public async Task AddVetAsync(VetClass vet)
+        {
+            if (vet == null)
+            {
+                throw new ArgumentNullException(nameof(vet));
             }
 
-            public async Task<VetClass> AuthenticateAsync(string username, string password)
+            if (string.IsNullOrWhiteSpace(vet.FirstName) ||
+                string.IsNullOrWhiteSpace(vet.Username) ||
+                string.IsNullOrWhiteSpace(vet.PasswordHash))
+            {
+                throw new VetServiceException("First name, username and password are required");
+            }
+
+            try
+            {
+                await Program.dbServices.DbCreateVet.CreateVetAsync(vet);
+            }
+            catch (Exception ex)
+            {
+                throw new VetServiceException("Failed to add veterinarian", ex);
+            }
+        }
+
+        public async Task<VetClass> AuthenticateAsync(string username, string password)
+        {
+            try
             {
                 return await Program.dbServices.DbReadVet.AuthenticateVetAsync(username, password);
+            }
+            catch (Exception ex)
+            {
+                throw new VetServiceException("Failed to authenticate veterinarian", ex);
             }
         }
     }
 
+    public class VetServiceException : Exception
+    {
+        public VetServiceException(string message) : base(message) { }
+        public VetServiceException(string message, Exception inner) : base(message, inner) { }
+    }
+}

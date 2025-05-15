@@ -80,22 +80,44 @@ namespace WinFormsApp1
                 comboBoxPetId.DisplayMember = "Name";
                 comboBoxPetId.ValueMember = "PetID";
 
-                DataTable consultations = await _invoiceService.GetConsultationFromPetDataAsync(ownerId);
-                comboBoxConsultationId.DataSource = consultations;
-                comboBoxConsultationId.ValueMember = "ConsultationID";
-                comboBoxConsultationId.DisplayMember = "Notes";
 
-                _currentTotal = await _invoiceService.CalculateTotalAmount(
-                    ownerId,
-                    consultations.Rows.Count > 0 ? Convert.ToInt32(consultations.Rows[0]["ConsultationID"]) : 0,
-                    0, 0, 0, _currentTotal);
-
-                textBoxTotalAmount.Text = _currentTotal.ToString();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error loading data: {ex.Message}");
             }
+        }
+
+        private async void comboBoxPetId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxPetId.SelectedValue == null || !(comboBoxPetId.SelectedValue is int petId) || petId <= 0)
+            {
+                comboBoxConsultationId.DataSource = null;
+                comboBoxTreatmentId.DataSource = null;
+                comboBoxCageId.DataSource = null;
+                return;
+            }
+            try
+            {
+                DataTable consultations = await _invoiceService.GetConsultationFromPetDataAsync(petId);
+                comboBoxConsultationId.DataSource = consultations;
+                comboBoxConsultationId.ValueMember = "ConsultationID";
+                comboBoxConsultationId.DisplayMember = "Notes";
+
+                _currentTotal = await _invoiceService.CalculateTotalAmount(
+                    consultations.Rows.Count > 0 ? Convert.ToInt32(consultations.Rows[0]["ConsultationID"]) : 0,
+                    0, 0, 0, _currentTotal);
+
+                textBoxTotalAmount.Text = _currentTotal.ToString();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
         }
 
         public async void comboBoxConsultationId_SelectedIndexChanged(object sender, EventArgs e)
@@ -115,7 +137,6 @@ namespace WinFormsApp1
                 comboBoxTreatmentId.ValueMember = "TreatmentID";
 
                 _currentTotal = await _invoiceService.CalculateTotalAmount(
-                    Convert.ToInt32(comboBoxOwnerId.SelectedValue),
                     consultationId,
                     treatment.Rows.Count > 0 ? Convert.ToInt32(treatment.Rows[0]["TreatmentID"]) : 0,
                     0, 0, _currentTotal);
@@ -144,7 +165,6 @@ namespace WinFormsApp1
                 comboBoxCageId.ValueMember = "CageID";
 
                 _currentTotal = await _invoiceService.CalculateTotalAmount(
-                    Convert.ToInt32(comboBoxOwnerId.SelectedValue),
                     Convert.ToInt32(comboBoxConsultationId.SelectedValue),
                     treatmentId,
                     cage.Rows.Count > 0 ? Convert.ToInt32(cage.Rows[0]["CageID"]) : 0,
@@ -167,7 +187,6 @@ namespace WinFormsApp1
             try
             {
                 _currentTotal = await _invoiceService.CalculateTotalAmount(
-                    comboBoxOwnerId.SelectedValue != null ? Convert.ToInt32(comboBoxOwnerId.SelectedValue) : 0,
                     comboBoxConsultationId.SelectedValue != null ? Convert.ToInt32(comboBoxConsultationId.SelectedValue) : 0,
                     comboBoxTreatmentId.SelectedValue != null ? Convert.ToInt32(comboBoxTreatmentId.SelectedValue) : 0,
                     comboBoxCageId.SelectedValue != null ? Convert.ToInt32(comboBoxCageId.SelectedValue) : 0,
@@ -180,7 +199,7 @@ namespace WinFormsApp1
                 MessageBox.Show($"Error calculating total: {ex.Message}");
             }
         }
-        
+
 
         public void CalculateNetAmount()
         {
@@ -203,26 +222,32 @@ namespace WinFormsApp1
             }
             try
             {
-                var invoice = new InvoiceClass.Invoice
-                {
-                    OwnerID = Convert.ToInt32(comboBoxOwnerId.SelectedValue),
-                    PetID = Convert.ToInt32(comboBoxPetId.SelectedValue),
-                    ConsultationID = comboBoxConsultationId.SelectedValue != null ?
-                        Convert.ToInt32(comboBoxConsultationId.SelectedValue) : (int?)null,
-                    TreatmentID = comboBoxTreatmentId.SelectedValue != null ?
-                        Convert.ToInt32(comboBoxTreatmentId.SelectedValue) : (int?)null,
-                    CageID = comboBoxCageId.SelectedValue != null ?
-                        Convert.ToInt32(comboBoxCageId.SelectedValue) : (int?)null,
-                    ItemID = comboBoxItemId.SelectedValue != null ?
-                        Convert.ToInt32(comboBoxItemId.SelectedValue) : (int?)null,
-                    Date = DateTime.Now,
-                    TotalAmount = Convert.ToDecimal(textBoxTotalAmount.Text),
-                    NetAmount = Convert.ToDecimal(textBoxNetAmount.Text),
-                    Discount = numericUpDownDiscount.Value > 0 ?
-                        numericUpDownDiscount.Value : (decimal?)null
+                var invoice = new InvoiceClass(
+                        comboBoxTreatmentId.SelectedValue != null ? (int?)Convert.ToInt32(comboBoxTreatmentId.SelectedValue) : null,
+                        Convert.ToInt32(comboBoxOwnerId.SelectedValue),
+                        comboBoxConsultationId.SelectedValue != null ? (int?)Convert.ToInt32(comboBoxConsultationId.SelectedValue) : null,
+                        Convert.ToInt32(comboBoxPetId.SelectedValue),
+                        comboBoxItemId.SelectedValue != null ? (int?)Convert.ToInt32(comboBoxItemId.SelectedValue) : null,
+                        comboBoxCageId.SelectedValue != null ? (int?)Convert.ToInt32(comboBoxCageId.SelectedValue) : null,
+                        DateTime.Now,
+                        numericUpDownDiscount.Value > 0 ? (decimal?)numericUpDownDiscount.Value : null,
+                        Convert.ToDecimal(textBoxTotalAmount.Text),
+                        Convert.ToDecimal(textBoxNetAmount.Text)
+                    );
 
-                };
-                await Program.dbServices.DbCreateInvoice.CreateInvoiceAsync(invoice);
+                await _invoiceService.AddInvoiceAsync(
+                    invoice.TreatmentID,
+                    invoice.OwnerID,
+                    invoice.ConsultationID,
+                    invoice.PetID,
+                    invoice.ItemID,
+                    invoice.CageID,
+                    invoice.Date,
+                    invoice.Discount,
+                    invoice.TotalAmount,
+                    invoice.NetAmount
+                );
+
                 MessageBox.Show("Invoice created successfully!");
                 await LoadInvoiceDataAsync();
                 ResetForm();
@@ -251,7 +276,9 @@ namespace WinFormsApp1
             CalculateNetAmount();
 
         }
+
+       
     }
 }
 
-    
+

@@ -8,14 +8,43 @@ using WinFormsApp1.Objects;
 
 namespace WinFormsApp1.Interfaces
 {
+
+
+    /*
+     Interfaces opdelt i flere interfaces for at gøre det mere overskueligt og nemmere at vedligeholde.
+     Så et interface pr objekt
+     */
     public interface IConsultationService
     {
         Task<DataTable> LoadConsultationDataAsync();
-        Task<DataTable> GetVeterinariansByPetAsync(int petId);
+        //Task<DataTable> GetVeterinariansByPetAsync(int petId);
         Task AddConsultationAsync(int ownerId, int petId, int vetId, DateTime date, int price, string notes);
         Task DeleteConsultationAsync(int consultationId);
 
+
         Task UpdateConsultationAsync(ConsultationClass consultation, int consultationId);
+
+    public interface IVeterinarianService
+    {
+
+        Task<DataTable> LoadVetsAsync();
+        Task AddVetAsync(VetClass vet);
+        Task<VetClass> AuthenticateAsync(string username, string password);
+
+
+    }
+
+
+
+    
+    public interface ITreatmentService
+    {
+        Task<DataTable> LoadTreatmentDataAsync(); // delete these two since Iownerrelated does it already
+        Task<DataTable> GetVeterinariansByPetAsync(int petId);
+        Task AddTreatmentAsync(int ownerId, int petDocId, int consultationId, int price, DateTime date, string notes, int petID);
+        Task DeleteTreatmentAsync(int treatmentId); 
+        Task UpdateTreatmentAsync(TreatmentClass treatment, int treatmentId);
+
     }
 
 
@@ -34,8 +63,10 @@ namespace WinFormsApp1.Interfaces
         Task<DataTable> GetTreatmentFromConsultationDataAsync(int consultationId);
         Task<DataTable> CheckCageFromTreatmentDataAsync(int treatmentId);
 
+        Task<DataTable> AddInvoiceAsync(int? treatmentID, int ownerID, int? consultationID, int petID, int? itemID, int? cageID, DateTime date, decimal? discount, decimal totalAmount, decimal netAmount);
+
         Task<DataTable> GetAllItemsDataAsync();
-        Task<int> CalculateTotalAmount(int ownerId, int consultationId, int treatmentId, int cageId, int itemId, int currentTotal);
+        Task<int> CalculateTotalAmount(int consultationId, int treatmentId, int cageId, int itemId, int currentTotal);
 
     }
 

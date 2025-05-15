@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WinFormsApp1.Interfaces;
+using WinFormsApp1.Objects;
 
 namespace WinFormsApp1.Service
 {
@@ -133,13 +134,30 @@ namespace WinFormsApp1.Service
             }
         }
 
-        public async Task<int> CalculateTotalAmount(int ownerId, int consultationId, int treatmentId, int cageId, int itemId, int currentTotal)
+        public async Task<DataTable> AddInvoiceAsync(int? treatmentID, int ownerID, int? consultationID, int petID, int? itemID, int? cageID, DateTime date, decimal? discount, decimal totalAmount, decimal netAmount)
+        {
+            try
+            {
+                var invoice = new InvoiceClass(treatmentID, ownerID, consultationID, petID, itemID, cageID, date, discount, totalAmount, netAmount);
+                await Program.dbServices.DbCreateInvoice.CreateInvoiceAsync(invoice);
+
+                // Return an empty DataTable or a meaningful result if required
+                return new DataTable();
+            }
+            catch (Exception ex)
+            {
+                // Handle or log the exception as needed
+                throw;
+            }
+        }
+
+        public async Task<int> CalculateTotalAmount( int consultationId, int treatmentId, int cageId, int itemId, int currentTotal)
         {
             int total = currentTotal;
 
             if (consultationId > 0)
             {
-                DataTable consultation = await Program.dbServices.DbReadInvoice.GetConsultationFromPetAsync(ownerId);
+                DataTable consultation = await Program.dbServices.DbReadInvoice.GetConsultationFromPetAsync(consultationId);
                 if (consultation.Rows.Count > 0)
                 {
                     total += Convert.ToInt32(consultation.Rows[0]["Price"]);

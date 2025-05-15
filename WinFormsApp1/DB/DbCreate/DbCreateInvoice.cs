@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WinFormsApp1.Objects;
 using static WinFormsApp1.Objects.InvoiceClass;
 
 namespace WinFormsApp1.DB.DbCreate
@@ -13,7 +14,7 @@ namespace WinFormsApp1.DB.DbCreate
     {
         public DbCreateInvoice(string connectionString) : base(connectionString) { }
 
-        public async Task CreateInvoiceAsync(Invoice invoice)
+        public async Task CreateInvoiceAsync(InvoiceClass invoice)
         {
             string query = @"INSERT INTO Invoice 
                             (OwnerID, ConsultationID, PetID, Date, TotalAmount, NetAmount,
