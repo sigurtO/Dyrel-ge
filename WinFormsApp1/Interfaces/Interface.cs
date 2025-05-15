@@ -32,13 +32,17 @@ namespace WinFormsApp1.Interfaces
 
     }
 
+    public interface IVetinarianRelated
+    {
+        Task<DataTable> GetVeterinariansByPetAsync(int petId);
 
+    }
 
     
     public interface ITreatmentService
     {
         Task<DataTable> LoadTreatmentDataAsync(); // delete these two since Iownerrelated does it already
-        Task<DataTable> GetVeterinariansByPetAsync(int petId);
+       // Task<DataTable> GetVeterinariansByPetAsync(int petId);
         Task AddTreatmentAsync(int ownerId, int petDocId, int consultationId, int price, DateTime date, string notes, int petID);
         Task DeleteTreatmentAsync(int treatmentId); 
         Task UpdateTreatmentAsync(TreatmentClass treatment, int treatmentId);
