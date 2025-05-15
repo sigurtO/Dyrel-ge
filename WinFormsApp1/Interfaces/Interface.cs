@@ -25,9 +25,10 @@ namespace WinFormsApp1.Interfaces
 
     public interface IVeterinarianService
     {
-        Task<DataTable> GetVeterinariansByPetAsync(int petId);
 
-
+        Task<DataTable> LoadVetsAsync();
+        Task AddVetAsync(VetClass vet);
+        Task<VetClass> AuthenticateAsync(string username, string password);
 
 
     }
