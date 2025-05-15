@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormsApp1.Interfaces;
 using WinFormsApp1.Service;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -15,9 +16,10 @@ namespace WinFormsApp1
     public partial class VetForm : Form
     {
         private readonly VetService vetService = new VetService();
-
-        public VetForm()
+        private readonly IVeterinarianService _veterinarianService;
+        public VetForm(IVeterinarianService veterinarianService, IOwnerRelated ownerRelated)
         {
+            _veterinarianService = veterinarianService;
             InitializeComponent();
         }
         protected override async void OnLoad(EventArgs e)

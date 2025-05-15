@@ -4,56 +4,73 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WinFormsApp1.Interfaces;
 using WinFormsApp1.Objects;
 
 namespace WinFormsApp1.Service
 {
-    public class VetService
+    public class VetService : IVeterinarianService
     {
-            public async Task LoadVetsAsync(DataGridView gridView)
+        public async Task LoadVetsAsync(DataGridView gridView)
+        {
+            try
             {
-                try
-                {
-                    DataTable vets = await Program.dbServices.DbReadVet.GetAllVetsAsync();
-                    gridView.DataSource = vets;
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Error: Failed to load veterinarians");
-                    gridView.DataSource = null;
-                }
+                DataTable vets = await Program.dbServices.DbReadVet.GetAllVetsAsync();
+                gridView.DataSource = vets;
             }
-            public async Task HandleAddVetAsync(TextBox txtFirstName, TextBox txtLastName,
-                                          TextBox txtUsername, TextBox txtPassword,
-                                          TextBox txtThesis)
+            catch (Exception)
             {
-                if (string.IsNullOrWhiteSpace(txtFirstName.Text) ||
-                    string.IsNullOrWhiteSpace(txtUsername.Text) ||
-                    string.IsNullOrWhiteSpace(txtPassword.Text))
-                {
-                    MessageBox.Show("First name, username and password are required");
-                    return;
-                }
-
-                string passwordHash = PasswordHelper.HashPassword(txtPassword.Text);
-
-                VetClass newVet = new VetClass(
-                     0,
-                txtFirstName.Text,
-                txtLastName.Text,
-                txtUsername.Text,
-                passwordHash,
-                txtThesis.Text
-            );
-
-                await Program.dbServices.DbCreateVet.CreateVetAsync(newVet);
-                MessageBox.Show("Veterinarian added successfully!");
+                MessageBox.Show("Error: Failed to load veterinarians");
+                gridView.DataSource = null;
+            }
+        }
+        public async Task HandleAddVetAsync(TextBox txtFirstName, TextBox txtLastName,
+                                      TextBox txtUsername, TextBox txtPassword,
+                                      TextBox txtThesis)
+        {
+            if (string.IsNullOrWhiteSpace(txtFirstName.Text) ||
+                string.IsNullOrWhiteSpace(txtUsername.Text) ||
+                string.IsNullOrWhiteSpace(txtPassword.Text))
+            {
+                MessageBox.Show("First name, username and password are required");
+                return;
             }
 
-            public async Task<VetClass> AuthenticateAsync(string username, string password)
+            string passwordHash = PasswordHelper.HashPassword(txtPassword.Text);
+
+            VetClass newVet = new VetClass(
+                 0,
+            txtFirstName.Text,
+            txtLastName.Text,
+            txtUsername.Text,
+            passwordHash,
+            txtThesis.Text
+        );
+
+            await Program.dbServices.DbCreateVet.CreateVetAsync(newVet);
+            MessageBox.Show("Veterinarian added successfully!");
+        }
+
+        public async Task<VetClass> AuthenticateAsync(string username, string password)
+        {
+            return await Program.dbServices.DbReadVet.AuthenticateVetAsync(username, password);
+        }
+
+
+        public async Task<DataTable> GetVeterinariansByPetAsync(int petId)
+        {
+            if (petId <= 0) return null;
+            try
             {
-                return await Program.dbServices.DbReadVet.AuthenticateVetAsync(username, password);
+                return await Program.dbServices.DbReadConsultation.GetVeterinariansByPetAsync(petId);
+            }
+            catch (Exception ex)
+            {
+                throw new ConsultationServiceException($"Failed to load vets for pet {petId}", ex);
+
+
+
             }
         }
     }
-
+}
