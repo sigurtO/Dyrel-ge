@@ -8,6 +8,12 @@ using WinFormsApp1.Objects;
 
 namespace WinFormsApp1.Interfaces
 {
+
+
+    /*
+     Interfaces opdelt i flere interfaces for at gøre det mere overskueligt og nemmere at vedligeholde.
+     Så et interface pr objekt
+     */
     public interface IConsultationService
     {
         Task<DataTable> LoadConsultationDataAsync();
