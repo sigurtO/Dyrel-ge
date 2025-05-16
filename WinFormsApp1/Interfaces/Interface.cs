@@ -20,9 +20,8 @@ namespace WinFormsApp1.Interfaces
         //Task<DataTable> GetVeterinariansByPetAsync(int petId);
         Task AddConsultationAsync(int ownerId, int petId, int vetId, DateTime date, int price, string notes);
         Task DeleteConsultationAsync(int consultationId);
-
-
         Task UpdateConsultationAsync(ConsultationClass consultation, int consultationId);
+    }
 
     public interface IVeterinarianService
     {
@@ -30,14 +29,11 @@ namespace WinFormsApp1.Interfaces
         Task<DataTable> LoadVetsAsync();
         Task AddVetAsync(VetClass vet);
         Task<VetClass> AuthenticateAsync(string username, string password);
-
-
     }
 
     public interface IVetinarianRelated
     {
         Task<DataTable> GetVeterinariansByPetAsync(int petId);
-
     }
 
     
@@ -88,8 +84,6 @@ namespace WinFormsApp1.Interfaces
     {   
             Task<DataTable> LoadPetDataAsync();
             Task AddPetAsync(PetClass pet);
-          
- 
     }
 
 }

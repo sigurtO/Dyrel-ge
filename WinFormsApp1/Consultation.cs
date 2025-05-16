@@ -19,14 +19,14 @@ namespace WinFormsApp1
     {
         private readonly IConsultationService _consultationService;
         private readonly IOwnerRelated _ownerRelatedService;
-        private readonly IVeterinarianService _veterinarianService;
+        private readonly IVetinarianRelated _veterinarianRelatedService;
 
 
-        public Consultation(IConsultationService consultationService, IOwnerRelated ownerRelatedService, IVeterinarianService veterinarianService)
+        public Consultation(IConsultationService consultationService, IOwnerRelated ownerRelatedService, IVetinarianRelated veterinarianRelatedService)
         {
             _consultationService = consultationService;
             _ownerRelatedService = ownerRelatedService;
-            _veterinarianService = veterinarianService;
+            _veterinarianRelatedService = veterinarianRelatedService;
             InitializeComponent();
             InitializeAsync();
         }
@@ -97,7 +97,7 @@ namespace WinFormsApp1
 
             try
             {
-                comboBoxVet.DataSource = await _veterinarianService.GetVeterinariansByPetAsync(petId);
+                comboBoxVet.DataSource = await _veterinarianRelatedService.GetVeterinariansByPetAsync(petId);
                 comboBoxVet.DisplayMember = "FirstName";
                 comboBoxVet.ValueMember = "PetDocID";
             }
