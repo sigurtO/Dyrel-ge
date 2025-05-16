@@ -16,12 +16,12 @@ namespace WinFormsApp1.Service
     public class ConsultationService : IConsultationService, IOwnerRelated, IVetinarianRelated
     {
   
-        private readonly DbService _dbService;
+        //private readonly DbService _dbService;
 
-        public ConsultationService(DbService dbService)
-        {
-            _dbService = dbService;
-        }
+        //public ConsultationService(DbService dbService)
+        //{
+        //    _dbService = dbService;
+        //}
 
         public async Task<DataTable> LoadConsultationDataAsync()
         {
