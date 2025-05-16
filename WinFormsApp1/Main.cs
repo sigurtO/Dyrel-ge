@@ -45,8 +45,6 @@ namespace WinFormsApp1
 
 
 
-
-
             var petService = new PetService();
             _petForm = new PetForm(invoiceService, petService);
             
@@ -57,7 +55,7 @@ namespace WinFormsApp1
             _vetForm = new VetForm(veterinarianService);
 
             var treatmentService = new TreatmentService();
-            _treatmentForm = new TreatmentForm(ownerRelatedService, ownerRelatedService);
+            _treatmentForm = new TreatmentForm(treatmentService, invoiceService, consultationService);
 
 
 

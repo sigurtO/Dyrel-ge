@@ -30,11 +30,6 @@ namespace WinFormsApp1
             InitializeAsync();
         }
 
-        public TreatmentForm(OwnerService ownerRelatedService1, OwnerService ownerRelatedService2)
-        {
-            this.ownerRelatedService1 = ownerRelatedService1;
-            this.ownerRelatedService2 = ownerRelatedService2;
-        }
 
         private async void InitializeAsync()
         {

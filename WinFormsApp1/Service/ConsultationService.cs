@@ -15,7 +15,6 @@ namespace WinFormsApp1.Service
 {
     public class ConsultationService : IConsultationService, IOwnerRelated, IVetinarianRelated
     {
-  
 
         public async Task<DataTable> LoadConsultationDataAsync()
         {
@@ -23,7 +22,7 @@ namespace WinFormsApp1.Service
             {
                 return await Program.dbServices.DbReadConsultation.ShowAllConsultationsAsync();
             } //Program.DbReadConsultation.ShowAllConsultationsAsync();
-            catch (Exception ex)
+            catch (Exception ex)    
             {
                 throw new ConsultationServiceException("Failed to load consultations", ex);
             }
@@ -31,8 +30,6 @@ namespace WinFormsApp1.Service
          
         }
 
-
-   
         public async Task<DataTable> LoadOwnerDataAsync()     // load owners into ComboBOx
         {
             try
