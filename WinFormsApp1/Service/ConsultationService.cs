@@ -16,6 +16,12 @@ namespace WinFormsApp1.Service
     public class ConsultationService : IConsultationService, IOwnerRelated, IVetinarianRelated
     {
   
+        private readonly DbService _dbService;
+
+        public ConsultationService(DbService dbService)
+        {
+            _dbService = dbService;
+        }
 
         public async Task<DataTable> LoadConsultationDataAsync()
         {
@@ -31,8 +37,6 @@ namespace WinFormsApp1.Service
          
         }
 
-
-   
         public async Task<DataTable> LoadOwnerDataAsync()     // load owners into ComboBOx
         {
             try
