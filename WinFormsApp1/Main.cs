@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormsApp1.Interfaces;
 using WinFormsApp1.Service;
 
 namespace WinFormsApp1
@@ -44,9 +45,13 @@ namespace WinFormsApp1
             _ownerForm = new OwnerForm(ownerService, invoiceService);
 
 
-
             var petService = new PetService();
-            _petForm = new PetForm(invoiceService, petService);
+            _petForm = new PetForm(petService, petService);
+
+            var petLoadRelated = new PetService();
+            _petForm = new PetForm(petLoadRelated, petService);
+
+
             
             var veterinarianService = new VetService();
             _vetForm = new VetForm(veterinarianService);
