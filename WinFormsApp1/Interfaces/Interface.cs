@@ -36,6 +36,14 @@ namespace WinFormsApp1.Interfaces
         Task<DataTable> GetVeterinariansByPetAsync(int petId);
     }
 
+    public interface IPetLoadComboBoxRelated //The specific methods for the pet class to load 
+    {
+        Task<DataTable> LoadVetsDataAsync();
+        Task<DataTable> LoadOwnerDataAsync();
+    }
+
+
+
     
     public interface ITreatmentService
     {
@@ -84,6 +92,12 @@ namespace WinFormsApp1.Interfaces
     {   
             Task<DataTable> LoadPetDataAsync();
             Task AddPetAsync(PetClass pet);
+    }
+
+
+    public interface IPetRelated
+    {
+
     }
 
 }
