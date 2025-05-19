@@ -10,19 +10,8 @@ namespace WinFormsApp1.Tests
         [TestMethod]
         public void InvoiceClass_Properties_SetCorrectly()
         {
-            var invoice = new InvoiceClass.Invoice
-            {
-                OwnerID = 1,
-                PetID = 2,
-                ConsultationID = 3,
-                TreatmentID = 4,
-                CageID = 5,
-                ItemID = 6,
-                Date = DateTime.Now,
-                TotalAmount = 100.50m,
-                NetAmount = 90.45m,
-                Discount = 10.05m
-            };
+            var invoice = new InvoiceClass(4, 1, 3, 2, 6, 5, DateTime.Now, 10.05m, 100.50m, 90.45m);
+  
 
             Assert.AreEqual(1, invoice.OwnerID);
             Assert.AreEqual(2, invoice.PetID);
