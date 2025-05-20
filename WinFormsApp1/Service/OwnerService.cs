@@ -2,6 +2,7 @@
 using System.Data;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormsApp1.DB;
 using WinFormsApp1.Interfaces;
 using WinFormsApp1.Objects;
 
@@ -34,6 +35,20 @@ namespace WinFormsApp1.Service
             }
         }
 
+
+        //Add owner EFC
+        public async Task AddOwnerAsyncEFC(OwnerClass owner)
+        {
+            try
+            {
+                await Program.dbServices.DbCreateOwner.AddOwnerWithEFCAsync(owner);
+            }
+            catch (Exception ex)
+            {
+                throw new OwnerServiceException("Failed to add owner using EF Core", ex);
+            }
+        }
+
         public async Task UpdateOwnerAsync(OwnerClass owner, int ownerId)
         {
             try
@@ -45,12 +60,8 @@ namespace WinFormsApp1.Service
                 throw new OwnerServiceException($"Failed to update owner {ownerId}", ex);
             }
         }
-
-        // Missing from original code - add this to fulfill interface
-      
     }
 
-    // Add custom exception class
     public class OwnerServiceException : Exception
     {
         public OwnerServiceException(string message, Exception inner)

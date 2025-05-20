@@ -84,6 +84,7 @@ namespace WinFormsApp1.Interfaces
         Task AddOwnerAsync(OwnerClass owner);
         Task UpdateOwnerAsync(OwnerClass owner, int ownerId);
         Task<DataTable> LoadOwnerDataAsync();
+        Task AddOwnerAsyncEFC(OwnerClass owner);
     }
 
 

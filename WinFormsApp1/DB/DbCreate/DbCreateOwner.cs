@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using WinFormsApp1.Objects;
 
 namespace WinFormsApp1.DB.DbCreate
@@ -28,5 +29,21 @@ namespace WinFormsApp1.DB.DbCreate
                 await command.ExecuteNonQueryAsync();
             }
         }
+        public async Task AddOwnerWithEFCAsync(OwnerClass owner)
+        {
+            try
+            {
+                using (var context = new WinformDbContext(ConnectionString))
+                {
+                    context.PetOwners.Add(owner);
+                    await context.SaveChangesAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Database error while adding owner: {ex.Message}", ex);
+            }
+        }
+
     }
 }

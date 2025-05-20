@@ -114,5 +114,36 @@ namespace WinFormsApp1
             Main main = new Main();
             main.Show();
         }
+
+        private async void AddOwnerEFCButton_Click(object sender, EventArgs e)
+        {
+
+            if (string.IsNullOrWhiteSpace(textBoxFirstName.Text) || string.IsNullOrWhiteSpace(textBoxLastName.Text))
+            {
+                MessageBox.Show("First name and last name are required");
+                return;
+            }
+            try
+            {
+
+                var newOwner = new OwnerClass(textBoxFirstName.Text, textBoxLastName.Text, textBoxEmail.Text, Convert.ToInt32(textBoxPhone.Text), textBoxAdress.Text);
+
+                await _ownerService.AddOwnerAsyncEFC(newOwner); // Call EF Core version
+                MessageBox.Show("Owner added successfully using EF Core");
+                await LoadOwnersAsync(); // Refresh grid
+
+                // Clear input fields
+                textBoxFirstName.Clear();
+                textBoxLastName.Clear();
+                textBoxPhone.Clear();
+                textBoxEmail.Clear();
+                textBoxAdress.Clear();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Error adding owner with EF Core: {ex.Message}");
+            }
+        }
     }
 }
