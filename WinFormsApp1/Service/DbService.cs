@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using WinFormsApp1.DB;
 using WinFormsApp1.DB.DbCreate;
 using WinFormsApp1.DB.DbDelete;
 using WinFormsApp1.DB.DbRead;
@@ -44,6 +47,8 @@ namespace WinFormsApp1.Service
         public DbUpdateTreatment DbUpdateTreatment { get; }
         public DbUpdateOwner DbUpdateOwner { get; }
 
+        //Entity Frame Work (owner)
+        public WinformDbContext DbContext { get; }
 
         public DbService(string connectionString)
         {
@@ -71,6 +76,9 @@ namespace WinFormsApp1.Service
             DbUpdateConsultation = new DbUpdateConsultation(connectionString);
             DbUpdateTreatment = new DbUpdateTreatment(connectionString);
             DbUpdateOwner = new DbUpdateOwner(connectionString);
+
+            //Entity Frame Work (owner)
+            DbContext = new WinformDbContext(connectionString);
         }
 
        

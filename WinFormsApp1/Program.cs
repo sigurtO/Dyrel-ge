@@ -14,7 +14,8 @@ namespace WinFormsApp1
         static void Main()
         {
 
-            string connectionString = "Data Source=SQL6032.site4now.net;Initial Catalog=db_ab8928_vet;User Id=db_ab8928_vet_admin;Password=Admin1234";
+            string connectionString = "Server=SQL6032.site4now.net;Database=db_ab8928_vet;User Id=db_ab8928_vet_admin;Password=Admin1234;TrustServerCertificate=True;";
+
 
             dbServices = new DbService(connectionString);
 

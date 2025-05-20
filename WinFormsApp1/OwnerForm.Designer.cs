@@ -41,6 +41,7 @@
             EmailLabel = new Label();
             button1 = new Button();
             dataGridViewOwner = new DataGridView();
+            AddOwnerEFCButton = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewOwner).BeginInit();
             SuspendLayout();
             // 
@@ -152,11 +153,22 @@
             dataGridViewOwner.TabIndex = 13;
             dataGridViewOwner.CellEndEdit += dataGridView_CellEndEditOwner;
             // 
+            // AddOwnerEFCButton
+            // 
+            AddOwnerEFCButton.Location = new Point(141, 234);
+            AddOwnerEFCButton.Name = "AddOwnerEFCButton";
+            AddOwnerEFCButton.Size = new Size(100, 23);
+            AddOwnerEFCButton.TabIndex = 14;
+            AddOwnerEFCButton.Text = "CreateEFC";
+            AddOwnerEFCButton.UseVisualStyleBackColor = true;
+            AddOwnerEFCButton.Click += AddOwnerEFCButton_Click;
+            // 
             // OwnerForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(AddOwnerEFCButton);
             Controls.Add(dataGridViewOwner);
             Controls.Add(button1);
             Controls.Add(EmailLabel);
@@ -192,5 +204,6 @@
         private Label EmailLabel;
         private Button button1;
         private DataGridView dataGridViewOwner;
+        private Button AddOwnerEFCButton;
     }
 }
