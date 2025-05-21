@@ -189,7 +189,7 @@ namespace WinFormsApp1.Service
                 DataTable item = await Program.dbServices.DbReadInvoice.GetAllItemsAsync();
                 if (item.Rows.Count > 0)
                 {
-                    total += Convert.ToInt32(item.Rows[0]["Amount"]); // amount is price got lazy no name change
+                    total += Convert.ToInt32(item.Rows[0]["Price"]);
                 }
             }
 
