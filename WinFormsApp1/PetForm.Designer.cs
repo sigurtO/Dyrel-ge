@@ -45,6 +45,7 @@
             petDateTimePicker = new DateTimePicker();
             comboBoxPetOwnerID = new ComboBox();
             comboBoxPetDocID = new ComboBox();
+            buttonBackPet = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -188,11 +189,22 @@
             comboBoxPetDocID.Size = new Size(121, 23);
             comboBoxPetDocID.TabIndex = 20;
             // 
+            // buttonBackPet
+            // 
+            buttonBackPet.Location = new Point(22, 338);
+            buttonBackPet.Name = "buttonBackPet";
+            buttonBackPet.Size = new Size(75, 23);
+            buttonBackPet.TabIndex = 21;
+            buttonBackPet.Text = "Back";
+            buttonBackPet.UseVisualStyleBackColor = true;
+            buttonBackPet.Click += buttonBackPet_Click;
+            // 
             // PetForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(700, 338);
+            ClientSize = new Size(870, 373);
+            Controls.Add(buttonBackPet);
             Controls.Add(comboBoxPetDocID);
             Controls.Add(comboBoxPetOwnerID);
             Controls.Add(petDateTimePicker);
@@ -236,5 +248,6 @@
         private DateTimePicker petDateTimePicker;
         private ComboBox comboBoxPetOwnerID;
         private ComboBox comboBoxPetDocID;
+        private Button buttonBackPet;
     }
 }

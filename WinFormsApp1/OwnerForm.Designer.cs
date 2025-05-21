@@ -93,7 +93,7 @@
             // FirstNameLabel
             // 
             FirstNameLabel.AutoSize = true;
-            FirstNameLabel.Location = new Point(27, 22);
+            FirstNameLabel.Location = new Point(27, 34);
             FirstNameLabel.Name = "FirstNameLabel";
             FirstNameLabel.Size = new Size(62, 15);
             FirstNameLabel.TabIndex = 6;
@@ -102,7 +102,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(141, 22);
+            label1.Location = new Point(141, 34);
             label1.Name = "label1";
             label1.Size = new Size(63, 15);
             label1.TabIndex = 7;
@@ -111,7 +111,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(27, 93);
+            label2.Location = new Point(27, 108);
             label2.Name = "label2";
             label2.Size = new Size(88, 15);
             label2.TabIndex = 8;
@@ -120,7 +120,7 @@
             // AdressLabel
             // 
             AdressLabel.AutoSize = true;
-            AdressLabel.Location = new Point(141, 93);
+            AdressLabel.Location = new Point(141, 108);
             AdressLabel.Name = "AdressLabel";
             AdressLabel.Size = new Size(42, 15);
             AdressLabel.TabIndex = 9;

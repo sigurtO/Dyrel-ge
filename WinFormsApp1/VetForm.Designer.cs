@@ -46,10 +46,10 @@
             // 
             // buttonAdd
             // 
-            buttonAdd.Location = new Point(179, 128);
-            buttonAdd.Margin = new Padding(2, 2, 2, 2);
+            buttonAdd.Location = new Point(198, 198);
+            buttonAdd.Margin = new Padding(2);
             buttonAdd.Name = "buttonAdd";
-            buttonAdd.Size = new Size(78, 20);
+            buttonAdd.Size = new Size(75, 23);
             buttonAdd.TabIndex = 0;
             buttonAdd.Text = "Add";
             buttonAdd.UseVisualStyleBackColor = true;
@@ -58,11 +58,11 @@
             // dataGridViewVets
             // 
             dataGridViewVets.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewVets.Location = new Point(274, 13);
-            dataGridViewVets.Margin = new Padding(2, 2, 2, 2);
+            dataGridViewVets.Location = new Point(198, 13);
+            dataGridViewVets.Margin = new Padding(2);
             dataGridViewVets.Name = "dataGridViewVets";
             dataGridViewVets.RowHeadersWidth = 62;
-            dataGridViewVets.Size = new Size(252, 135);
+            dataGridViewVets.Size = new Size(328, 181);
             dataGridViewVets.TabIndex = 1;
             // 
             // labelFirstName
@@ -78,7 +78,7 @@
             // textBoxFirstName
             // 
             textBoxFirstName.Location = new Point(8, 22);
-            textBoxFirstName.Margin = new Padding(2, 2, 2, 2);
+            textBoxFirstName.Margin = new Padding(2);
             textBoxFirstName.Name = "textBoxFirstName";
             textBoxFirstName.Size = new Size(106, 23);
             textBoxFirstName.TabIndex = 4;
@@ -96,7 +96,7 @@
             // textBoxLastName
             // 
             textBoxLastName.Location = new Point(8, 59);
-            textBoxLastName.Margin = new Padding(2, 2, 2, 2);
+            textBoxLastName.Margin = new Padding(2);
             textBoxLastName.Name = "textBoxLastName";
             textBoxLastName.Size = new Size(106, 23);
             textBoxLastName.TabIndex = 6;
@@ -114,7 +114,7 @@
             // textBoxUsername
             // 
             textBoxUsername.Location = new Point(8, 97);
-            textBoxUsername.Margin = new Padding(2, 2, 2, 2);
+            textBoxUsername.Margin = new Padding(2);
             textBoxUsername.Name = "textBoxUsername";
             textBoxUsername.Size = new Size(106, 23);
             textBoxUsername.TabIndex = 8;
@@ -132,7 +132,7 @@
             // textBoxPassword
             // 
             textBoxPassword.Location = new Point(8, 134);
-            textBoxPassword.Margin = new Padding(2, 2, 2, 2);
+            textBoxPassword.Margin = new Padding(2);
             textBoxPassword.Name = "textBoxPassword";
             textBoxPassword.Size = new Size(106, 23);
             textBoxPassword.TabIndex = 10;
@@ -150,7 +150,7 @@
             // textBoxSpeciale
             // 
             textBoxSpeciale.Location = new Point(8, 171);
-            textBoxSpeciale.Margin = new Padding(2, 2, 2, 2);
+            textBoxSpeciale.Margin = new Padding(2);
             textBoxSpeciale.Name = "textBoxSpeciale";
             textBoxSpeciale.Size = new Size(106, 23);
             textBoxSpeciale.TabIndex = 12;
@@ -183,7 +183,7 @@
             Controls.Add(labelFirstName);
             Controls.Add(dataGridViewVets);
             Controls.Add(buttonAdd);
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "VetForm";
             Text = "VetForm";
             ((System.ComponentModel.ISupportInitialize)dataGridViewVets).EndInit();
