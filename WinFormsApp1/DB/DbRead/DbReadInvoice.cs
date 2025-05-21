@@ -77,7 +77,7 @@ namespace WinFormsApp1.DB.DbRead //HAVE TO ADD DELETE TO INVOICE OR YOU CANT DEL
 
         public async Task<DataTable> GetAllItemsAsync()
         {
-            string query = "SELECT ItemID, Name, Amount FROM Item";
+            string query = "SELECT ItemID, Name, Price FROM Item";
             DataTable dataTable = new DataTable();
             using (SqlConnection connection = CreateConnection())
             {
