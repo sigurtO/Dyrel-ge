@@ -23,8 +23,7 @@ namespace WinFormsApp1.Service
         public DbReadLogin DbReadLogin { get; }
         public DbReadInvoice DbReadInvoice { get; }
         public DbReadPet DbReadPet { get; } 
-
-
+        public DbReadItems DbReadItems { get; }
 
 
         public DbReadTreatment DbReadTreatment { get; }
@@ -59,7 +58,8 @@ namespace WinFormsApp1.Service
             DbReadTreatment = new DbReadTreatment(connectionString);
             DbReadLogin = new DbReadLogin(connectionString);
             DbReadInvoice = new DbReadInvoice(connectionString);
-            DbReadPet = new DbReadPet(connectionString);   
+            DbReadPet = new DbReadPet(connectionString);
+            DbReadItems = new DbReadItems(connectionString);
             
             //Create
             DbCreateConsultation = new DbCreateConsultation(connectionString);

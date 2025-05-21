@@ -95,6 +95,11 @@ namespace WinFormsApp1.Interfaces
             Task AddPetAsync(PetClass pet);
     }
 
+    public interface IitemService
+    {
+        Task<DataTable> LoadItemDataAsync();
+        void ExportToTextFile(DataGridView dataGridView, string filePath);
+    }
 
     public interface IPetRelated
     {
