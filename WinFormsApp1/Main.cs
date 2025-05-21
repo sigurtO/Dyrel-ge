@@ -21,8 +21,9 @@ namespace WinFormsApp1
 
         private readonly VetForm _vetForm;
         private readonly OwnerForm _ownerForm;
-        
+
         private readonly PetForm _petForm;
+        private readonly Items _itemForm;
 
 
         public Main()
@@ -33,7 +34,7 @@ namespace WinFormsApp1
 
             var consultationService = new ConsultationService();
             _consultation = new Consultation(consultationService, consultationService, consultationService); // I dont understand this but it works
-                                                                                        //Needs a parameter becuase interfacse but we put same thing twice?? sometimes thre times?
+                                                                                                             //Needs a parameter becuase interfacse but we put same thing twice?? sometimes thre times?
             var invoiceService = new InvoiceService();
             _invoiceForm = new InvoiceForm(invoiceService, invoiceService);
 
@@ -42,27 +43,28 @@ namespace WinFormsApp1
             _ownerForm = new OwnerForm(ownerService, invoiceService);
 
             var ownerRelatedService = new OwnerService();
-            _ownerForm = new OwnerForm(ownerService, invoiceService);
+            _ownerForm = new OwnerForm(ownerService, invoiceService); // Delete this??
 
 
             var petService = new PetService();
             _petForm = new PetForm(petService, petService);
 
             var petLoadRelated = new PetService();
-            _petForm = new PetForm(petLoadRelated, petService);
+            _petForm = new PetForm(petLoadRelated, petService); // delete this??
 
 
-            
+
             var veterinarianService = new VetService();
             _vetForm = new VetForm(veterinarianService);
 
             var veterinarianRelated = new VetService();
-            _vetForm = new VetForm(veterinarianService);
+            _vetForm = new VetForm(veterinarianService); // delete this??
 
             var treatmentService = new TreatmentService();
             _treatmentForm = new TreatmentForm(treatmentService, invoiceService, consultationService);
 
-
+            var itemService = new ItemService();
+            _itemForm = new Items(itemService);
 
 
         }
@@ -105,9 +107,15 @@ namespace WinFormsApp1
 
         private void CreatePet_Click(object sender, EventArgs e)
         {
-            
+
             _petForm.Show();
             this.Hide(); // Hides the current form
+        }
+
+        private void buttonItems_Click(object sender, EventArgs e)
+        {
+            _itemForm.Show();
+            this.Hide();
         }
     }
 }
