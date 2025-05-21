@@ -277,7 +277,12 @@ namespace WinFormsApp1
 
         }
 
-       
+        private void BackButtonInvoice_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Main main = new Main();
+            main.Show();
+        }
     }
 }
 
