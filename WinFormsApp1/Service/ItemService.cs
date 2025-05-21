@@ -24,27 +24,32 @@ namespace WinFormsApp1.Service
 
         public void ExportToTextFile(DataGridView dataGridView, string filePath)
         {
+            decimal totalInventoryValue = 0;
+
             using (StreamWriter writer = new StreamWriter(filePath))
             {
-                
+                writer.WriteLine("Item\tPrice\tAmount\tTotal Value"); // Header
+
                 foreach (DataGridViewRow row in dataGridView.Rows)
                 {
-                    if (!row.IsNewRow) // Last row is empty in datagird view so we skip this
+                    if (!row.IsNewRow) // skip hvis empty
                     {
-                        string rowData = "";
+                        string itemName = row.Cells["Name"].Value.ToString();
+                        decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
+                        int amount = Convert.ToInt32(row.Cells["Amount"].Value);
+                        decimal totalValue = price * amount;
 
-                        // Loop through columns
-                        foreach (DataGridViewCell cell in row.Cells)
-                        {
-                            rowData += cell.Value?.ToString() + "\t"; // tab between each cell
-                        }
+                        totalInventoryValue += totalValue;
 
-                        writer.WriteLine(rowData.Trim()); // Write row data
+                        
+                        writer.WriteLine($"{itemName}\t{price}\t{amount}\t{totalValue}");
                     }
                 }
+
+                writer.WriteLine("\nTotal Inventory Worth: " + totalInventoryValue);
             }
 
-            MessageBox.Show("Export completed!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Export completed! Total Inventory Worth: " + totalInventoryValue, "Success");
         }
     }
 }
