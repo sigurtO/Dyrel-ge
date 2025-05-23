@@ -43,14 +43,12 @@ namespace WinFormsApp1
             _ownerForm = new OwnerForm(ownerService, invoiceService);
 
             var ownerRelatedService = new OwnerService();
-            _ownerForm = new OwnerForm(ownerService, invoiceService); // Delete this??
 
 
             var petService = new PetService();
             _petForm = new PetForm(petService, petService);
 
             var petLoadRelated = new PetService();
-            _petForm = new PetForm(petLoadRelated, petService); // delete this??
 
 
 
@@ -58,7 +56,6 @@ namespace WinFormsApp1
             _vetForm = new VetForm(veterinarianService);
 
             var veterinarianRelated = new VetService();
-            _vetForm = new VetForm(veterinarianService); // delete this??
 
             var treatmentService = new TreatmentService();
             _treatmentForm = new TreatmentForm(treatmentService, invoiceService, consultationService);
