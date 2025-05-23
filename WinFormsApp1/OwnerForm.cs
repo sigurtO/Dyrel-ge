@@ -108,12 +108,7 @@ namespace WinFormsApp1
         }
 
 
-        private void buttonBack_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Main main = new Main();
-            main.Show();
-        }
+     
 
         private async void AddOwnerEFCButton_Click(object sender, EventArgs e)
         {
@@ -144,6 +139,13 @@ namespace WinFormsApp1
 
                 MessageBox.Show($"Error adding owner with EF Core: {ex.Message}");
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Main main = new Main();
+            main.Show();
         }
     }
 }
