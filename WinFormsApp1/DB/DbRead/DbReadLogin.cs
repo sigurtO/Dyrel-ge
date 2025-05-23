@@ -10,7 +10,7 @@ using WinFormsApp1.DB;
 public class DbReadLogin : Database
 {
     public DbReadLogin(string connectionString) : base(connectionString) { }
-    9
+    
     public async Task<string?> GetPasswordHashByUsernameAsync(string username)
     {
         const string query = @"SELECT Password FROM PetDoc WHERE Username = @Username";
