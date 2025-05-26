@@ -44,5 +44,12 @@ namespace WinFormsApp1
             string filePath = Path.Combine(downloadsPath, "export.txt");
             _itemService.ExportToTextFile(dataGridViewItems, filePath);
         }
+
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Main main = new Main();
+            main.Show();
+        }
     }
 }

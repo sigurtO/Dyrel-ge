@@ -63,6 +63,7 @@
             buttonBack.TabIndex = 2;
             buttonBack.Text = "Back";
             buttonBack.UseVisualStyleBackColor = false;
+            buttonBack.Click += buttonBack_Click;
             // 
             // Items
             // 
