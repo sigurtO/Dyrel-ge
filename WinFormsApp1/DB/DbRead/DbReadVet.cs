@@ -9,6 +9,7 @@ using WinFormsApp1.Objects;
 
 namespace WinFormsApp1.DB.DbRead
 {
+    //Emil
     public class DbReadVet : Database
     {
         public DbReadVet(string connectionString) : base(connectionString) { }

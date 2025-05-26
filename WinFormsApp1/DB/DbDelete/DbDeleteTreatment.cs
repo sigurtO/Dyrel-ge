@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace WinFormsApp1.DB.DbDelete
 {
+    //Daniel
     public class DbDeleteTreatment : Database
     {
         public DbDeleteTreatment(string connectionString) : base(connectionString) { }

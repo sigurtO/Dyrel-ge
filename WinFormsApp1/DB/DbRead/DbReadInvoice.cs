@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace WinFormsApp1.DB.DbRead //HAVE TO ADD DELETE TO INVOICE OR YOU CANT DELETE CONSULTATION
 {
+    //Emil
     public class DbReadInvoice : Database
     {
         public DbReadInvoice(string connectionString) : base(connectionString) { }

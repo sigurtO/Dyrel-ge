@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace WinFormsApp1.DB.DbRead
 {
+    //Daniel
     public class DbReadTreatment : Database
     {
         public DbReadTreatment(string treatmentString) : base(treatmentString) { }
