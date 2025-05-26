@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace WinFormsApp1.Objects
 {
+
     public class ConsultationClass
     {
         public int OwnerID { get; set; }
@@ -28,4 +29,3 @@ namespace WinFormsApp1.Objects
 }
 
 
-//int ownerID, int petID, int vetID, DateTime date, string notes, int price

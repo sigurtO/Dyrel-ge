@@ -10,7 +10,9 @@ using WinFormsApp1.Objects;
 // LoginService.cs
 public class LoginService
 {
-   // private readonly DbReadLogin _dbReadLogin;
+    //Tolu
+
+   // private readonly DbReadLogin _dbReadLogin; 
 
 
     public async Task<bool> AuthenticateAsync(string username, string password)
@@ -26,7 +28,7 @@ public class LoginService
         bool isValid = PasswordHelper.VerifyPassword(password, storedHash);
 
         if (!isValid)
-            Console.WriteLine($"Login failed - wrong password for user: {username}"); //no console write line in service layer
+            Console.WriteLine($"Login failed - wrong password for user: {username}"); 
 
         return isValid;
     }

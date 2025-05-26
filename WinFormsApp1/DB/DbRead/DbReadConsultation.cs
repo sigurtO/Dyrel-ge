@@ -10,6 +10,7 @@ using WinFormsApp1.Objects;
 
 namespace WinFormsApp1.DB.DbRead
 {
+    //Sigurt
     public class DbReadConsultation : Database
     {
 

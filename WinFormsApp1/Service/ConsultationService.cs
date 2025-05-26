@@ -13,6 +13,7 @@ using WinFormsApp1.Objects;
 
 namespace WinFormsApp1.Service
 {
+    //Sigurt
     public class ConsultationService : IConsultationService, IOwnerRelated, IVetinarianRelated
     {
 

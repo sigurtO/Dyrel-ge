@@ -10,6 +10,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace WinFormsApp1.Service
 {
+    //Daniel
     public class TreatmentService : ITreatmentService, IOwnerRelated
     {
         public async Task<DataTable> LoadTreatmentDataAsync()

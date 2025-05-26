@@ -14,7 +14,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace WinFormsApp1
 {
-
+    //Sigurt
     public partial class Consultation : Form
     {
         private readonly IConsultationService _consultationService;

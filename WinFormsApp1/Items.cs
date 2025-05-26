@@ -11,6 +11,7 @@ using WinFormsApp1.Interfaces;
 
 namespace WinFormsApp1
 {
+    //Lukas
     public partial class Items : Form
     {
 
@@ -43,6 +44,13 @@ namespace WinFormsApp1
             string downloadsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
             string filePath = Path.Combine(downloadsPath, "export.txt");
             _itemService.ExportToTextFile(dataGridViewItems, filePath);
+        }
+
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Main main = new Main();
+            
         }
     }
 }
