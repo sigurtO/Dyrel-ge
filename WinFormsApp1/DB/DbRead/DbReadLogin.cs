@@ -11,7 +11,7 @@ public class DbReadLogin : Database
 {
     //Tolu
     public DbReadLogin(string connectionString) : base(connectionString) { }
-
+    
     public async Task<string?> GetPasswordHashByUsernameAsync(string username)
     {
         const string query = @"SELECT Password FROM PetDoc WHERE Username = @Username";
