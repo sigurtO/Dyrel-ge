@@ -52,6 +52,7 @@ namespace WinFormsApp1.Interfaces
         Task AddTreatmentAsync(int ownerId, int petDocId, int consultationId, int price, DateTime date, string notes, int petID);
         Task DeleteTreatmentAsync(int treatmentId); 
         Task UpdateTreatmentAsync(TreatmentClass treatment, int treatmentId);
+        Task<DataTable> GetConsultationFromPetDataAsync(int petId);
 
     }
 

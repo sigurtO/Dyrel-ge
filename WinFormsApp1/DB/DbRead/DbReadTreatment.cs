@@ -27,7 +27,20 @@ namespace WinFormsApp1.DB.DbRead
 
             return dataTable;
         }
-
+        public async Task<DataTable> GetConsultationFromPetAsync(int PetID)
+        {
+            string query = "SELECT Notes, Price, ConsultationID FROM Consultation WHERE PetID = @PetID";
+            DataTable dataTable = new DataTable();
+            using (SqlConnection connection = CreateConnection())
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@PetID", PetID);
+                await connection.OpenAsync();
+                SqlDataReader reader = await command.ExecuteReaderAsync();
+                dataTable.Load(reader);
+            }
+            return dataTable;
+        }
         //Gets Owners
         public async Task<DataTable> GetOwnersAsync() // we use Datatable becuase we are getting mutiple rows of information from the DB
         {
