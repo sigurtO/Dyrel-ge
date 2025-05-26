@@ -52,158 +52,157 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(338, 33);
-            dataGridView1.Margin = new Padding(3, 2, 3, 2);
+            dataGridView1.Location = new Point(386, 44);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(352, 241);
+            dataGridView1.Size = new Size(402, 321);
             dataGridView1.TabIndex = 0;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(44, 45);
+            label1.Location = new Point(50, 60);
             label1.Name = "label1";
-            label1.Size = new Size(39, 15);
+            label1.Size = new Size(49, 20);
             label1.TabIndex = 2;
             label1.Text = "Name";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(169, 38);
+            label2.Location = new Point(193, 51);
             label2.Name = "label2";
-            label2.Size = new Size(0, 15);
+            label2.Size = new Size(0, 20);
             label2.TabIndex = 3;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(45, 100);
+            label3.Location = new Point(51, 133);
             label3.Name = "label3";
-            label3.Size = new Size(37, 15);
+            label3.Size = new Size(48, 20);
             label3.TabIndex = 4;
             label3.Text = "Breed";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(200, 100);
+            label4.Location = new Point(229, 133);
             label4.Name = "label4";
-            label4.Size = new Size(46, 15);
+            label4.Size = new Size(59, 20);
             label4.TabIndex = 5;
             label4.Text = "Species";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(196, 45);
+            label5.Location = new Point(224, 60);
             label5.Name = "label5";
-            label5.Size = new Size(51, 15);
+            label5.Size = new Size(64, 20);
             label5.TabIndex = 6;
             label5.Text = "Birthday";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(200, 154);
+            label6.Location = new Point(229, 205);
             label6.Name = "label6";
-            label6.Size = new Size(56, 15);
+            label6.Size = new Size(71, 20);
             label6.TabIndex = 7;
             label6.Text = "PetDocID";
             // 
             // OwnerID
             // 
             OwnerID.AutoSize = true;
-            OwnerID.Location = new Point(44, 146);
+            OwnerID.Location = new Point(50, 195);
             OwnerID.Name = "OwnerID";
-            OwnerID.Size = new Size(53, 15);
+            OwnerID.Size = new Size(67, 20);
             OwnerID.TabIndex = 8;
             OwnerID.Text = "OwnerID";
             // 
             // PetNameTextBox
             // 
-            PetNameTextBox.Location = new Point(44, 62);
-            PetNameTextBox.Margin = new Padding(3, 2, 3, 2);
+            PetNameTextBox.Location = new Point(50, 83);
             PetNameTextBox.Name = "PetNameTextBox";
-            PetNameTextBox.Size = new Size(110, 23);
+            PetNameTextBox.Size = new Size(125, 27);
             PetNameTextBox.TabIndex = 9;
             // 
             // PetBreedTextBox
             // 
-            PetBreedTextBox.Location = new Point(44, 117);
-            PetBreedTextBox.Margin = new Padding(3, 2, 3, 2);
+            PetBreedTextBox.Location = new Point(50, 156);
             PetBreedTextBox.Name = "PetBreedTextBox";
-            PetBreedTextBox.Size = new Size(110, 23);
+            PetBreedTextBox.Size = new Size(125, 27);
             PetBreedTextBox.TabIndex = 11;
             // 
             // PetSpeciesTextBox
             // 
-            PetSpeciesTextBox.Location = new Point(196, 117);
-            PetSpeciesTextBox.Margin = new Padding(3, 2, 3, 2);
+            PetSpeciesTextBox.Location = new Point(224, 156);
             PetSpeciesTextBox.Name = "PetSpeciesTextBox";
-            PetSpeciesTextBox.Size = new Size(110, 23);
+            PetSpeciesTextBox.Size = new Size(125, 27);
             PetSpeciesTextBox.TabIndex = 12;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(196, 232);
+            label7.Location = new Point(224, 309);
             label7.Name = "label7";
-            label7.Size = new Size(61, 15);
+            label7.Size = new Size(76, 20);
             label7.TabIndex = 16;
             label7.Text = "Create Pet";
             // 
             // PetCreateButton
             // 
-            PetCreateButton.Location = new Point(206, 252);
-            PetCreateButton.Margin = new Padding(3, 2, 3, 2);
+            PetCreateButton.BackColor = Color.LimeGreen;
+            PetCreateButton.Location = new Point(235, 336);
             PetCreateButton.Name = "PetCreateButton";
-            PetCreateButton.Size = new Size(82, 22);
+            PetCreateButton.Size = new Size(100, 31);
             PetCreateButton.TabIndex = 17;
             PetCreateButton.Text = "Create";
-            PetCreateButton.UseVisualStyleBackColor = true;
+            PetCreateButton.UseVisualStyleBackColor = false;
             PetCreateButton.Click += PetCreateButton_Click;
             // 
             // petDateTimePicker
             // 
-            petDateTimePicker.Location = new Point(196, 62);
-            petDateTimePicker.Margin = new Padding(3, 2, 3, 2);
+            petDateTimePicker.Location = new Point(224, 83);
             petDateTimePicker.Name = "petDateTimePicker";
-            petDateTimePicker.Size = new Size(110, 23);
+            petDateTimePicker.Size = new Size(125, 27);
             petDateTimePicker.TabIndex = 18;
             // 
             // comboBoxPetOwnerID
             // 
             comboBoxPetOwnerID.FormattingEnabled = true;
-            comboBoxPetOwnerID.Location = new Point(33, 172);
+            comboBoxPetOwnerID.Location = new Point(38, 229);
+            comboBoxPetOwnerID.Margin = new Padding(3, 4, 3, 4);
             comboBoxPetOwnerID.Name = "comboBoxPetOwnerID";
-            comboBoxPetOwnerID.Size = new Size(121, 23);
+            comboBoxPetOwnerID.Size = new Size(138, 28);
             comboBoxPetOwnerID.TabIndex = 19;
             // 
             // comboBoxPetDocID
             // 
             comboBoxPetDocID.FormattingEnabled = true;
-            comboBoxPetDocID.Location = new Point(196, 172);
+            comboBoxPetDocID.Location = new Point(224, 229);
+            comboBoxPetDocID.Margin = new Padding(3, 4, 3, 4);
             comboBoxPetDocID.Name = "comboBoxPetDocID";
-            comboBoxPetDocID.Size = new Size(121, 23);
+            comboBoxPetDocID.Size = new Size(138, 28);
             comboBoxPetDocID.TabIndex = 20;
             // 
             // buttonBackPet
             // 
-            buttonBackPet.Location = new Point(22, 338);
+            buttonBackPet.BackColor = SystemColors.MenuHighlight;
+            buttonBackPet.Location = new Point(25, 451);
+            buttonBackPet.Margin = new Padding(3, 4, 3, 4);
             buttonBackPet.Name = "buttonBackPet";
-            buttonBackPet.Size = new Size(75, 23);
+            buttonBackPet.Size = new Size(100, 31);
             buttonBackPet.TabIndex = 21;
             buttonBackPet.Text = "Back";
-            buttonBackPet.UseVisualStyleBackColor = true;
+            buttonBackPet.UseVisualStyleBackColor = false;
             buttonBackPet.Click += buttonBackPet_Click;
             // 
             // PetForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(870, 373);
+            ClientSize = new Size(994, 497);
             Controls.Add(buttonBackPet);
             Controls.Add(comboBoxPetDocID);
             Controls.Add(comboBoxPetOwnerID);
@@ -221,7 +220,6 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(dataGridView1);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "PetForm";
             Text = "PetForm";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

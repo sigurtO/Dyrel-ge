@@ -41,7 +41,6 @@ namespace WinFormsApp1.Service
             catch (Exception ex)
             {
                 throw;
-                //throw new ConsultationServiceException("Failed to load owners", ex);
             }
         }
 
@@ -55,7 +54,6 @@ namespace WinFormsApp1.Service
             catch (Exception ex)
             {
                 throw;
-                //throw new ConsultationServiceException($"Failed to load pets for owner {ownerId}", ex);
             }
 
         }
@@ -175,17 +173,15 @@ namespace WinFormsApp1.Service
 
             if (cageId > 0)
             {
-                DataTable cage = await Program.dbServices.DbReadInvoice.CheckCageFromTreatment(treatmentId);
+                DataTable cage = await Program.dbServices.DbReadInvoice.CheckCageFromTreatment(cageId);
                 if (cage.Rows.Count > 0 && cage.Rows[0]["cagePrice"] != DBNull.Value)
                 {
                     total += Convert.ToInt32(cage.Rows[0]["cagePrice"]);
                 }
             }
 
-            // Add item price if needed
             if (itemId > 0)
             {
-                // You'll need to implement this method in your DbReadInvoice
                 DataTable item = await Program.dbServices.DbReadInvoice.GetAllItemsAsync();
                 if (item.Rows.Count > 0)
                 {

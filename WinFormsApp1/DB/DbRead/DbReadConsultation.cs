@@ -10,12 +10,13 @@ using WinFormsApp1.Objects;
 
 namespace WinFormsApp1.DB.DbRead
 {
+    //Sigurt
     public class DbReadConsultation : Database
     {
 
         public DbReadConsultation(string connectionString) : base(connectionString) { } // constructor passes the connection string to the base class
 
-        //God like Sigurt
+       
 
         //This method is used to get all consultations from the database into our datagridview
         public async Task<DataTable> ShowAllConsultationsAsync() // we use Datatable becuase we are getting mutiple rows of information from the DB

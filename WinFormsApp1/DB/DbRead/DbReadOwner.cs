@@ -8,12 +8,13 @@ using System.Threading.Tasks;
 
 namespace WinFormsApp1.DB.DbRead
 {
+    //Lukas
     public class DbReadOwner : Database
     {
 
         public DbReadOwner(string connectionString) : base(connectionString) { }
 
-        // Lukas
+     
         public async Task<DataTable> ShowAllOwnersAsync()
         {
             string query = "SELECT * FROM PetOwner";

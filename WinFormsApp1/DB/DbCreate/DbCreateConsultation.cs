@@ -8,6 +8,7 @@ using WinFormsApp1.Objects;
 
 namespace WinFormsApp1.DB.DbCreate
 {
+    //Sigurt
     public class DbCreateConsultation : Database
     {
         public DbCreateConsultation(string connectionString) : base(connectionString) { }
