@@ -9,11 +9,11 @@ using WinFormsApp1.Objects;
 
 namespace WinFormsApp1.DB.DbCreate
 {
-        //Lukas
     public class DbCreateOwner : Database
     {
         public DbCreateOwner(string connectionString) : base(connectionString) { }
 
+        //Lukas
         public async Task AddOwnerAsync(OwnerClass owner)
         {
             string query = "INSERT INTO PetOwner (FirstName, LastName, Phone, Email, Adress) VALUES (@FirstName, @LastName, @Phone, @Email, @Adress)";

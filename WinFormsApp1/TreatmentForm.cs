@@ -13,7 +13,6 @@ using WinFormsApp1.Service;
 
 namespace WinFormsApp1
 {
-    //Daniel
     public partial class TreatmentForm : Form
     {
         private readonly ITreatmentService _treatmentService;
@@ -167,6 +166,5 @@ namespace WinFormsApp1
                 MessageBox.Show($"Error adding treatment: {ex.Message}");
             }
         }
-
     }
 }

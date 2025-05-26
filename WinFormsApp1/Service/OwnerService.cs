@@ -8,7 +8,6 @@ using WinFormsApp1.Objects;
 
 namespace WinFormsApp1.Service
 {
-    //Lukas
     public class OwnerService : IOwnerService  // Explicitly implement the interface
     {
         public async Task<DataTable> LoadOwnerDataAsync()

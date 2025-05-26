@@ -67,7 +67,7 @@
             // 
             // textBoxNotes
             // 
-            textBoxNotes.Location = new Point(38, 279);
+            textBoxNotes.Location = new Point(45, 292);
             textBoxNotes.Name = "textBoxNotes";
             textBoxNotes.Size = new Size(197, 107);
             textBoxNotes.TabIndex = 6;
@@ -85,7 +85,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(38, 205);
+            label4.Location = new Point(40, 205);
             label4.Name = "label4";
             label4.Size = new Size(31, 15);
             label4.TabIndex = 9;
@@ -94,7 +94,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(38, 261);
+            label5.Location = new Point(48, 259);
             label5.Name = "label5";
             label5.Size = new Size(38, 15);
             label5.TabIndex = 10;
@@ -137,7 +137,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(469, 20);
+            label6.Location = new Point(459, 21);
             label6.Name = "label6";
             label6.Size = new Size(83, 15);
             label6.TabIndex = 15;
@@ -145,13 +145,12 @@
             // 
             // buttonAdd
             // 
-            buttonAdd.BackColor = Color.LimeGreen;
-            buttonAdd.Location = new Point(469, 363);
+            buttonAdd.Location = new Point(166, 405);
             buttonAdd.Name = "buttonAdd";
-            buttonAdd.Size = new Size(77, 23);
+            buttonAdd.Size = new Size(75, 23);
             buttonAdd.TabIndex = 16;
             buttonAdd.Text = "Create";
-            buttonAdd.UseVisualStyleBackColor = false;
+            buttonAdd.UseVisualStyleBackColor = true;
             buttonAdd.Click += buttonAdd_Click;
             // 
             // label7
@@ -183,24 +182,22 @@
             // 
             // buttonDelete
             // 
-            buttonDelete.BackColor = Color.Red;
-            buttonDelete.Location = new Point(689, 363);
+            buttonDelete.Location = new Point(689, 393);
             buttonDelete.Name = "buttonDelete";
             buttonDelete.Size = new Size(75, 23);
             buttonDelete.TabIndex = 21;
             buttonDelete.Text = "Delete";
-            buttonDelete.UseVisualStyleBackColor = false;
+            buttonDelete.UseVisualStyleBackColor = true;
             buttonDelete.Click += buttonDelete_Click;
             // 
             // buttonBackConsultation
             // 
-            buttonBackConsultation.BackColor = SystemColors.MenuHighlight;
-            buttonBackConsultation.Location = new Point(12, 415);
+            buttonBackConsultation.Location = new Point(45, 405);
             buttonBackConsultation.Name = "buttonBackConsultation";
             buttonBackConsultation.Size = new Size(75, 23);
             buttonBackConsultation.TabIndex = 22;
             buttonBackConsultation.Text = "Back";
-            buttonBackConsultation.UseVisualStyleBackColor = false;
+            buttonBackConsultation.UseVisualStyleBackColor = true;
             buttonBackConsultation.Click += buttonBackConsultation_Click;
             // 
             // Consultation

@@ -15,7 +15,6 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WinFormsApp1
 {
-    //Daniel
     public partial class VetForm : Form
     {
         private readonly IVeterinarianService vetService;

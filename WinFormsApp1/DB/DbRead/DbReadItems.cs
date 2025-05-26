@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace WinFormsApp1.DB.DbRead
 {
-    //Sigurt
     public class DbReadItems : Database
     {
 

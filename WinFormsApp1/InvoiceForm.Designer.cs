@@ -49,7 +49,6 @@
             textBoxTotalAmount = new TextBox();
             textBoxNetAmount = new TextBox();
             BackButtonInvoice = new Button();
-            label10 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewInvoice).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownDiscount).BeginInit();
             SuspendLayout();
@@ -120,7 +119,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(203, 231);
+            label8.Location = new Point(196, 231);
             label8.Name = "label8";
             label8.Size = new Size(75, 15);
             label8.TabIndex = 7;
@@ -205,7 +204,7 @@
             // 
             // numericUpDownDiscount
             // 
-            numericUpDownDiscount.Location = new Point(203, 250);
+            numericUpDownDiscount.Location = new Point(196, 250);
             numericUpDownDiscount.Margin = new Padding(3, 2, 3, 2);
             numericUpDownDiscount.Name = "numericUpDownDiscount";
             numericUpDownDiscount.Size = new Size(131, 23);
@@ -214,14 +213,13 @@
             // 
             // buttonAddInvoice
             // 
-            buttonAddInvoice.BackColor = Color.LimeGreen;
-            buttonAddInvoice.Location = new Point(428, 265);
+            buttonAddInvoice.Location = new Point(428, 290);
             buttonAddInvoice.Margin = new Padding(3, 2, 3, 2);
             buttonAddInvoice.Name = "buttonAddInvoice";
             buttonAddInvoice.Size = new Size(82, 22);
             buttonAddInvoice.TabIndex = 20;
-            buttonAddInvoice.Text = "Create";
-            buttonAddInvoice.UseVisualStyleBackColor = false;
+            buttonAddInvoice.Text = "AddInvoice";
+            buttonAddInvoice.UseVisualStyleBackColor = true;
             buttonAddInvoice.Click += ButtonAddInvoice_Click;
             // 
             // textBoxTotalAmount
@@ -240,30 +238,19 @@
             // 
             // BackButtonInvoice
             // 
-            BackButtonInvoice.BackColor = SystemColors.MenuHighlight;
-            BackButtonInvoice.Location = new Point(12, 418);
+            BackButtonInvoice.Location = new Point(42, 418);
             BackButtonInvoice.Name = "BackButtonInvoice";
             BackButtonInvoice.Size = new Size(75, 23);
             BackButtonInvoice.TabIndex = 23;
             BackButtonInvoice.Text = "Back";
-            BackButtonInvoice.UseVisualStyleBackColor = false;
+            BackButtonInvoice.UseVisualStyleBackColor = true;
             BackButtonInvoice.Click += BackButtonInvoice_Click;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Location = new Point(428, 23);
-            label10.Name = "label10";
-            label10.Size = new Size(50, 15);
-            label10.TabIndex = 24;
-            label10.Text = "Invoices";
             // 
             // InvoiceForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(810, 453);
-            Controls.Add(label10);
             Controls.Add(BackButtonInvoice);
             Controls.Add(textBoxNetAmount);
             Controls.Add(textBoxTotalAmount);
@@ -317,6 +304,5 @@
         public TextBox textBoxTotalAmount;
         public TextBox textBoxNetAmount;
         private Button BackButtonInvoice;
-        private Label label10;
     }
 }

@@ -9,7 +9,6 @@ using WinFormsApp1.DB;
 
 public class DbReadLogin : Database
 {
-    //Tolu
     public DbReadLogin(string connectionString) : base(connectionString) { }
     
     public async Task<string?> GetPasswordHashByUsernameAsync(string username)

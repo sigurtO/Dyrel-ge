@@ -37,19 +37,17 @@
             // dataGridViewItems
             // 
             dataGridViewItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewItems.Location = new Point(326, 22);
-            dataGridViewItems.Margin = new Padding(3, 2, 3, 2);
+            dataGridViewItems.Location = new Point(372, 29);
             dataGridViewItems.Name = "dataGridViewItems";
             dataGridViewItems.RowHeadersWidth = 51;
-            dataGridViewItems.Size = new Size(328, 192);
+            dataGridViewItems.Size = new Size(375, 256);
             dataGridViewItems.TabIndex = 0;
             // 
             // buttonTxt
             // 
-            buttonTxt.Location = new Point(571, 295);
-            buttonTxt.Margin = new Padding(3, 2, 3, 2);
+            buttonTxt.Location = new Point(653, 393);
             buttonTxt.Name = "buttonTxt";
-            buttonTxt.Size = new Size(82, 22);
+            buttonTxt.Size = new Size(94, 29);
             buttonTxt.TabIndex = 1;
             buttonTxt.Text = ".txt";
             buttonTxt.UseVisualStyleBackColor = true;
@@ -57,24 +55,21 @@
             // 
             // buttonBack
             // 
-            buttonBack.Location = new Point(21, 295);
-            buttonBack.Margin = new Padding(3, 2, 3, 2);
+            buttonBack.Location = new Point(24, 393);
             buttonBack.Name = "buttonBack";
-            buttonBack.Size = new Size(82, 22);
+            buttonBack.Size = new Size(94, 29);
             buttonBack.TabIndex = 2;
             buttonBack.Text = "Back";
             buttonBack.UseVisualStyleBackColor = true;
-            buttonBack.Click += buttonBack_Click;
             // 
             // Items
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(700, 338);
+            ClientSize = new Size(800, 450);
             Controls.Add(buttonBack);
             Controls.Add(buttonTxt);
             Controls.Add(dataGridViewItems);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "Items";
             Text = "Items";
             ((System.ComponentModel.ISupportInitialize)dataGridViewItems).EndInit();

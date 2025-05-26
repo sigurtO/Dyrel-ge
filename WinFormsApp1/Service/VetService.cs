@@ -10,7 +10,6 @@ using WinFormsApp1.Objects;
 
 namespace WinFormsApp1.Service
 {
-    //Emil
     public class VetService : IVeterinarianService
     {
         public async Task<DataTable> LoadVetsAsync()
