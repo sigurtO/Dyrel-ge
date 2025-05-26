@@ -8,7 +8,6 @@ using WinFormsApp1.Objects;
 
 namespace WinFormsApp1.DB.DbUpdate
 {
-    //Sigurt
     public class DbUpdateConsultation : Database
     {
 

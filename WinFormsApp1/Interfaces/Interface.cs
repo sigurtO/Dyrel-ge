@@ -9,7 +9,11 @@ using WinFormsApp1.Objects;
 namespace WinFormsApp1.Interfaces
 {
 
-    
+
+    /*
+     Interfaces opdelt i flere interfaces for at gøre det mere overskueligt og nemmere at vedligeholde.
+     Så et interface pr objekt
+     */
     public interface IConsultationService
     {
         Task<DataTable> LoadConsultationDataAsync();
@@ -18,7 +22,7 @@ namespace WinFormsApp1.Interfaces
         Task DeleteConsultationAsync(int consultationId);
         Task UpdateConsultationAsync(ConsultationClass consultation, int consultationId);
     }
-    
+
     public interface IVeterinarianService
     {
 

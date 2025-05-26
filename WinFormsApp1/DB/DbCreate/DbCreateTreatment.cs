@@ -9,7 +9,6 @@ using WinFormsApp1.Objects;
 
 namespace WinFormsApp1.DB.DbCreate
 {
-    //Daniel
     public class DbCreateTreatment : Database
     {
         public DbCreateTreatment(string connectionString) : base(connectionString) { }

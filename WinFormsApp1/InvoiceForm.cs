@@ -13,7 +13,6 @@ using WinFormsApp1.Objects;
 
 namespace WinFormsApp1
 {
-    //Emil/Sigurt
     public partial class InvoiceForm : Form
     {
         private readonly IInvoiceService _invoiceService;

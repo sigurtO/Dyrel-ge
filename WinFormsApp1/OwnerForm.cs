@@ -13,7 +13,6 @@ using WinFormsApp1.Service;
 
 namespace WinFormsApp1
 {
-    //Lukas
     public partial class OwnerForm : Form
     {
         private readonly IOwnerService _ownerService;

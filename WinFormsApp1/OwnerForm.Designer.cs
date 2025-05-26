@@ -42,21 +42,18 @@
             button1 = new Button();
             dataGridViewOwner = new DataGridView();
             AddOwnerEFCButton = new Button();
-            Owners = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewOwner).BeginInit();
             SuspendLayout();
             // 
             // AddOwnerButton
             // 
-            AddOwnerButton.BackColor = Color.LimeGreen;
-            AddOwnerButton.Location = new Point(348, 343);
-            AddOwnerButton.Name = "AddOwnerButton";
-            AddOwnerButton.Size = new Size(75, 23);
-=======
+            AddOwnerButton.Location = new Point(161, 245);
             AddOwnerButton.Margin = new Padding(3, 4, 3, 4);
+            AddOwnerButton.Name = "AddOwnerButton";
+            AddOwnerButton.Size = new Size(114, 31);
             AddOwnerButton.TabIndex = 0;
             AddOwnerButton.Text = "Create";
-            AddOwnerButton.UseVisualStyleBackColor = false;
+            AddOwnerButton.UseVisualStyleBackColor = true;
             AddOwnerButton.Click += AddOwnerButton_Click;
             // 
             // textBoxFirstName
@@ -77,8 +74,6 @@
             // 
             // textBoxPhone
             // 
-
-=======
             textBoxPhone.Location = new Point(31, 168);
             textBoxPhone.Margin = new Padding(3, 4, 3, 4);
             textBoxPhone.Name = "textBoxPhone";
@@ -87,22 +82,16 @@
             // 
             // textBoxAdress
             // 
-
-=======
             textBoxAdress.Location = new Point(161, 168);
             textBoxAdress.Margin = new Padding(3, 4, 3, 4);
-
             textBoxAdress.Name = "textBoxAdress";
             textBoxAdress.Size = new Size(114, 27);
             textBoxAdress.TabIndex = 4;
             // 
             // textBoxEmail
             // 
-
-=======
             textBoxEmail.Location = new Point(31, 247);
             textBoxEmail.Margin = new Padding(3, 4, 3, 4);
-
             textBoxEmail.Name = "textBoxEmail";
             textBoxEmail.Size = new Size(114, 27);
             textBoxEmail.TabIndex = 5;
@@ -128,10 +117,7 @@
             // label2
             // 
             label2.AutoSize = true;
-
-=======
             label2.Location = new Point(31, 144);
-
             label2.Name = "label2";
             label2.Size = new Size(108, 20);
             label2.TabIndex = 8;
@@ -140,10 +126,7 @@
             // AdressLabel
             // 
             AdressLabel.AutoSize = true;
-
-=======
             AdressLabel.Location = new Point(161, 144);
-
             AdressLabel.Name = "AdressLabel";
             AdressLabel.Size = new Size(53, 20);
             AdressLabel.TabIndex = 9;
@@ -152,10 +135,7 @@
             // EmailLabel
             // 
             EmailLabel.AutoSize = true;
-
-=======
             EmailLabel.Location = new Point(31, 223);
-
             EmailLabel.Name = "EmailLabel";
             EmailLabel.Size = new Size(46, 20);
             EmailLabel.TabIndex = 10;
@@ -163,15 +143,12 @@
             // 
             // button1
             // 
-            button1.BackColor = SystemColors.MenuHighlight;
-=======
             button1.Location = new Point(31, 524);
             button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
             button1.Size = new Size(86, 31);
             button1.TabIndex = 12;
             button1.Text = "Back";
-=======
             button1.UseVisualStyleBackColor = true;
             button1.Click += buttonBack_Click;
             // 
@@ -188,33 +165,20 @@
             // 
             // AddOwnerEFCButton
             // 
-            AddOwnerEFCButton.BackColor = Color.LimeGreen;
-            AddOwnerEFCButton.Location = new Point(683, 343);
-            AddOwnerEFCButton.Name = "AddOwnerEFCButton";
-            AddOwnerEFCButton.Size = new Size(75, 23);
-=======
+            AddOwnerEFCButton.Location = new Point(161, 312);
             AddOwnerEFCButton.Margin = new Padding(3, 4, 3, 4);
+            AddOwnerEFCButton.Name = "AddOwnerEFCButton";
+            AddOwnerEFCButton.Size = new Size(114, 31);
             AddOwnerEFCButton.TabIndex = 14;
             AddOwnerEFCButton.Text = "CreateEFC";
-            AddOwnerEFCButton.UseVisualStyleBackColor = false;
+            AddOwnerEFCButton.UseVisualStyleBackColor = true;
             AddOwnerEFCButton.Click += AddOwnerEFCButton_Click;
-            // 
-            // Owners
-            // 
-            Owners.AutoSize = true;
-            Owners.Location = new Point(348, 34);
-            Owners.Name = "Owners";
-            Owners.Size = new Size(47, 15);
-            Owners.TabIndex = 15;
-            Owners.Text = "Owners";
             // 
             // OwnerForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(Owners);
-=======
+            ClientSize = new Size(914, 600);
             Controls.Add(AddOwnerEFCButton);
             Controls.Add(dataGridViewOwner);
             Controls.Add(button1);
@@ -253,6 +217,5 @@
         private Button button1;
         private DataGridView dataGridViewOwner;
         private Button AddOwnerEFCButton;
-        private Label Owners;
     }
 }

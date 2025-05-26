@@ -8,7 +8,6 @@ using WinFormsApp1.Objects;
 
 namespace WinFormsApp1.DB.DbUpdate
 {
-    //Lukas
     public class DbUpdateOwner : Database
     {
 
