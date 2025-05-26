@@ -41,34 +41,36 @@
             labelSpeciale = new Label();
             textBoxSpeciale = new TextBox();
             buttonBackVet = new Button();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewVets).BeginInit();
             SuspendLayout();
             // 
             // buttonAdd
             // 
-            buttonAdd.Location = new Point(198, 198);
+            buttonAdd.BackColor = Color.LimeGreen;
+            buttonAdd.Location = new Point(281, 333);
             buttonAdd.Margin = new Padding(2);
             buttonAdd.Name = "buttonAdd";
             buttonAdd.Size = new Size(75, 23);
             buttonAdd.TabIndex = 0;
-            buttonAdd.Text = "Add";
-            buttonAdd.UseVisualStyleBackColor = true;
+            buttonAdd.Text = "Create";
+            buttonAdd.UseVisualStyleBackColor = false;
             buttonAdd.Click += buttonAdd_Click;
             // 
             // dataGridViewVets
             // 
             dataGridViewVets.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewVets.Location = new Point(198, 13);
+            dataGridViewVets.Location = new Point(281, 36);
             dataGridViewVets.Margin = new Padding(2);
             dataGridViewVets.Name = "dataGridViewVets";
             dataGridViewVets.RowHeadersWidth = 62;
-            dataGridViewVets.Size = new Size(328, 181);
+            dataGridViewVets.Size = new Size(466, 293);
             dataGridViewVets.TabIndex = 1;
             // 
             // labelFirstName
             // 
             labelFirstName.AutoSize = true;
-            labelFirstName.Location = new Point(8, 5);
+            labelFirstName.Location = new Point(15, 36);
             labelFirstName.Margin = new Padding(2, 0, 2, 0);
             labelFirstName.Name = "labelFirstName";
             labelFirstName.Size = new Size(64, 15);
@@ -77,7 +79,7 @@
             // 
             // textBoxFirstName
             // 
-            textBoxFirstName.Location = new Point(8, 22);
+            textBoxFirstName.Location = new Point(15, 53);
             textBoxFirstName.Margin = new Padding(2);
             textBoxFirstName.Name = "textBoxFirstName";
             textBoxFirstName.Size = new Size(106, 23);
@@ -86,7 +88,7 @@
             // labelLastName
             // 
             labelLastName.AutoSize = true;
-            labelLastName.Location = new Point(8, 43);
+            labelLastName.Location = new Point(159, 36);
             labelLastName.Margin = new Padding(2, 0, 2, 0);
             labelLastName.Name = "labelLastName";
             labelLastName.Size = new Size(63, 15);
@@ -95,7 +97,7 @@
             // 
             // textBoxLastName
             // 
-            textBoxLastName.Location = new Point(8, 59);
+            textBoxLastName.Location = new Point(159, 52);
             textBoxLastName.Margin = new Padding(2);
             textBoxLastName.Name = "textBoxLastName";
             textBoxLastName.Size = new Size(106, 23);
@@ -104,7 +106,7 @@
             // labelUsername
             // 
             labelUsername.AutoSize = true;
-            labelUsername.Location = new Point(8, 80);
+            labelUsername.Location = new Point(15, 84);
             labelUsername.Margin = new Padding(2, 0, 2, 0);
             labelUsername.Name = "labelUsername";
             labelUsername.Size = new Size(60, 15);
@@ -113,7 +115,7 @@
             // 
             // textBoxUsername
             // 
-            textBoxUsername.Location = new Point(8, 97);
+            textBoxUsername.Location = new Point(15, 101);
             textBoxUsername.Margin = new Padding(2);
             textBoxUsername.Name = "textBoxUsername";
             textBoxUsername.Size = new Size(106, 23);
@@ -122,7 +124,7 @@
             // labelPassword
             // 
             labelPassword.AutoSize = true;
-            labelPassword.Location = new Point(8, 117);
+            labelPassword.Location = new Point(159, 84);
             labelPassword.Margin = new Padding(2, 0, 2, 0);
             labelPassword.Name = "labelPassword";
             labelPassword.Size = new Size(57, 15);
@@ -131,7 +133,7 @@
             // 
             // textBoxPassword
             // 
-            textBoxPassword.Location = new Point(8, 134);
+            textBoxPassword.Location = new Point(159, 101);
             textBoxPassword.Margin = new Padding(2);
             textBoxPassword.Name = "textBoxPassword";
             textBoxPassword.Size = new Size(106, 23);
@@ -140,7 +142,7 @@
             // labelSpeciale
             // 
             labelSpeciale.AutoSize = true;
-            labelSpeciale.Location = new Point(8, 154);
+            labelSpeciale.Location = new Point(15, 138);
             labelSpeciale.Margin = new Padding(2, 0, 2, 0);
             labelSpeciale.Name = "labelSpeciale";
             labelSpeciale.Size = new Size(50, 15);
@@ -149,7 +151,7 @@
             // 
             // textBoxSpeciale
             // 
-            textBoxSpeciale.Location = new Point(8, 171);
+            textBoxSpeciale.Location = new Point(15, 155);
             textBoxSpeciale.Margin = new Padding(2);
             textBoxSpeciale.Name = "textBoxSpeciale";
             textBoxSpeciale.Size = new Size(106, 23);
@@ -157,19 +159,30 @@
             // 
             // buttonBackVet
             // 
-            buttonBackVet.Location = new Point(8, 235);
+            buttonBackVet.BackColor = SystemColors.MenuHighlight;
+            buttonBackVet.Location = new Point(15, 406);
             buttonBackVet.Name = "buttonBackVet";
             buttonBackVet.Size = new Size(75, 23);
             buttonBackVet.TabIndex = 13;
             buttonBackVet.Text = "Back";
-            buttonBackVet.UseVisualStyleBackColor = true;
+            buttonBackVet.UseVisualStyleBackColor = false;
             buttonBackVet.Click += buttonBackVet_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(281, 14);
+            label1.Name = "label1";
+            label1.Size = new Size(74, 15);
+            label1.TabIndex = 14;
+            label1.Text = "Veterinarians";
             // 
             // VetForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(560, 270);
+            ClientSize = new Size(758, 441);
+            Controls.Add(label1);
             Controls.Add(buttonBackVet);
             Controls.Add(textBoxSpeciale);
             Controls.Add(labelSpeciale);
@@ -206,5 +219,6 @@
         private Label labelSpeciale;
         private TextBox textBoxSpeciale;
         private Button buttonBackVet;
+        private Label label1;
     }
 }

@@ -8,6 +8,7 @@ using WinFormsApp1.Objects;
 
 namespace WinFormsApp1.DB.DbUpdate
 {
+    //Daniel
     public class DbUpdateTreatment : Database
     {
 

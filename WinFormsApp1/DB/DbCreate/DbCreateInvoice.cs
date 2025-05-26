@@ -10,6 +10,7 @@ using static WinFormsApp1.Objects.InvoiceClass;
 
 namespace WinFormsApp1.DB.DbCreate
 {
+    //Emil/Sigurt
     public class DbCreateInvoice : Database
     {
         public DbCreateInvoice(string connectionString) : base(connectionString) { }

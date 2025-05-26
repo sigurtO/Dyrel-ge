@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace WinFormsApp1.Objects
 {
+    //Emil
     public static class PasswordHelper
     {
         public static string HashPassword(string password)

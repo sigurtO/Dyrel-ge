@@ -14,6 +14,7 @@ using WinFormsApp1.Objects;
 
 namespace WinFormsApp1.Service
 {
+    //Os alle har pillet herinde frem og tilbage
     public class DbService
     {
         //Read

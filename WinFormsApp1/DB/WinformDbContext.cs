@@ -8,6 +8,7 @@ using WinFormsApp1.Objects;
 
 namespace WinFormsApp1.DB
 {
+    //Sigurt/Lukas
     public class WinformDbContext : DbContext
     {
         private readonly string _connectionString;

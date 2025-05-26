@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
 namespace WinFormsApp1.DB
 {
+
     public abstract class Database
     {
 

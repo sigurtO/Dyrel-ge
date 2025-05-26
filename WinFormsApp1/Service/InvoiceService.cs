@@ -9,6 +9,7 @@ using WinFormsApp1.Objects;
 
 namespace WinFormsApp1.Service
 {
+    //Emil
     public class InvoiceService : IInvoiceService, IOwnerRelated
     {
         public async Task<DataTable> LoadInvoiceAsync()
