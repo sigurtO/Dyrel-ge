@@ -36,92 +36,106 @@
             buttonInvoice = new Button();
             CreatePet = new Button();
             buttonItems = new Button();
+            sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
             SuspendLayout();
             // 
             // buttonConsultation
             // 
-            buttonConsultation.Location = new Point(270, 343);
+            buttonConsultation.BackColor = SystemColors.Info;
+            buttonConsultation.Location = new Point(270, 345);
             buttonConsultation.Margin = new Padding(3, 4, 3, 4);
             buttonConsultation.Name = "buttonConsultation";
             buttonConsultation.Size = new Size(128, 31);
             buttonConsultation.TabIndex = 0;
             buttonConsultation.Text = "Consultation";
-            buttonConsultation.UseVisualStyleBackColor = true;
+            buttonConsultation.UseVisualStyleBackColor = false;
             buttonConsultation.Click += buttonConsultation_Click;
             // 
             // buttonVets
             // 
-            buttonVets.Location = new Point(459, 343);
+            buttonVets.BackColor = SystemColors.Info;
+            buttonVets.Location = new Point(433, 345);
             buttonVets.Margin = new Padding(2, 3, 2, 3);
             buttonVets.Name = "buttonVets";
-            buttonVets.Size = new Size(89, 27);
+            buttonVets.Size = new Size(128, 31);
             buttonVets.TabIndex = 1;
             buttonVets.Text = "Vets";
-            buttonVets.UseVisualStyleBackColor = true;
+            buttonVets.UseVisualStyleBackColor = false;
             buttonVets.Click += buttonVets_Click;
             // 
             // buttonOwner
             // 
+            buttonOwner.BackColor = SystemColors.Info;
             buttonOwner.Location = new Point(117, 345);
             buttonOwner.Margin = new Padding(2, 3, 2, 3);
             buttonOwner.Name = "buttonOwner";
-            buttonOwner.Size = new Size(89, 27);
+            buttonOwner.Size = new Size(128, 31);
             buttonOwner.TabIndex = 2;
             buttonOwner.Text = "Owner";
-            buttonOwner.UseVisualStyleBackColor = true;
+            buttonOwner.UseVisualStyleBackColor = false;
             buttonOwner.Click += buttonOwners_Click;
             // 
             // buttonTreatment
             // 
-            buttonTreatment.Location = new Point(618, 345);
+            buttonTreatment.BackColor = SystemColors.Info;
+            buttonTreatment.Location = new Point(588, 345);
             buttonTreatment.Margin = new Padding(2, 3, 2, 3);
             buttonTreatment.Name = "buttonTreatment";
-            buttonTreatment.Size = new Size(89, 27);
+            buttonTreatment.Size = new Size(128, 31);
             buttonTreatment.TabIndex = 3;
             buttonTreatment.Text = "Treatment";
-            buttonTreatment.UseVisualStyleBackColor = true;
+            buttonTreatment.UseVisualStyleBackColor = false;
             buttonTreatment.Click += buttonTreatment_Click;
             // 
             // buttonBackMain
             // 
+            buttonBackMain.BackColor = SystemColors.MenuHighlight;
             buttonBackMain.Location = new Point(14, 553);
             buttonBackMain.Margin = new Padding(3, 4, 3, 4);
             buttonBackMain.Name = "buttonBackMain";
-            buttonBackMain.Size = new Size(86, 31);
+            buttonBackMain.Size = new Size(100, 31);
             buttonBackMain.TabIndex = 4;
             buttonBackMain.Text = "Back";
-            buttonBackMain.UseVisualStyleBackColor = true;
+            buttonBackMain.UseVisualStyleBackColor = false;
             buttonBackMain.Click += buttonBackMain_Click;
             // 
             // buttonInvoice
             // 
-            buttonInvoice.Location = new Point(394, 199);
+            buttonInvoice.BackColor = SystemColors.Info;
+            buttonInvoice.Location = new Point(370, 199);
             buttonInvoice.Name = "buttonInvoice";
-            buttonInvoice.Size = new Size(94, 29);
+            buttonInvoice.Size = new Size(128, 31);
             buttonInvoice.TabIndex = 5;
             buttonInvoice.Text = "Invoice";
-            buttonInvoice.UseVisualStyleBackColor = true;
+            buttonInvoice.UseVisualStyleBackColor = false;
             buttonInvoice.Click += buttonInvoice_Click;
             // 
             // CreatePet
             // 
-            CreatePet.Location = new Point(199, 204);
+            CreatePet.BackColor = SystemColors.Info;
+            CreatePet.Location = new Point(212, 199);
             CreatePet.Name = "CreatePet";
-            CreatePet.Size = new Size(94, 29);
+            CreatePet.Size = new Size(128, 31);
             CreatePet.TabIndex = 6;
             CreatePet.Text = "Pet";
-            CreatePet.UseVisualStyleBackColor = true;
+            CreatePet.UseVisualStyleBackColor = false;
             CreatePet.Click += CreatePet_Click;
             // 
             // buttonItems
             // 
-            buttonItems.Location = new Point(604, 199);
+            buttonItems.BackColor = SystemColors.Info;
+            buttonItems.Location = new Point(516, 199);
             buttonItems.Name = "buttonItems";
-            buttonItems.Size = new Size(94, 29);
+            buttonItems.Size = new Size(128, 31);
             buttonItems.TabIndex = 7;
             buttonItems.Text = "Items";
-            buttonItems.UseVisualStyleBackColor = true;
+            buttonItems.UseVisualStyleBackColor = false;
             buttonItems.Click += buttonItems_Click;
+            // 
+            // sqlCommand1
+            // 
+            sqlCommand1.CommandTimeout = 30;
+            sqlCommand1.EnableOptimizedParameterBinding = false;
             // 
             // Main
             // 
@@ -152,5 +166,6 @@
         private Button buttonInvoice;
         private Button CreatePet;
         private Button buttonItems;
+        private Microsoft.Data.SqlClient.SqlCommand sqlCommand1;
     }
 }

@@ -35,27 +35,28 @@
             // 
             // buttonLogin
             // 
-            buttonLogin.Location = new Point(381, 339);
+            buttonLogin.BackColor = SystemColors.Info;
+            buttonLogin.Location = new Point(387, 336);
             buttonLogin.Margin = new Padding(3, 4, 3, 4);
             buttonLogin.Name = "buttonLogin";
-            buttonLogin.Size = new Size(86, 31);
+            buttonLogin.Size = new Size(100, 31);
             buttonLogin.TabIndex = 0;
             buttonLogin.Text = "Login";
-            buttonLogin.UseVisualStyleBackColor = true;
+            buttonLogin.UseVisualStyleBackColor = false;
             buttonLogin.Click += buttonLogin_Click;
             // 
             // UsernameTextBox
             // 
-            UsernameTextBox.Location = new Point(249, 287);
+            UsernameTextBox.Location = new Point(249, 292);
             UsernameTextBox.Name = "UsernameTextBox";
-            UsernameTextBox.Size = new Size(125, 27);
+            UsernameTextBox.Size = new Size(128, 27);
             UsernameTextBox.TabIndex = 1;
             // 
             // PasswordTextBox
             // 
-            PasswordTextBox.Location = new Point(459, 292);
+            PasswordTextBox.Location = new Point(489, 292);
             PasswordTextBox.Name = "PasswordTextBox";
-            PasswordTextBox.Size = new Size(125, 27);
+            PasswordTextBox.Size = new Size(128, 27);
             PasswordTextBox.TabIndex = 2;
             // 
             // Form1

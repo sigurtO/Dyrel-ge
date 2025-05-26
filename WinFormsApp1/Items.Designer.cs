@@ -45,22 +45,24 @@
             // 
             // buttonTxt
             // 
-            buttonTxt.Location = new Point(653, 393);
+            buttonTxt.BackColor = SystemColors.Info;
+            buttonTxt.Location = new Point(647, 393);
             buttonTxt.Name = "buttonTxt";
-            buttonTxt.Size = new Size(94, 29);
+            buttonTxt.Size = new Size(100, 31);
             buttonTxt.TabIndex = 1;
             buttonTxt.Text = ".txt";
-            buttonTxt.UseVisualStyleBackColor = true;
+            buttonTxt.UseVisualStyleBackColor = false;
             buttonTxt.Click += buttonTxt_Click;
             // 
             // buttonBack
             // 
+            buttonBack.BackColor = SystemColors.MenuHighlight;
             buttonBack.Location = new Point(24, 393);
             buttonBack.Name = "buttonBack";
-            buttonBack.Size = new Size(94, 29);
+            buttonBack.Size = new Size(100, 31);
             buttonBack.TabIndex = 2;
             buttonBack.Text = "Back";
-            buttonBack.UseVisualStyleBackColor = true;
+            buttonBack.UseVisualStyleBackColor = false;
             // 
             // Items
             // 

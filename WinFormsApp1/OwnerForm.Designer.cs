@@ -47,13 +47,14 @@
             // 
             // AddOwnerButton
             // 
+            AddOwnerButton.BackColor = Color.LimeGreen;
             AddOwnerButton.Location = new Point(161, 245);
             AddOwnerButton.Margin = new Padding(3, 4, 3, 4);
             AddOwnerButton.Name = "AddOwnerButton";
             AddOwnerButton.Size = new Size(114, 31);
             AddOwnerButton.TabIndex = 0;
             AddOwnerButton.Text = "Create";
-            AddOwnerButton.UseVisualStyleBackColor = true;
+            AddOwnerButton.UseVisualStyleBackColor = false;
             AddOwnerButton.Click += AddOwnerButton_Click;
             // 
             // textBoxFirstName
@@ -143,15 +144,14 @@
             // 
             // button1
             // 
+            button1.BackColor = SystemColors.MenuHighlight;
             button1.Location = new Point(31, 524);
             button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
             button1.Size = new Size(86, 31);
             button1.TabIndex = 12;
             button1.Text = "Back";
-            button1.UseVisualStyleBackColor = true;
-
-            button1.Click += buttonBack_Click;
+            button1.UseVisualStyleBackColor = false;
             // 
             // dataGridViewOwner
             // 
@@ -166,13 +166,14 @@
             // 
             // AddOwnerEFCButton
             // 
+            AddOwnerEFCButton.BackColor = Color.LimeGreen;
             AddOwnerEFCButton.Location = new Point(161, 312);
             AddOwnerEFCButton.Margin = new Padding(3, 4, 3, 4);
             AddOwnerEFCButton.Name = "AddOwnerEFCButton";
             AddOwnerEFCButton.Size = new Size(114, 31);
             AddOwnerEFCButton.TabIndex = 14;
             AddOwnerEFCButton.Text = "CreateEFC";
-            AddOwnerEFCButton.UseVisualStyleBackColor = true;
+            AddOwnerEFCButton.UseVisualStyleBackColor = false;
             AddOwnerEFCButton.Click += AddOwnerEFCButton_Click;
             // 
             // OwnerForm
