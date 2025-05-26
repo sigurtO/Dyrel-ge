@@ -74,7 +74,18 @@ namespace WinFormsApp1.Service
             }
 
         }
+        public async Task<DataTable> GetConsultationFromPetDataAsync(int petId)
+        {
+            try
+            {
+                return await Program.dbServices.DbReadInvoice.GetConsultationFromPetAsync(petId);
+            }
+            catch (Exception)
+            {
 
+                throw;
+            }
+        }
         public async Task<DataTable> GetVeterinariansByPetAsync(int petId)
         {
             if (petId <= 0) return null;
