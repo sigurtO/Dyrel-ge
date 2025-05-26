@@ -8,10 +8,11 @@ using WinFormsApp1.Objects;
 
 namespace WinFormsApp1.DB.DbCreate
 {
+    //Emil
     public class DbCreateVet : Database
     {
         public DbCreateVet(string connectionString) : base(connectionString) { }
-        //emil
+   
         public async Task CreateVetAsync(VetClass vet)
         {
             string query = @"INSERT INTO PetDoc 

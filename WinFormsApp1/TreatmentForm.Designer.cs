@@ -130,7 +130,7 @@
             textBoxNotesTreatment.Margin = new Padding(2);
             textBoxNotesTreatment.Multiline = true;
             textBoxNotesTreatment.Name = "textBoxNotesTreatment";
-            textBoxNotesTreatment.Size = new Size(195, 96);
+            textBoxNotesTreatment.Size = new Size(224, 96);
             textBoxNotesTreatment.TabIndex = 9;
             // 
             // label4
@@ -183,35 +183,38 @@
             // 
             // buttonBackTreatment
             // 
+            buttonBackTreatment.BackColor = SystemColors.MenuHighlight;
             buttonBackTreatment.Location = new Point(56, 467);
             buttonBackTreatment.Margin = new Padding(2);
             buttonBackTreatment.Name = "buttonBackTreatment";
-            buttonBackTreatment.Size = new Size(90, 27);
+            buttonBackTreatment.Size = new Size(100, 31);
             buttonBackTreatment.TabIndex = 15;
             buttonBackTreatment.Text = "Back";
-            buttonBackTreatment.UseVisualStyleBackColor = true;
+            buttonBackTreatment.UseVisualStyleBackColor = false;
             buttonBackTreatment.Click += buttonBackTreatment_Click_1;
             // 
             // buttonAddTreatment
             // 
-            buttonAddTreatment.Location = new Point(161, 467);
+            buttonAddTreatment.BackColor = Color.LimeGreen;
+            buttonAddTreatment.Location = new Point(174, 467);
             buttonAddTreatment.Margin = new Padding(2);
             buttonAddTreatment.Name = "buttonAddTreatment";
-            buttonAddTreatment.Size = new Size(90, 27);
+            buttonAddTreatment.Size = new Size(100, 31);
             buttonAddTreatment.TabIndex = 16;
             buttonAddTreatment.Text = "Create";
-            buttonAddTreatment.UseVisualStyleBackColor = true;
+            buttonAddTreatment.UseVisualStyleBackColor = false;
             buttonAddTreatment.Click += buttonAddTreatment_Click_1;
             // 
             // buttonDeleteTreatment
             // 
-            buttonDeleteTreatment.Location = new Point(868, 467);
+            buttonDeleteTreatment.BackColor = Color.Red;
+            buttonDeleteTreatment.Location = new Point(857, 382);
             buttonDeleteTreatment.Margin = new Padding(2);
             buttonDeleteTreatment.Name = "buttonDeleteTreatment";
-            buttonDeleteTreatment.Size = new Size(90, 27);
+            buttonDeleteTreatment.Size = new Size(100, 31);
             buttonDeleteTreatment.TabIndex = 17;
             buttonDeleteTreatment.Text = "Delete";
-            buttonDeleteTreatment.UseVisualStyleBackColor = true;
+            buttonDeleteTreatment.UseVisualStyleBackColor = false;
             // 
             // TreatmentForm
             // 
