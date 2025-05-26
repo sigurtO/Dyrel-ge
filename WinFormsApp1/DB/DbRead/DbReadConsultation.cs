@@ -36,7 +36,7 @@ namespace WinFormsApp1.DB.DbRead
 
 
         //Gets Owners
-        public async Task<DataTable> GetOwnersAsync() // we use Datatable becuase we are getting mutiple rows of information from the DB
+        public async Task<DataTable> GetOwnersAsync()
         {
             string query = "SELECT OwnerID, FirstName from PetOwner";
             DataTable dataTable = new DataTable();
