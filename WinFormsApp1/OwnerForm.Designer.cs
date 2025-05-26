@@ -48,10 +48,10 @@
             // AddOwnerButton
             // 
             AddOwnerButton.BackColor = Color.LimeGreen;
-            AddOwnerButton.Location = new Point(161, 245);
-            AddOwnerButton.Margin = new Padding(3, 4, 3, 4);
+            AddOwnerButton.Location = new Point(498, 571);
+            AddOwnerButton.Margin = new Padding(4, 5, 4, 5);
             AddOwnerButton.Name = "AddOwnerButton";
-            AddOwnerButton.Size = new Size(114, 31);
+            AddOwnerButton.Size = new Size(142, 39);
             AddOwnerButton.TabIndex = 0;
             AddOwnerButton.Text = "Create";
             AddOwnerButton.UseVisualStyleBackColor = false;
@@ -59,96 +59,101 @@
             // 
             // textBoxFirstName
             // 
-            textBoxFirstName.Location = new Point(31, 69);
-            textBoxFirstName.Margin = new Padding(3, 4, 3, 4);
+            textBoxFirstName.Location = new Point(39, 86);
+            textBoxFirstName.Margin = new Padding(4, 5, 4, 5);
             textBoxFirstName.Name = "textBoxFirstName";
-            textBoxFirstName.Size = new Size(114, 27);
+            textBoxFirstName.Size = new Size(142, 31);
             textBoxFirstName.TabIndex = 1;
             // 
             // textBoxLastName
             // 
-            textBoxLastName.Location = new Point(161, 69);
-            textBoxLastName.Margin = new Padding(3, 4, 3, 4);
+            textBoxLastName.Location = new Point(201, 86);
+            textBoxLastName.Margin = new Padding(4, 5, 4, 5);
             textBoxLastName.Name = "textBoxLastName";
-            textBoxLastName.Size = new Size(114, 27);
+            textBoxLastName.Size = new Size(142, 31);
             textBoxLastName.TabIndex = 2;
             // 
             // textBoxPhone
             // 
-            textBoxPhone.Location = new Point(31, 168);
-            textBoxPhone.Margin = new Padding(3, 4, 3, 4);
+            textBoxPhone.Location = new Point(39, 210);
+            textBoxPhone.Margin = new Padding(4, 5, 4, 5);
             textBoxPhone.Name = "textBoxPhone";
-            textBoxPhone.Size = new Size(114, 27);
+            textBoxPhone.Size = new Size(142, 31);
             textBoxPhone.TabIndex = 3;
             // 
             // textBoxAdress
             // 
-            textBoxAdress.Location = new Point(161, 168);
-            textBoxAdress.Margin = new Padding(3, 4, 3, 4);
+            textBoxAdress.Location = new Point(201, 210);
+            textBoxAdress.Margin = new Padding(4, 5, 4, 5);
             textBoxAdress.Name = "textBoxAdress";
-            textBoxAdress.Size = new Size(114, 27);
+            textBoxAdress.Size = new Size(142, 31);
             textBoxAdress.TabIndex = 4;
             // 
             // textBoxEmail
             // 
-            textBoxEmail.Location = new Point(31, 247);
-            textBoxEmail.Margin = new Padding(3, 4, 3, 4);
+            textBoxEmail.Location = new Point(39, 309);
+            textBoxEmail.Margin = new Padding(4, 5, 4, 5);
             textBoxEmail.Name = "textBoxEmail";
-            textBoxEmail.Size = new Size(114, 27);
+            textBoxEmail.Size = new Size(142, 31);
             textBoxEmail.TabIndex = 5;
             // 
             // FirstNameLabel
             // 
             FirstNameLabel.AutoSize = true;
-            FirstNameLabel.Location = new Point(31, 45);
+            FirstNameLabel.Location = new Point(39, 56);
+            FirstNameLabel.Margin = new Padding(4, 0, 4, 0);
             FirstNameLabel.Name = "FirstNameLabel";
-            FirstNameLabel.Size = new Size(77, 20);
+            FirstNameLabel.Size = new Size(94, 25);
             FirstNameLabel.TabIndex = 6;
             FirstNameLabel.Text = "First name";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(161, 45);
+            label1.Location = new Point(201, 56);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(79, 20);
+            label1.Size = new Size(95, 25);
             label1.TabIndex = 7;
             label1.Text = "Last Name";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(31, 144);
+            label2.Location = new Point(39, 180);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(108, 20);
+            label2.Size = new Size(132, 25);
             label2.TabIndex = 8;
             label2.Text = "Phone Number";
             // 
             // AdressLabel
             // 
             AdressLabel.AutoSize = true;
-            AdressLabel.Location = new Point(161, 144);
+            AdressLabel.Location = new Point(201, 180);
+            AdressLabel.Margin = new Padding(4, 0, 4, 0);
             AdressLabel.Name = "AdressLabel";
-            AdressLabel.Size = new Size(53, 20);
+            AdressLabel.Size = new Size(66, 25);
             AdressLabel.TabIndex = 9;
             AdressLabel.Text = "Adress";
             // 
             // EmailLabel
             // 
             EmailLabel.AutoSize = true;
-            EmailLabel.Location = new Point(31, 223);
+            EmailLabel.Location = new Point(39, 279);
+            EmailLabel.Margin = new Padding(4, 0, 4, 0);
             EmailLabel.Name = "EmailLabel";
-            EmailLabel.Size = new Size(46, 20);
+            EmailLabel.Size = new Size(54, 25);
             EmailLabel.TabIndex = 10;
             EmailLabel.Text = "Email";
             // 
             // button1
             // 
             button1.BackColor = SystemColors.MenuHighlight;
-            button1.Location = new Point(31, 524);
-            button1.Margin = new Padding(3, 4, 3, 4);
+            button1.Location = new Point(39, 655);
+            button1.Margin = new Padding(4, 5, 4, 5);
             button1.Name = "button1";
-            button1.Size = new Size(86, 31);
+            button1.Size = new Size(108, 39);
             button1.TabIndex = 12;
             button1.Text = "Back";
             button1.UseVisualStyleBackColor = false;
@@ -156,21 +161,21 @@
             // dataGridViewOwner
             // 
             dataGridViewOwner.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewOwner.Location = new Point(398, 69);
-            dataGridViewOwner.Margin = new Padding(3, 4, 3, 4);
+            dataGridViewOwner.Location = new Point(498, 86);
+            dataGridViewOwner.Margin = new Padding(4, 5, 4, 5);
             dataGridViewOwner.Name = "dataGridViewOwner";
             dataGridViewOwner.RowHeadersWidth = 51;
-            dataGridViewOwner.Size = new Size(469, 380);
+            dataGridViewOwner.Size = new Size(586, 475);
             dataGridViewOwner.TabIndex = 13;
             dataGridViewOwner.CellEndEdit += dataGridView_CellEndEditOwner;
             // 
             // AddOwnerEFCButton
             // 
             AddOwnerEFCButton.BackColor = Color.LimeGreen;
-            AddOwnerEFCButton.Location = new Point(161, 312);
-            AddOwnerEFCButton.Margin = new Padding(3, 4, 3, 4);
+            AddOwnerEFCButton.Location = new Point(498, 620);
+            AddOwnerEFCButton.Margin = new Padding(4, 5, 4, 5);
             AddOwnerEFCButton.Name = "AddOwnerEFCButton";
-            AddOwnerEFCButton.Size = new Size(114, 31);
+            AddOwnerEFCButton.Size = new Size(142, 39);
             AddOwnerEFCButton.TabIndex = 14;
             AddOwnerEFCButton.Text = "CreateEFC";
             AddOwnerEFCButton.UseVisualStyleBackColor = false;
@@ -178,9 +183,9 @@
             // 
             // OwnerForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(914, 600);
+            ClientSize = new Size(1142, 750);
             Controls.Add(AddOwnerEFCButton);
             Controls.Add(dataGridViewOwner);
             Controls.Add(button1);
@@ -195,7 +200,7 @@
             Controls.Add(textBoxLastName);
             Controls.Add(textBoxFirstName);
             Controls.Add(AddOwnerButton);
-            Margin = new Padding(3, 4, 3, 4);
+            Margin = new Padding(4, 5, 4, 5);
             Name = "OwnerForm";
             Text = "OwnerForm";
             ((System.ComponentModel.ISupportInitialize)dataGridViewOwner).EndInit();
