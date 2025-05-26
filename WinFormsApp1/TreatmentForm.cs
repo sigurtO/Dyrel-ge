@@ -97,6 +97,8 @@ namespace WinFormsApp1
                 comboBoxTreatmentVet.DataSource = await _veterianRelated.GetVeterinariansByPetAsync(petId);
                 comboBoxTreatmentVet.DisplayMember = "FirstName";
                 comboBoxTreatmentVet.ValueMember = "PetDocID";
+                comboBoxTreatmentConsultation.DataSource = await _treatmentService.GetConsultationFromPetDataAsync(petId);
+                comboBoxTreatmentConsultation.ValueMember = "ConsultationID"; 
             }
             catch (Exception ex)
             {
@@ -128,7 +130,7 @@ namespace WinFormsApp1
         }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            //bruh dont double click it's not hard
+        
         }
 
         private void buttonBackTreatment_Click_1(object sender, EventArgs e)
@@ -140,30 +142,51 @@ namespace WinFormsApp1
 
         private async void buttonAddTreatment_Click_1(object sender, EventArgs e)
         {
-            if (comboBoxTreatmentOwner.SelectedValue == null || comboBoxTreatmentPet.SelectedValue == null ||
-                comboBoxTreatmentVet.SelectedValue == null)
+            if (comboBoxTreatmentOwner.SelectedValue == null || comboBoxTreatmentPet.SelectedValue == null || comboBoxTreatmentVet.SelectedValue == null || comboBoxTreatmentConsultation.SelectedValue == null)
             {
-                MessageBox.Show("Please select owner, pet and veterinarian");
+                MessageBox.Show("Please select all fields before adding a treatment.");
                 return;
             }
-
             try
-            { //int ownerId, int petDocId, int consultationId, int price, DateTime date, string notes, int petID
-                await _treatmentService.AddTreatmentAsync(
-                    (int)comboBoxTreatmentOwner.SelectedValue,
-                    (int)comboBoxTreatmentVet.SelectedValue,
-                    (int)comboBoxTreatmentConsultation.SelectedValue,
-                    Convert.ToInt32(textBoxPriceTreatment.Text),
-                    textBoxDateTreatment.Value,
-                    textBoxNotesTreatment.Text,
-                    (int)comboBoxTreatmentPet.SelectedValue);
-
+            {   
+                int ownerId = (int)comboBoxTreatmentOwner.SelectedValue;
+                int petDocId = (int)comboBoxTreatmentPet.SelectedValue;
+                int consultationId = (int)comboBoxTreatmentConsultation.SelectedValue;
+                int price = string.IsNullOrWhiteSpace(textBoxPriceTreatment.Text) ? 0 : int.Parse(textBoxPriceTreatment.Text);
+                DateTime date = textBoxDateTreatment.Value;
+                string notes = textBoxNotesTreatment.Text;
+                await _treatmentService.AddTreatmentAsync(ownerId, petDocId, consultationId, price, date, notes, (int)comboBoxTreatmentPet.SelectedValue);
                 MessageBox.Show("Treatment added successfully");
                 await LoadTreatmentAsync(); // Refresh grid
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error adding treatment: {ex.Message}");
+            }
+        }
+
+        private void comboBoxTreatmentConsultation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxTreatmentConsultation.SelectedValue == null || !(comboBoxTreatmentConsultation.SelectedValue is int consultationId) || consultationId <= 0)
+            {
+                textBoxPriceTreatment.Text = string.Empty;
+                return;
+            }
+            try
+            {
+                var consultationDetails = _treatmentService.GetConsultationFromPetDataAsync(consultationId).Result;
+                if (consultationDetails.Rows.Count > 0)
+                {
+                    textBoxPriceTreatment.Text = consultationDetails.Rows[0]["Price"].ToString();
+                }
+                else
+                {
+                    textBoxPriceTreatment.Text = string.Empty;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading consultation details: {ex.Message}");
             }
         }
     }
