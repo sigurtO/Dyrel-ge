@@ -13,7 +13,7 @@ using WinFormsApp1.Service;
 
 namespace WinFormsApp1
 {
-    public partial class TreatmentForm : Form
+    public partial class TreatmentForm : Form // daniels code is acutllay ass
     {
         private readonly ITreatmentService _treatmentService;
         private readonly IOwnerRelated _ownerRelatedService;
