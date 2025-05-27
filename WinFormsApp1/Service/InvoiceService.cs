@@ -96,14 +96,14 @@ namespace WinFormsApp1.Service
                 DataTable resultTable = new DataTable();
                 resultTable.Columns.Add("DisplayText", typeof(string));  // What will be shown in combobox
                 resultTable.Columns.Add("CageID", typeof(int));          // The value member
-                resultTable.Columns.Add("cagePrice", typeof(int)); // Add this!
+                resultTable.Columns.Add("cagePrice", typeof(int));
 
                 if (cageData.Rows.Count == 0 ||
                     cageData.Rows[0]["cageCheck"] == DBNull.Value ||
                     Convert.ToInt32(cageData.Rows[0]["cageCheck"]) == 0)
                 {
                     // Add "No Cage" option
-                    resultTable.Rows.Add("No Cage", 0);
+                    resultTable.Rows.Add("No Cage", 0); // pretty sure this doesnt work btw
                 }
                 else
                 {

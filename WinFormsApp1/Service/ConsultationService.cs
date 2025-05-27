@@ -21,7 +21,7 @@ namespace WinFormsApp1.Service
             try
             {
                 return await Program.dbServices.DbReadConsultation.ShowAllConsultationsAsync();
-            } //Program.DbReadConsultation.ShowAllConsultationsAsync();
+            }
             catch (Exception ex)    
             {
                 throw new ConsultationServiceException("Failed to load consultations", ex);

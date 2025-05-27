@@ -58,6 +58,7 @@
             // 
             // dataGridViewVets
             // 
+            dataGridViewVets.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewVets.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewVets.Location = new Point(226, 17);
             dataGridViewVets.Margin = new Padding(2, 3, 2, 3);
@@ -158,6 +159,7 @@
             // 
             // buttonBackVet
             // 
+            buttonBackVet.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             buttonBackVet.BackColor = SystemColors.MenuHighlight;
             buttonBackVet.Location = new Point(9, 313);
             buttonBackVet.Margin = new Padding(3, 4, 3, 4);

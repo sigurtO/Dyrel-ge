@@ -36,6 +36,7 @@
             // 
             // dataGridViewItems
             // 
+            dataGridViewItems.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewItems.Location = new Point(372, 29);
             dataGridViewItems.Name = "dataGridViewItems";
@@ -45,6 +46,7 @@
             // 
             // buttonTxt
             // 
+            buttonTxt.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             buttonTxt.BackColor = SystemColors.Info;
             buttonTxt.Location = new Point(647, 393);
             buttonTxt.Name = "buttonTxt";
@@ -56,6 +58,7 @@
             // 
             // buttonBack
             // 
+            buttonBack.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             buttonBack.BackColor = SystemColors.MenuHighlight;
             buttonBack.Location = new Point(24, 393);
             buttonBack.Name = "buttonBack";

@@ -130,6 +130,7 @@
             // 
             // dataGridView
             // 
+            dataGridView.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView.Location = new Point(536, 52);
             dataGridView.Margin = new Padding(3, 4, 3, 4);
@@ -191,6 +192,7 @@
             // 
             // buttonDelete
             // 
+            buttonDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             buttonDelete.BackColor = Color.Red;
             buttonDelete.Location = new Point(773, 499);
             buttonDelete.Margin = new Padding(3, 4, 3, 4);
@@ -203,6 +205,7 @@
             // 
             // buttonBackConsultation
             // 
+            buttonBackConsultation.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             buttonBackConsultation.BackColor = SystemColors.MenuHighlight;
             buttonBackConsultation.Location = new Point(51, 540);
             buttonBackConsultation.Margin = new Padding(3, 4, 3, 4);
